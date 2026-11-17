@@ -115,7 +115,7 @@ check:
 
 # Bump version, update CHANGELOG.md and create a git tag (see .context/02-versioning.md)
 bump *args:
-    uv run cz bump {{args}}
+    uv run --frozen cz bump {{args}}
 
 # Recreate the database from scratch and load demo data
 [confirm("This deletes all local database data. Continue?")]
