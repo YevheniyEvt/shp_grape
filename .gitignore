@@ -1,0 +1,46 @@
+# Local planning and Claude Code files (not published)
+.context/
+.claude/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+
+# Django
+/media/
+/staticfiles/
+*.mo
+db.sqlite3
+
+# Environment
+.env
+.env.*
+!.env.example
+frontend/.env.local
+frontend/.env*.local
+
+# Node / Next.js
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/coverage/
+frontend/next-env.d.ts
+*.tsbuildinfo
+
+# IDE
+.idea/workspace.xml
+.idea/shelf/
+.idea/dataSources*
+.idea/httpRequests/
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
