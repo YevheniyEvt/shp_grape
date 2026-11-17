@@ -1,0 +1,46 @@
+default_install_hook_types: [pre-commit, commit-msg]
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: check-yaml
+      - id: check-toml
+      - id: check-json
+        exclude: ^frontend/tsconfig\.json$
+      - id: end-of-file-fixer
+        exclude: \.po$
+      - id: trailing-whitespace
+        exclude: \.(po|md)$
+      - id: check-merge-conflict
+      - id: check-added-large-files
+        args: [--maxkb=1024]
+
+  - repo: local
+    hooks:
+      - id: ruff-check
+        name: ruff check
+        entry: uv run ruff check --fix
+        language: system
+        types: [python]
+      - id: ruff-format
+        name: ruff format
+        entry: uv run ruff format
+        language: system
+        types: [python]
+      - id: commitizen
+        name: commitizen check
+        entry: uv run cz check --allow-abort --commit-msg-file
+        language: system
+        stages: [commit-msg]
+      - id: prettier
+        name: prettier (frontend)
+        entry: node frontend/scripts/run-in-frontend.mjs prettier --write --ignore-unknown
+        language: system
+        files: ^frontend/
+        exclude: ^frontend/(src/types/api\.ts|package-lock\.json)$
+      - id: eslint
+        name: eslint (frontend)
+        entry: node frontend/scripts/run-in-frontend.mjs eslint --no-warn-ignored
+        language: system
+        files: ^frontend/.*\.(ts|tsx|mts|js|mjs)$
