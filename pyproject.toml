@@ -77,3 +77,5 @@ major_version_zero = true
 update_changelog_on_bump = true
 changelog_incremental = true
 version_files = ["frontend/package.json:\"version\""]
+# uv.lock records the project version too; refresh it and include it in the bump commit.
+pre_bump_hooks = ["uv lock", "git add uv.lock"]
