@@ -8,106 +8,106 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: frontend/src/components/layout/footer.tsx:73
+#: frontend/src/components/layout/footer.tsx
 msgid "All rights reserved."
 msgstr ""
 
-#: frontend/src/app/[lang]/articles/page.tsx:8 frontend/src/app/[lang]/articles/page.tsx:13 frontend/src/config/site.ts:25
+#: frontend/src/app/[lang]/articles/page.tsx frontend/src/config/site.ts
 msgid "Articles"
 msgstr ""
 
-#: frontend/src/app/[lang]/cart/page.tsx:8 frontend/src/app/[lang]/cart/page.tsx:13 frontend/src/components/layout/header.tsx:83
+#: frontend/src/app/[lang]/cart/page.tsx frontend/src/components/layout/header.tsx
 msgid "Cart"
 msgstr ""
 
-#: frontend/src/config/site.ts:24
+#: frontend/src/config/site.ts
 msgid "Catalog"
 msgstr ""
 
-#: frontend/src/components/layout/language-switcher.tsx:30
+#: frontend/src/components/layout/language-switcher.tsx
 msgid "Change language"
 msgstr ""
 
-#: frontend/src/app/[lang]/contacts/page.tsx:8 frontend/src/app/[lang]/contacts/page.tsx:13 frontend/src/components/layout/footer.tsx:50 frontend/src/config/site.ts:30
+#: frontend/src/app/[lang]/contacts/page.tsx frontend/src/components/layout/footer.tsx frontend/src/config/site.ts
 msgid "Contacts"
 msgstr ""
 
-#: frontend/src/app/[lang]/gallery/page.tsx:8 frontend/src/app/[lang]/gallery/page.tsx:13 frontend/src/config/site.ts:27
+#: frontend/src/app/[lang]/gallery/page.tsx frontend/src/config/site.ts
 msgid "Gallery"
 msgstr ""
 
-#: frontend/src/app/[lang]/not-found.tsx:17
+#: frontend/src/app/[lang]/not-found.tsx
 msgid "Go to home page"
 msgstr ""
 
-#: frontend/src/app/[lang]/layout.tsx:31 frontend/src/app/[lang]/page.tsx:22 frontend/src/components/layout/footer.tsx:31
+#: frontend/src/app/[lang]/layout.tsx frontend/src/app/[lang]/page.tsx frontend/src/components/layout/footer.tsx
 msgid "Grape cuttings and seedlings of table varieties from our own vineyard."
 msgstr ""
 
-#: frontend/src/config/site.ts:23
+#: frontend/src/config/site.ts
 msgid "Home"
 msgstr ""
 
-#: frontend/src/components/layout/header.tsx:66 frontend/src/components/layout/mobile-menu.tsx:37
+#: frontend/src/components/layout/header.tsx frontend/src/components/layout/mobile-menu.tsx
 msgid "Main menu"
 msgstr ""
 
-#: frontend/src/components/layout/mobile-menu.tsx:35
+#: frontend/src/components/layout/mobile-menu.tsx
 msgid "Menu"
 msgstr ""
 
-#: frontend/src/app/[lang]/news/page.tsx:8 frontend/src/app/[lang]/news/page.tsx:13 frontend/src/config/site.ts:26
+#: frontend/src/app/[lang]/news/page.tsx frontend/src/config/site.ts
 msgid "News"
 msgstr ""
 
-#: frontend/src/components/layout/mobile-menu.tsx:29
+#: frontend/src/components/layout/mobile-menu.tsx
 msgid "Open menu"
 msgstr ""
 
-#: frontend/src/app/[lang]/not-found.tsx:12
+#: frontend/src/app/[lang]/not-found.tsx
 msgid "Page not found"
 msgstr ""
 
-#: frontend/src/app/[lang]/page.tsx:32 frontend/src/app/[lang]/preorder/page.tsx:8 frontend/src/app/[lang]/preorder/page.tsx:13 frontend/src/config/site.ts:29
+#: frontend/src/app/[lang]/page.tsx frontend/src/app/[lang]/preorder/page.tsx frontend/src/config/site.ts
 msgid "Pre-order"
 msgstr ""
 
-#: frontend/src/components/layout/header.tsx:46
+#: frontend/src/components/layout/header.tsx
 msgid "Price list"
 msgstr ""
 
-#: frontend/src/components/layout/footer.tsx:36 frontend/src/components/layout/footer.tsx:37
+#: frontend/src/components/layout/footer.tsx
 msgid "Site map"
 msgstr ""
 
-#: frontend/src/app/[lang]/page.tsx:16
+#: frontend/src/app/[lang]/page.tsx
 msgid "Table grape varieties for every garden"
 msgstr ""
 
-#: frontend/src/app/[lang]/not-found.tsx:14
+#: frontend/src/app/[lang]/not-found.tsx
 msgid "The page you are looking for does not exist or has been moved."
 msgstr ""
 
-#: frontend/src/components/common/page-stub.tsx:14
+#: frontend/src/components/common/page-stub.tsx
 msgid "This section is under construction."
 msgstr ""
 
-#: frontend/src/app/[lang]/links/page.tsx:8 frontend/src/app/[lang]/links/page.tsx:13 frontend/src/config/site.ts:28
+#: frontend/src/app/[lang]/links/page.tsx frontend/src/config/site.ts
 msgid "Useful links"
 msgstr ""
 
-#: frontend/src/components/layout/header.tsx:93
+#: frontend/src/components/layout/header.tsx
 msgid "Varieties by letter"
 msgstr ""
 
-#: frontend/src/app/[lang]/catalog/page.tsx:8 frontend/src/app/[lang]/catalog/page.tsx:13 frontend/src/app/[lang]/page.tsx:27
+#: frontend/src/app/[lang]/catalog/page.tsx frontend/src/app/[lang]/page.tsx
 msgid "Variety catalog"
 msgstr ""
 
-#: frontend/src/app/[lang]/layout.tsx:28 frontend/src/app/[lang]/page.tsx:19 frontend/src/components/layout/footer.tsx:28 frontend/src/components/layout/footer.tsx:73 frontend/src/components/layout/header.tsx:62
+#: frontend/src/app/[lang]/layout.tsx frontend/src/app/[lang]/page.tsx frontend/src/components/layout/footer.tsx frontend/src/components/layout/header.tsx
 msgid "Vineyard"
 msgstr ""
 
-#: frontend/src/components/layout/header.tsx:49
+#: frontend/src/components/layout/header.tsx
 msgid "Write to us"
 msgstr ""

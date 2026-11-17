@@ -204,6 +204,33 @@ def test_merge_preserves_fuzzy_flag_and_header_is_not_fuzzy():
     assert not merged.metadata_is_fuzzy
 
 
+def test_merge_writes_unique_file_references_without_line_numbers():
+    key = MessageKey("Cart")
+    messages = {
+        key: ExtractedMessage(key=key, occurrences=[("b.tsx", 9), ("a.tsx", 3), ("b.tsx", 1)])
+    }
+
+    merged = merge_catalog(new_catalog("uk", UK_PLURAL_FORMS), messages)
+
+    assert merged.find("Cart").occurrences == [("a.tsx", ""), ("b.tsx", "")]
+    assert "#: a.tsx b.tsx\n" in merged.__unicode__()
+
+
+def test_command_output_does_not_change_when_lines_shift(tmp_path: Path):
+    src = tmp_path / "src"
+    src.mkdir()
+    page = src / "page.tsx"
+    page.write_text('t("Cart")', encoding="utf-8")
+    first, _ = extract_from_directory(src)
+    page.write_text('\n\n\nt("Cart")', encoding="utf-8")
+    second, _ = extract_from_directory(src)
+
+    catalog = new_catalog("uk", UK_PLURAL_FORMS)
+    assert (
+        merge_catalog(catalog, first).__unicode__() == merge_catalog(catalog, second).__unicode__()
+    )
+
+
 def test_merge_sorts_entries_for_stable_diffs():
     po = new_catalog("uk", UK_PLURAL_FORMS)
 

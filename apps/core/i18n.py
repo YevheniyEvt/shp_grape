@@ -185,7 +185,9 @@ def merge_catalog(po: polib.POFile, messages: dict[MessageKey, ExtractedMessage]
         entry = polib.POEntry(
             msgid=key.msgid,
             msgctxt=key.msgctxt,
-            occurrences=[(path, str(line)) for path, line in message.occurrences],
+            # File-only references (like `makemessages --add-location=file`): line numbers
+            # would make catalogs stale after any reformatting.
+            occurrences=[(path, "") for path in sorted({path for path, _ in message.occurrences})],
         )
         if key.msgid_plural:
             entry.msgid_plural = key.msgid_plural
