@@ -1,0 +1,79 @@
+[project]
+name = "shp-grape"
+version = "0.0.0"
+description = "Vineyard website: Django REST API + Next.js frontend."
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "django>=6.1,<6.2",
+    "django-cors-headers>=4.9.0",
+    "django-environ>=0.14.0",
+    "django-filter>=26.2",
+    "django-modeltranslation>=0.20.6",
+    "djangorestframework>=3.18.3",
+    "drf-spectacular>=0.30.0",
+    "pillow>=13.0.0",
+    "polib>=1.2.0",
+    "psycopg[binary]>=3.3.9",
+]
+
+[tool.uv]
+package = false
+
+[dependency-groups]
+dev = [
+    "commitizen>=4.19.3",
+    "factory-boy>=3.3.3",
+    "hypothesis>=6.170.15",
+    "pre-commit>=4.7.0",
+    "pytest>=9.2.0",
+    "pytest-cov>=7.1.0",
+    "pytest-django>=4.14.0",
+    "pytest-xdist>=3.8.0",
+    "ruff>=0.17.5",
+    "time-machine>=3.6.0",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py314"
+extend-exclude = ["frontend", "**/migrations/*.py"]
+
+[tool.ruff.lint]
+select = ["E", "W", "F", "I", "B", "UP", "DJ", "SIM", "RUF", "PT", "C4"]
+ignore = ["RUF012"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["apps", "shp_grape"]
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "shp_grape.settings_test"
+python_files = ["test_*.py"]
+testpaths = ["apps", "shp_grape"]
+addopts = "--reuse-db -n auto --strict-markers --cov --cov-report=term-missing:skip-covered"
+
+[tool.coverage.run]
+source = ["apps", "shp_grape"]
+branch = true
+omit = [
+    "*/migrations/*",
+    "*/tests/*",
+    "shp_grape/settings*.py",
+    "shp_grape/asgi.py",
+    "shp_grape/wsgi.py",
+]
+
+[tool.coverage.report]
+fail_under = 85
+show_missing = true
+skip_empty = true
+
+[tool.commitizen]
+name = "cz_conventional_commits"
+version_provider = "pep621"
+tag_format = "v$version"
+version_scheme = "semver2"
+major_version_zero = true
+update_changelog_on_bump = true
+changelog_incremental = true
+version_files = ["frontend/package.json:\"version\""]

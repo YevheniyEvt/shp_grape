@@ -1,0 +1,113 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: shp_grape\n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n % 10 == 1 && n % 100 != 11 ? 0 : n % 1 == 0 && n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || (n % 100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
+
+#: frontend/src/components/layout/footer.tsx
+msgid "All rights reserved."
+msgstr "Усі права захищені."
+
+#: frontend/src/app/[lang]/articles/page.tsx frontend/src/config/site.ts
+msgid "Articles"
+msgstr "Статті"
+
+#: frontend/src/app/[lang]/cart/page.tsx frontend/src/components/layout/header.tsx
+msgid "Cart"
+msgstr "Кошик"
+
+#: frontend/src/config/site.ts
+msgid "Catalog"
+msgstr "Каталог"
+
+#: frontend/src/components/layout/language-switcher.tsx
+msgid "Change language"
+msgstr "Змінити мову"
+
+#: frontend/src/app/[lang]/contacts/page.tsx frontend/src/components/layout/footer.tsx frontend/src/config/site.ts
+msgid "Contacts"
+msgstr "Контакти"
+
+#: frontend/src/app/[lang]/gallery/page.tsx frontend/src/config/site.ts
+msgid "Gallery"
+msgstr "Галерея"
+
+#: frontend/src/app/[lang]/not-found.tsx
+msgid "Go to home page"
+msgstr "На головну"
+
+#: frontend/src/app/[lang]/layout.tsx frontend/src/app/[lang]/page.tsx frontend/src/components/layout/footer.tsx
+msgid "Grape cuttings and seedlings of table varieties from our own vineyard."
+msgstr "Живці та саджанці столових сортів винограду з власного виноградника."
+
+#: frontend/src/config/site.ts
+msgid "Home"
+msgstr "Головна"
+
+#: frontend/src/components/layout/header.tsx frontend/src/components/layout/mobile-menu.tsx
+msgid "Main menu"
+msgstr "Головне меню"
+
+#: frontend/src/components/layout/mobile-menu.tsx
+msgid "Menu"
+msgstr "Меню"
+
+#: frontend/src/app/[lang]/news/page.tsx frontend/src/config/site.ts
+msgid "News"
+msgstr "Новини"
+
+#: frontend/src/components/layout/mobile-menu.tsx
+msgid "Open menu"
+msgstr "Відкрити меню"
+
+#: frontend/src/app/[lang]/not-found.tsx
+msgid "Page not found"
+msgstr "Сторінку не знайдено"
+
+#: frontend/src/app/[lang]/page.tsx frontend/src/app/[lang]/preorder/page.tsx frontend/src/config/site.ts
+msgid "Pre-order"
+msgstr "Передзамовлення"
+
+#: frontend/src/components/layout/header.tsx
+msgid "Price list"
+msgstr "Прайс-лист"
+
+#: frontend/src/components/layout/footer.tsx
+msgid "Site map"
+msgstr "Карта сайту"
+
+#: frontend/src/app/[lang]/page.tsx
+msgid "Table grape varieties for every garden"
+msgstr "Столові сорти винограду для кожного саду"
+
+#: frontend/src/app/[lang]/not-found.tsx
+msgid "The page you are looking for does not exist or has been moved."
+msgstr "Сторінка, яку ви шукаєте, не існує або була переміщена."
+
+#: frontend/src/components/common/page-stub.tsx
+msgid "This section is under construction."
+msgstr "Розділ у розробці."
+
+#: frontend/src/app/[lang]/links/page.tsx frontend/src/config/site.ts
+msgid "Useful links"
+msgstr "Корисні посилання"
+
+#: frontend/src/components/layout/header.tsx
+msgid "Varieties by letter"
+msgstr "Сорти за літерою"
+
+#: frontend/src/app/[lang]/catalog/page.tsx frontend/src/app/[lang]/page.tsx
+msgid "Variety catalog"
+msgstr "Каталог сортів"
+
+#: frontend/src/app/[lang]/layout.tsx frontend/src/app/[lang]/page.tsx frontend/src/components/layout/footer.tsx frontend/src/components/layout/header.tsx
+msgid "Vineyard"
+msgstr "Виноградник"
+
+#: frontend/src/components/layout/header.tsx
+msgid "Write to us"
+msgstr "Написати нам"
