@@ -1,31 +1,59 @@
 default_install_hook_types: [pre-commit, commit-msg]
 
 repos:
-  - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v6.0.0
+  # pre-commit-hooks run as Python modules from the project venv (dev dependency), not as
+  # the .exe launchers of a pre-commit-managed environment: Windows Smart App Control
+  # blocks those freshly built, unsigned launchers.
+  - repo: local
     hooks:
       - id: check-yaml
+        name: check yaml
+        entry: uv run --frozen python -m pre_commit_hooks.check_yaml
+        language: system
+        types: [yaml]
       - id: check-toml
+        name: check toml
+        entry: uv run --frozen python -m pre_commit_hooks.check_toml
+        language: system
+        types: [toml]
       - id: check-json
+        name: check json
+        entry: uv run --frozen python -m pre_commit_hooks.check_json
+        language: system
+        types: [json]
         exclude: ^frontend/tsconfig\.json$
       - id: end-of-file-fixer
+        name: fix end of files
+        entry: uv run --frozen python -m pre_commit_hooks.end_of_file_fixer
+        language: system
+        types: [text]
         exclude: \.po$
       - id: trailing-whitespace
+        name: trim trailing whitespace
+        entry: uv run --frozen python -m pre_commit_hooks.trailing_whitespace_fixer
+        language: system
+        types: [text]
         exclude: \.(po|md)$
       - id: check-merge-conflict
+        name: check for merge conflicts
+        entry: uv run --frozen python -m pre_commit_hooks.check_merge_conflict
+        language: system
+        types: [text]
       - id: check-added-large-files
-        args: [--maxkb=1024]
+        name: check for added large files
+        entry: uv run --frozen python -m pre_commit_hooks.check_added_large_files --maxkb=1024
+        language: system
 
   - repo: local
     hooks:
       - id: ruff-check
         name: ruff check
-        entry: uv run --frozen ruff check --fix
+        entry: uv run --frozen ruff check --fix --force-exclude
         language: system
         types: [python]
       - id: ruff-format
         name: ruff format
-        entry: uv run --frozen ruff format
+        entry: uv run --frozen ruff format --force-exclude
         language: system
         types: [python]
       - id: frontend-messages

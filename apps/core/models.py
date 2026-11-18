@@ -12,3 +12,10 @@ class TimeStampedModel(models.Model):
 
     class Meta:
         abstract = True
+
+
+class SlugNaturalKeyManager(models.Manager):
+    """Manager resolving objects by their slug, the natural key used by fixtures and imports."""
+
+    def get_by_natural_key(self, slug: str):
+        return self.get(slug=slug)

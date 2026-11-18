@@ -25,7 +25,7 @@ just setup                 # uv sync, npm ci, git hooks, start db, migrate, comp
 just up / down             # PostgreSQL in Docker
 just run                   # Django at http://127.0.0.1:8000 (/api/docs/ = Swagger, /admin/)
 just front                 # Next.js at http://localhost:3000 (needs the Django API running)
-just migrate / makemigrations [app]
+just migrate / makemigrations [app]   # migrate also runs createcachetable
 just test [pytest args]    # e.g. just test apps/core/tests/test_api.py -k health
 just test-front            # Vitest
 just lint / fmt            # ruff + eslint + tsc + prettier
@@ -41,15 +41,19 @@ To run a single test without `just`, use `uv run pytest path/to/test_file.py::te
 ## Architecture
 
 ### Backend (Django REST API)
-- `shp_grape/settings.py` reads `.env` via django-environ. `settings_test.py` (used by pytest) switches to an MD5 hasher, in-memory file storage and the locmem mailer. Email uses the Django 6.1 `MAILERS` setting.
-- Apps live in `apps/` (`core`, `catalog`, `content`, `orders`). `catalog`, `content` and `orders` are still empty skeletons.
+- `shp_grape/settings.py` reads `.env` via django-environ. `settings_test.py` (used by pytest) switches to an MD5 hasher, in-memory file storage, the locmem cache and the locmem mailer. The cache is `DatabaseCache` (no Redis in the MVP). Email uses the Django 6.1 `MAILERS` setting.
+- Apps live in `apps/` (`core`, `catalog`, `content`, `orders`). `content` and `orders` are still empty skeletons.
 - Each app keeps views and serializers thin, with logic in `services.py` / `selectors.py`. Tests live in `apps/<app>/tests/`, and the shared fixtures (`api_client`, `user`, `language`) are in the root `conftest.py`.
-- `apps/core` holds `TimeStampedModel`, the migration that enables the `pg_trgm` and `unaccent` extensions, and these endpoints:
+- `apps/core` holds `TimeStampedModel`, `SlugNaturalKeyManager`, `slugs.py` (`AutoSlugMixin`), `richtext.py` (`RichTextField`, django-prose-editor with nh3 sanitizing), the migration that enables the `pg_trgm` and `unaccent` extensions, and these endpoints:
   - `/api/health/` returns the status, the database check and the version;
   - `/api/i18n/languages/` lists the site languages;
   - `/api/i18n/<lang>/` serves the `djangojs` catalog (JSONCatalog).
 - The project version comes from `[project].version` in `pyproject.toml` (`apps/core/version.py`).
-- `ADMIN_URL` is configurable through the environment.
+- `ADMIN_URL` is configurable through the environment. `AdminLanguageMiddleware` always shows the admin in `ADMIN_LANGUAGE_CODE` (uk); the API follows `Accept-Language`. Shared admin CSS is `apps/core/static/core/admin.css`.
+- `apps/catalog`: `Variety` (+ `VarietyPhoto` with imagekit WebP renditions `thumb`/`medium`/`large`, generated on save, and `VarietyVideo`) and the reference lists `RipeningPeriod`, `BerryColor`, `PulpConsistency`, `Taste`, `GrowthVigor`. Translated fields are registered in `translation.py`; `first_letter_<lang>` is computed in `save()`. Search, range overlap, similar varieties and letters live in `selectors.py`; the view counter and bulk photo upload live in `services.py`; filters are in `filters.py`. Factories are in `apps/catalog/tests/factories.py`. Endpoints under `/api/catalog/`:
+  - `varieties/` (filters, `search`, `ordering`, `page`/`page_size`) and `varieties/<slug>/`;
+  - `POST varieties/<slug>/view/`, `filters/`, `letters/`, `photos/random/?limit=`.
+- Use `selectors.localized("name")` to sort or annotate by a translated field: modeltranslation stores missing translations as NULL, and it rewrites `Meta.ordering` into an explicit `order_by`.
 
 ### Frontend (`frontend/`, Next.js 16 App Router)
 - **Next.js 16 differs from older versions.** Read `frontend/node_modules/next/dist/docs/` before using an unfamiliar API (see `frontend/AGENTS.md`):
@@ -78,7 +82,8 @@ To run a single test without `just`, use `uv run pytest path/to/test_file.py::te
 - Translations:
   - DB content is translated with django-modeltranslation.
   - Static text uses gettext only. The `.po` files are the single source; there are no JSON message files.
-  - Slugs are transliterated automatically from the Ukrainian name (KMU 2010), are unique, and never change when the object is renamed. The planned helper is `apps/core/slugs.py`.
+  - Slugs are transliterated automatically from the Ukrainian name (KMU 2010), are unique, and never change when the object is renamed. Inherit `AutoSlugMixin` from `apps/core/slugs.py`.
+- Reference data (lists like ripening periods, berry colours, tastes; a default `SiteSettings` row) is created by data migrations with uk + en values, wherever a model has sensible defaults. Freeze the values and slugs in the migration, use `get_or_create` by slug so admin edits survive, and make the reverse delete only unused rows. Example: `apps/catalog/migrations/0003_default_dictionaries.py`.
 - Development and demo data come from the `seed_demo` command (stage 3). Never scrape the source site.
 - Tests:
   - All business logic must be covered by tests, as described in `.context/03-testing.md`.
@@ -87,4 +92,8 @@ To run a single test without `just`, use `uv run pytest path/to/test_file.py::te
   - Commits use Conventional Commits in English, checked by a commitizen commit-msg hook. Pre-commit also runs ruff, prettier and eslint.
   - Each stage gets a branch `stage/NN-<name>` with a PR to `main`. CI is `.github/workflows/ci.yml`.
   - There is one SemVer version, in `pyproject.toml` and mirrored in `frontend/package.json`.
+- Monitoring (planned for stages 7–8, see `.context/04-monitoring.md`):
+  - Sentry for the backend and frontend;
+  - error alerts go to the admin's Telegram through `apps/core/monitoring.py` (deduplicated and rate-limited, disabled when no token is set);
+  - never log customer personal data.
 - Prefer existing Django and React libraries over custom code.

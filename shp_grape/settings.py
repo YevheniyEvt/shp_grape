@@ -43,11 +43,16 @@ INSTALLED_APPS = [
     "django_filters",
     "drf_spectacular",
     "corsheaders",
+    "imagekit",
+    "adminsortable2",
+    "django_prose_editor",
     # Local
     "apps.core",
     "apps.catalog",
     "apps.content",
     "apps.orders",
+    # Must be last: deletes files of removed or replaced FileFields.
+    "django_cleanup.apps.CleanupConfig",
 ]
 
 MIDDLEWARE = [
@@ -55,6 +60,7 @@ MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.locale.LocaleMiddleware",
+    "apps.core.middleware.AdminLanguageMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -113,6 +119,8 @@ LANGUAGE_NATIVE_NAMES = {
     "uk": "Українська",
     "en": "English",
 }
+# The admin is used by the site owner and is always in Ukrainian.
+ADMIN_LANGUAGE_CODE = "uk"
 LOCALE_PATHS = [BASE_DIR / "locale"]
 TIME_ZONE = "Europe/Kyiv"
 USE_I18N = True
@@ -130,6 +138,21 @@ MEDIA_URL = "media/"
 MEDIA_ROOT = env.path("MEDIA_ROOT", default=BASE_DIR / "media")
 
 
+# Image renditions are generated when a photo is saved, so serving URLs never touches storage.
+IMAGEKIT_DEFAULT_CACHEFILE_STRATEGY = "imagekit.cachefiles.strategies.Optimistic"
+IMAGEKIT_CACHEFILE_DIR = "cache"
+
+
+# Cache (PostgreSQL table, see `createcachetable`): view-count throttling and similar counters.
+
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.db.DatabaseCache",
+        "LOCATION": "django_cache",
+    }
+}
+
+
 # Email
 
 MAILERS = {
@@ -145,6 +168,7 @@ REST_FRAMEWORK = {
     "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
     "PAGE_SIZE": 24,
+    "COERCE_DECIMAL_TO_STRING": False,
     "DEFAULT_FILTER_BACKENDS": ["django_filters.rest_framework.DjangoFilterBackend"],
 }
 
