@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: shp_grape\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-17 21:55+0200\n"
+"POT-Creation-Date: 2026-11-18 20:49+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,243 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+msgid "varieties"
+msgstr ""
+
+msgid "Add photos"
+msgstr ""
+
+msgid ""
+"Select several files at once; they are added after the existing photos."
+msgstr ""
+
+msgid "preview"
+msgstr ""
+
+msgid "Characteristics"
+msgstr ""
+
+msgid "Prices and availability"
+msgstr ""
+
+msgid "Description"
+msgstr ""
+
+msgid "Photos"
+msgstr ""
+
+msgid "Statistics"
+msgstr ""
+
+msgid "photo"
+msgstr ""
+
 msgid "Catalog"
+msgstr ""
+
+msgid "name"
+msgstr ""
+
+msgid "ripening period"
+msgstr ""
+
+msgid "newest first"
+msgstr ""
+
+msgid "most viewed first"
+msgstr ""
+
+msgid "Slug; repeat the parameter to select several values."
+msgstr ""
+
+msgid "first letter"
+msgstr ""
+
+msgid ""
+"A letter of the current language's alphabet or `#` for names with digits."
+msgstr ""
+
+msgid "search"
+msgstr ""
+
+msgid "berry colour"
+msgstr ""
+
+msgid "pulp consistency"
+msgstr ""
+
+msgid "taste"
+msgstr ""
+
+msgid "growth vigour"
+msgstr ""
+
+msgid "bunch weight from"
+msgstr ""
+
+msgid "bunch weight to"
+msgstr ""
+
+msgid "berry weight from"
+msgstr ""
+
+msgid "berry weight to"
+msgstr ""
+
+msgid "berry size from"
+msgstr ""
+
+msgid "berry size to"
+msgstr ""
+
+msgid "disease susceptibility from"
+msgstr ""
+
+msgid "disease susceptibility to"
+msgstr ""
+
+msgid "frost resistance from"
+msgstr ""
+
+msgid "frost resistance to"
+msgstr ""
+
+msgid "in stock"
+msgstr ""
+
+msgid "featured"
+msgstr ""
+
+msgid "ordering"
+msgstr ""
+
+msgid "order"
+msgstr ""
+
+msgid "ripening periods"
+msgstr ""
+
+msgid "berry colours"
+msgstr ""
+
+msgid "pulp consistencies"
+msgstr ""
+
+msgid "tastes"
+msgstr ""
+
+msgid "In UAH."
+msgstr ""
+
+msgid "alternative names"
+msgstr ""
+
+msgid "Other spellings and synonyms, separated by commas. Used by the search."
+msgstr ""
+
+msgid "breeder"
+msgstr ""
+
+msgid "bunch weight from, kg"
+msgstr ""
+
+msgid "bunch weight to, kg"
+msgstr ""
+
+msgid "berry weight from, g"
+msgstr ""
+
+msgid "berry weight to, g"
+msgstr ""
+
+msgid "berry size from, mm"
+msgstr ""
+
+msgid "berry size to, mm"
+msgstr ""
+
+msgid "disease susceptibility from, points"
+msgstr ""
+
+msgid "disease susceptibility to, points"
+msgstr ""
+
+msgid "frost resistance, °C"
+msgstr ""
+
+msgid "Lowest tolerated temperature, e.g. -23."
+msgstr ""
+
+msgid "description"
+msgstr ""
+
+msgid "cutting price"
+msgstr ""
+
+msgid "cuttings available"
+msgstr ""
+
+msgid "sapling price"
+msgstr ""
+
+msgid "saplings available"
+msgstr ""
+
+msgid "Shown on the home page."
+msgstr ""
+
+msgid "published"
+msgstr ""
+
+msgid "views"
+msgstr ""
+
+msgid "variety"
+msgstr ""
+
+msgid "The upper bound must not be less than the lower one."
+msgstr ""
+
+msgid "image"
+msgstr ""
+
+msgid "width"
+msgstr ""
+
+msgid "height"
+msgstr ""
+
+msgid "alternative text"
+msgstr ""
+
+msgid "Describes the photo for screen readers and search engines."
+msgstr ""
+
+msgid "main photo"
+msgstr ""
+
+msgid "Shown on the variety card."
+msgstr ""
+
+msgid "photos"
+msgstr ""
+
+msgid "YouTube link"
+msgstr ""
+
+msgid "YouTube video id"
+msgstr ""
+
+msgid "title"
+msgstr ""
+
+msgid "video"
+msgstr ""
+
+msgid "videos"
+msgstr ""
+
+msgid "Enter a link to a YouTube video."
 msgstr ""
 
 msgid "Content"
@@ -30,6 +266,14 @@ msgid "created at"
 msgstr ""
 
 msgid "updated at"
+msgstr ""
+
+msgid "slug"
+msgstr ""
+
+msgid ""
+"Part of the page address. Generated from the Ukrainian name and kept when "
+"the object is renamed."
 msgstr ""
 
 msgid "Orders"

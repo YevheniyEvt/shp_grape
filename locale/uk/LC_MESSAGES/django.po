@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: shp_grape\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-17 21:55+0200\n"
+"POT-Creation-Date: 2026-11-18 20:49+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,8 +17,244 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n % 10 == 1 && n % 100 != 11 ? 0 : n % 1 == 0 && n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || (n % 100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
 
+msgid "varieties"
+msgstr "сорти"
+
+msgid "Add photos"
+msgstr "Додати фото"
+
+msgid ""
+"Select several files at once; they are added after the existing photos."
+msgstr "Виберіть одразу кілька файлів — їх буде додано після наявних фото."
+
+msgid "preview"
+msgstr "прев'ю"
+
+msgid "Characteristics"
+msgstr "Характеристики"
+
+msgid "Prices and availability"
+msgstr "Ціни й наявність"
+
+msgid "Description"
+msgstr "Опис"
+
+msgid "Photos"
+msgstr "Фото"
+
+msgid "Statistics"
+msgstr "Статистика"
+
+msgid "photo"
+msgstr "фото"
+
 msgid "Catalog"
 msgstr "Каталог"
+
+msgid "name"
+msgstr "назва"
+
+msgid "ripening period"
+msgstr "термін дозрівання"
+
+msgid "newest first"
+msgstr "спершу нові"
+
+msgid "most viewed first"
+msgstr "спершу популярні"
+
+msgid "Slug; repeat the parameter to select several values."
+msgstr "Slug; повторіть параметр, щоб вибрати кілька значень."
+
+msgid "first letter"
+msgstr "перша літера"
+
+msgid ""
+"A letter of the current language's alphabet or `#` for names with digits."
+msgstr "Літера абетки поточної мови або `#` для назв, що починаються з цифри."
+
+msgid "search"
+msgstr "пошук"
+
+msgid "berry colour"
+msgstr "колір ягоди"
+
+msgid "pulp consistency"
+msgstr "консистенція м'якоті"
+
+msgid "taste"
+msgstr "смак"
+
+msgid "growth vigour"
+msgstr "сила росту"
+
+msgid "bunch weight from"
+msgstr "маса грона від"
+
+msgid "bunch weight to"
+msgstr "маса грона до"
+
+msgid "berry weight from"
+msgstr "маса ягоди від"
+
+msgid "berry weight to"
+msgstr "маса ягоди до"
+
+msgid "berry size from"
+msgstr "розмір ягоди від"
+
+msgid "berry size to"
+msgstr "розмір ягоди до"
+
+msgid "disease susceptibility from"
+msgstr "сприйнятливість до хвороб від"
+
+msgid "disease susceptibility to"
+msgstr "сприйнятливість до хвороб до"
+
+msgid "frost resistance from"
+msgstr "морозостійкість від"
+
+msgid "frost resistance to"
+msgstr "морозостійкість до"
+
+msgid "in stock"
+msgstr "у наявності"
+
+msgid "featured"
+msgstr "рекомендований"
+
+msgid "ordering"
+msgstr "сортування"
+
+msgid "order"
+msgstr "порядок"
+
+msgid "ripening periods"
+msgstr "терміни дозрівання"
+
+msgid "berry colours"
+msgstr "кольори ягоди"
+
+msgid "pulp consistencies"
+msgstr "консистенції м'якоті"
+
+msgid "tastes"
+msgstr "смаки"
+
+msgid "In UAH."
+msgstr "У гривнях."
+
+msgid "alternative names"
+msgstr "інші назви"
+
+msgid "Other spellings and synonyms, separated by commas. Used by the search."
+msgstr "Інші написання й синоніми через кому. Використовуються в пошуку."
+
+msgid "breeder"
+msgstr "селекціонер"
+
+msgid "bunch weight from, kg"
+msgstr "маса грона від, кг"
+
+msgid "bunch weight to, kg"
+msgstr "маса грона до, кг"
+
+msgid "berry weight from, g"
+msgstr "маса ягоди від, г"
+
+msgid "berry weight to, g"
+msgstr "маса ягоди до, г"
+
+msgid "berry size from, mm"
+msgstr "розмір ягоди від, мм"
+
+msgid "berry size to, mm"
+msgstr "розмір ягоди до, мм"
+
+msgid "disease susceptibility from, points"
+msgstr "сприйнятливість до хвороб від, бали"
+
+msgid "disease susceptibility to, points"
+msgstr "сприйнятливість до хвороб до, бали"
+
+msgid "frost resistance, °C"
+msgstr "морозостійкість, °C"
+
+msgid "Lowest tolerated temperature, e.g. -23."
+msgstr "Найнижча температура, яку витримує лоза, наприклад -23."
+
+msgid "description"
+msgstr "опис"
+
+msgid "cutting price"
+msgstr "ціна живця"
+
+msgid "cuttings available"
+msgstr "живці в наявності"
+
+msgid "sapling price"
+msgstr "ціна саджанця"
+
+msgid "saplings available"
+msgstr "саджанці в наявності"
+
+msgid "Shown on the home page."
+msgstr "Показується на головній сторінці."
+
+msgid "published"
+msgstr "опубліковано"
+
+msgid "views"
+msgstr "перегляди"
+
+msgid "variety"
+msgstr "сорт"
+
+msgid "The upper bound must not be less than the lower one."
+msgstr "Верхня межа не може бути меншою за нижню."
+
+msgid "image"
+msgstr "зображення"
+
+msgid "width"
+msgstr "ширина"
+
+msgid "height"
+msgstr "висота"
+
+msgid "alternative text"
+msgstr "альтернативний текст"
+
+msgid "Describes the photo for screen readers and search engines."
+msgstr "Опис фото для екранних читачів і пошукових систем."
+
+msgid "main photo"
+msgstr "головне фото"
+
+msgid "Shown on the variety card."
+msgstr "Показується в картці сорту."
+
+msgid "photos"
+msgstr "фото"
+
+msgid "YouTube link"
+msgstr "посилання на YouTube"
+
+msgid "YouTube video id"
+msgstr "ідентифікатор відео YouTube"
+
+msgid "title"
+msgstr "заголовок"
+
+msgid "video"
+msgstr "відео"
+
+msgid "videos"
+msgstr "відео"
+
+msgid "Enter a link to a YouTube video."
+msgstr "Введіть посилання на відео YouTube."
 
 msgid "Content"
 msgstr "Контент"
@@ -31,6 +267,16 @@ msgstr "створено"
 
 msgid "updated at"
 msgstr "оновлено"
+
+msgid "slug"
+msgstr "slug"
+
+msgid ""
+"Part of the page address. Generated from the Ukrainian name and kept when "
+"the object is renamed."
+msgstr ""
+"Частина адреси сторінки. Формується автоматично з української назви й не "
+"змінюється при перейменуванні."
 
 msgid "Orders"
 msgstr "Замовлення"

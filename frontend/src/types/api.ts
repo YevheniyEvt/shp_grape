@@ -4,6 +4,108 @@
  */
 
 export interface paths {
+    "/api/catalog/filters/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Reference-list values and characteristic bounds for the advanced search form. */
+        get: operations["catalog_filters_retrieve"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/catalog/letters/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Letters of the current language that start at least one published variety name. */
+        get: operations["catalog_letters_list"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/catalog/photos/random/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Random variety photos for the footer, each linking to its variety. */
+        get: operations["catalog_photos_random_list"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/catalog/varieties/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Published varieties for the catalog, with filters, search and ordering. */
+        get: operations["catalog_varieties_list"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/catalog/varieties/{slug}/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description A published variety with all photos, videos and similar varieties. */
+        get: operations["catalog_varieties_retrieve"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/catalog/varieties/{slug}/view/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** @description Register a page view of a variety (counted once per visitor within a few hours). */
+        post: operations["catalog_varieties_view_create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/health/": {
         parameters: {
             query?: never;
@@ -42,6 +144,18 @@ export interface paths {
 export type webhooks = Record<string, never>;
 export interface components {
     schemas: {
+        Dictionary: {
+            slug: string;
+            name: string;
+        };
+        FilterOptions: {
+            ripening: components["schemas"]["Dictionary"][];
+            berry_color: components["schemas"]["Dictionary"][];
+            pulp: components["schemas"]["Dictionary"][];
+            taste: components["schemas"]["Dictionary"][];
+            vigor: components["schemas"]["Dictionary"][];
+            ranges: components["schemas"]["Ranges"];
+        };
         Health: {
             status: string;
             database: string;
@@ -52,6 +166,227 @@ export interface components {
             name: string;
             is_default: boolean;
         };
+        NumberRange: {
+            /** Format: double */
+            min: number | null;
+            /** Format: double */
+            max: number | null;
+        };
+        PaginatedVarietyListList: {
+            /** @example 123 */
+            count: number;
+            /**
+             * Format: uri
+             * @example http://api.example.org/accounts/?page=4
+             */
+            next?: string | null;
+            /**
+             * Format: uri
+             * @example http://api.example.org/accounts/?page=2
+             */
+            previous?: string | null;
+            results: components["schemas"]["VarietyList"][];
+        };
+        /** @description A photo with WebP renditions: `thumb` (400 px), `medium` (1000 px), `large` (1800 px). */
+        Photo: {
+            readonly id: number;
+            readonly alt: string;
+            /** Ширина */
+            readonly width: number | null;
+            /** Висота */
+            readonly height: number | null;
+            readonly thumb: string;
+            readonly medium: string;
+            readonly large: string;
+        };
+        /** @description A thumbnail linking to its variety (footer gallery). */
+        RandomPhoto: {
+            readonly id: number;
+            readonly alt: string;
+            /** Ширина */
+            readonly width: number | null;
+            /** Висота */
+            readonly height: number | null;
+            readonly thumb: string;
+            variety: components["schemas"]["VarietyRef"];
+        };
+        Ranges: {
+            bunch_weight: components["schemas"]["NumberRange"];
+            berry_weight: components["schemas"]["NumberRange"];
+            berry_size: components["schemas"]["NumberRange"];
+            disease: components["schemas"]["NumberRange"];
+            frost: components["schemas"]["NumberRange"];
+        };
+        /** @description Full variety for its page, with all photos, videos and similar varieties. */
+        VarietyDetail: {
+            readonly id: number;
+            /** @description Частина адреси сторінки. Залиште порожнім — згенерується з назви автоматично. */
+            slug?: string;
+            /** Назва */
+            name: string;
+            readonly main_photo: components["schemas"]["Photo"] | null;
+            ripening: components["schemas"]["Dictionary"] | null;
+            berry_color: components["schemas"]["Dictionary"] | null;
+            /**
+             * Маса грона від, кг
+             * Format: double
+             */
+            bunch_weight_min?: number | null;
+            /**
+             * Маса грона до, кг
+             * Format: double
+             */
+            bunch_weight_max?: number | null;
+            /**
+             * Маса ягоди від, г
+             * Format: double
+             */
+            berry_weight_min?: number | null;
+            /**
+             * Маса ягоди до, г
+             * Format: double
+             */
+            berry_weight_max?: number | null;
+            /**
+             * Морозостійкість, °C
+             * @description Найнижча температура, яку витримує лоза, наприклад -23.
+             */
+            frost_resistance?: number | null;
+            /**
+             * Ціна живця
+             * Format: double
+             * @description У гривнях.
+             */
+            cutting_price?: number | null;
+            /** Живці в наявності */
+            cutting_available?: boolean;
+            /**
+             * Ціна саджанця
+             * Format: double
+             * @description У гривнях.
+             */
+            sapling_price?: number | null;
+            /** Саджанці в наявності */
+            sapling_available?: boolean;
+            /**
+             * Рекомендований
+             * @description Показується на головній сторінці.
+             */
+            is_featured?: boolean;
+            /**
+             * Інші назви
+             * @description Інші написання й синоніми через кому. Використовуються в пошуку.
+             */
+            alt_names?: string;
+            /** Селекціонер */
+            author?: string;
+            pulp: components["schemas"]["Dictionary"] | null;
+            taste: components["schemas"]["Dictionary"] | null;
+            vigor: components["schemas"]["Dictionary"] | null;
+            /**
+             * Розмір ягоди від, мм
+             * Format: double
+             */
+            berry_size_min?: number | null;
+            /**
+             * Розмір ягоди до, мм
+             * Format: double
+             */
+            berry_size_max?: number | null;
+            /**
+             * Сприйнятливість до хвороб від, бали
+             * Format: double
+             */
+            disease_susceptibility_min?: number | null;
+            /**
+             * Сприйнятливість до хвороб до, бали
+             * Format: double
+             */
+            disease_susceptibility_max?: number | null;
+            /** Опис */
+            description?: string;
+            photos: components["schemas"]["Photo"][];
+            videos: components["schemas"]["Video"][];
+            /** Перегляди */
+            readonly views_count: number;
+            readonly similar: components["schemas"]["VarietyList"][];
+        };
+        /** @description Compact variety for catalog cards. */
+        VarietyList: {
+            readonly id: number;
+            /** @description Частина адреси сторінки. Залиште порожнім — згенерується з назви автоматично. */
+            slug?: string;
+            /** Назва */
+            name: string;
+            readonly main_photo: components["schemas"]["Photo"] | null;
+            ripening: components["schemas"]["Dictionary"] | null;
+            berry_color: components["schemas"]["Dictionary"] | null;
+            /**
+             * Маса грона від, кг
+             * Format: double
+             */
+            bunch_weight_min?: number | null;
+            /**
+             * Маса грона до, кг
+             * Format: double
+             */
+            bunch_weight_max?: number | null;
+            /**
+             * Маса ягоди від, г
+             * Format: double
+             */
+            berry_weight_min?: number | null;
+            /**
+             * Маса ягоди до, г
+             * Format: double
+             */
+            berry_weight_max?: number | null;
+            /**
+             * Морозостійкість, °C
+             * @description Найнижча температура, яку витримує лоза, наприклад -23.
+             */
+            frost_resistance?: number | null;
+            /**
+             * Ціна живця
+             * Format: double
+             * @description У гривнях.
+             */
+            cutting_price?: number | null;
+            /** Живці в наявності */
+            cutting_available?: boolean;
+            /**
+             * Ціна саджанця
+             * Format: double
+             * @description У гривнях.
+             */
+            sapling_price?: number | null;
+            /** Саджанці в наявності */
+            sapling_available?: boolean;
+            /**
+             * Рекомендований
+             * @description Показується на головній сторінці.
+             */
+            is_featured?: boolean;
+        };
+        VarietyRef: {
+            slug: string;
+            name: string;
+        };
+        VarietyViewCounted: {
+            counted: boolean;
+        };
+        Video: {
+            readonly id: number;
+            /** Ідентифікатор відео YouTube */
+            readonly youtube_id: string;
+            /**
+             * Посилання на YouTube
+             * Format: uri
+             */
+            youtube_url: string;
+            /** Заголовок */
+            title?: string;
+        };
     };
     responses: never;
     parameters: never;
@@ -61,6 +396,174 @@ export interface components {
 }
 export type $defs = Record<string, never>;
 export interface operations {
+    catalog_filters_retrieve: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["FilterOptions"];
+                };
+            };
+        };
+    };
+    catalog_letters_list: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": string[];
+                };
+            };
+        };
+    };
+    catalog_photos_random_list: {
+        parameters: {
+            query?: {
+                /** @description 1–30, default 10 */
+                limit?: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RandomPhoto"][];
+                };
+            };
+        };
+    };
+    catalog_varieties_list: {
+        parameters: {
+            query?: {
+                berry_color?: string[];
+                /** @description розмір ягоди до */
+                berry_size_max?: number;
+                /** @description розмір ягоди від */
+                berry_size_min?: number;
+                /** @description маса ягоди до */
+                berry_weight_max?: number;
+                /** @description маса ягоди від */
+                berry_weight_min?: number;
+                /** @description маса грона до */
+                bunch_weight_max?: number;
+                /** @description маса грона від */
+                bunch_weight_min?: number;
+                /** @description сприйнятливість до хвороб до */
+                disease_max?: number;
+                /** @description сприйнятливість до хвороб від */
+                disease_min?: number;
+                /** @description рекомендований */
+                featured?: boolean;
+                /** @description морозостійкість до */
+                frost_max?: number;
+                /** @description морозостійкість від */
+                frost_min?: number;
+                /** @description у наявності */
+                in_stock?: string;
+                /** @description Літера абетки поточної мови або `#` для назв, що починаються з цифри. */
+                letter?: string;
+                /**
+                 * @description сортування
+                 *
+                 *     * `name` - назва
+                 *     * `ripening` - термін дозрівання
+                 *     * `-created` - спершу нові
+                 *     * `-views_count` - спершу популярні
+                 */
+                ordering?: "-created" | "-views_count" | "name" | "ripening";
+                /** @description A page number within the paginated result set. */
+                page?: number;
+                /** @description Number of results to return per page. */
+                page_size?: number;
+                pulp?: string[];
+                ripening?: string[];
+                /** @description пошук */
+                search?: string;
+                taste?: string[];
+                vigor?: string[];
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["PaginatedVarietyListList"];
+                };
+            };
+        };
+    };
+    catalog_varieties_retrieve: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                slug: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["VarietyDetail"];
+                };
+            };
+        };
+    };
+    catalog_varieties_view_create: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                slug: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["VarietyViewCounted"];
+                };
+            };
+        };
+    };
     health_retrieve: {
         parameters: {
             query?: never;

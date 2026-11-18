@@ -38,9 +38,10 @@ run:
 front:
     cd frontend; npm run dev
 
-# Apply database migrations
+# Apply database migrations and create the cache table
 migrate:
     {{manage}} migrate
+    {{manage}} createcachetable
 
 # Create migrations (optionally for given apps)
 makemigrations *args:
