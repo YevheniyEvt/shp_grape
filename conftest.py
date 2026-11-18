@@ -3,8 +3,17 @@
 from collections.abc import Iterator
 
 import pytest
+from django.conf import settings
 from django.utils import translation
 from rest_framework.test import APIClient
+
+
+@pytest.fixture(autouse=True)
+def _default_language() -> Iterator[None]:
+    """Start every test in the default language: requests activate languages for the thread."""
+    translation.activate(settings.LANGUAGE_CODE)
+    yield
+    translation.activate(settings.LANGUAGE_CODE)
 
 
 @pytest.fixture

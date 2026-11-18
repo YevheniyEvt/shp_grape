@@ -1,0 +1,9 @@
+/* Admin tweaks shared by all apps. */
+
+/* Rich-text editor: a comfortable writing area instead of a single line. */
+.prose-editor .ProseMirror {
+  min-height: 18rem;
+  max-height: 70vh;
+  overflow-y: auto;
+  padding: 0.5rem 0.75rem;
+}
