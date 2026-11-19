@@ -49,7 +49,7 @@ To run a single test without `just`, use `uv run pytest path/to/test_file.py::te
   - `/api/i18n/languages/` lists the site languages;
   - `/api/i18n/<lang>/` serves the `djangojs` catalog (JSONCatalog).
 - The project version comes from `[project].version` in `pyproject.toml` (`apps/core/version.py`).
-- `ADMIN_URL` is configurable through the environment. `AdminLanguageMiddleware` always shows the admin in `ADMIN_LANGUAGE_CODE` (uk); the API follows `Accept-Language`. Shared admin CSS is `apps/core/static/core/admin.css`.
+- `ADMIN_URL` is configurable through the environment. `AdminLanguageMiddleware` always shows the admin in `ADMIN_LANGUAGE_CODE` (uk); the API follows `Accept-Language`. Shared admin CSS is `apps/core/static/core/admin.css`. `templates/admin/base_site.html` shows the project version next to the site name.
 - `apps/catalog`: `Variety` (+ `VarietyPhoto` with imagekit WebP renditions `thumb`/`medium`/`large`, generated on save, and `VarietyVideo`) and the reference lists `RipeningPeriod`, `BerryColor`, `PulpConsistency`, `Taste`, `GrowthVigor`. Translated fields are registered in `translation.py`; `first_letter_<lang>` is computed in `save()`. Search, range overlap, similar varieties and letters live in `selectors.py`; the view counter and bulk photo upload live in `services.py`; filters are in `filters.py`. Factories are in `apps/catalog/tests/factories.py`. Endpoints under `/api/catalog/`:
   - `varieties/` (filters, `search`, `ordering`, `page`/`page_size`) and `varieties/<slug>/`;
   - `POST varieties/<slug>/view/`, `filters/`, `letters/`, `photos/random/?limit=`.
@@ -85,7 +85,7 @@ To run a single test without `just`, use `uv run pytest path/to/test_file.py::te
   - Static text uses gettext only. The `.po` files are the single source; there are no JSON message files.
   - Slugs are transliterated automatically from the Ukrainian name (KMU 2010), are unique, and never change when the object is renamed. Inherit `AutoSlugMixin` from `apps/core/slugs.py`.
 - Reference data (lists like ripening periods, berry colours, tastes; a default `SiteSettings` row) is created by data migrations with uk + en values, wherever a model has sensible defaults. Freeze the values and slugs in the migration, use `get_or_create` by slug so admin edits survive, and make the reverse delete only unused rows. Example: `apps/catalog/migrations/0003_default_dictionaries.py`.
-- Development and demo data come from the `seed_demo` command (stage 3). Never scrape the source site.
+- Development and demo data come from `seed_demo` (`just seed`, `just seed-reset`; command in `apps/core/management/commands/`). Catalog demo data is frozen in `apps/catalog/demo.py` (invented varieties, no factory-boy: it is a dev-only dependency). The command is idempotent by slug and never touches existing or non-demo objects; `--reset` recreates only the demo objects. Own photos go to `fixtures/demo/photos/<slug>/` (record sources in `fixtures/demo/CREDITS.md`), otherwise Pillow draws placeholders. It also creates a superuser from `DJANGO_SUPERUSER_*`. Never scrape the source site.
 - Tests:
   - All business logic must be covered by tests, as described in `.context/03-testing.md`.
   - Coverage must be at least 85% overall (enforced by pytest-cov) and at least 95% for services, selectors and utilities.
