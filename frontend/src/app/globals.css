@@ -141,3 +141,29 @@
     @apply font-heading;
   }
 }
+
+/* Decorative page background (see `components/layout/site-background.tsx`). */
+@layer components {
+  .site-background {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-image: var(--site-bg);
+  }
+  .site-background[data-variant="pattern"] {
+    background-repeat: repeat;
+    background-size: 240px;
+  }
+  .site-background[data-variant="photo"] {
+    background-position: center;
+    background-size: cover;
+  }
+  /* Wash the photo with the theme background so text on top stays readable. */
+  .site-background[data-variant="photo"]::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: color-mix(in oklch, var(--background) 82%, transparent);
+  }
+}

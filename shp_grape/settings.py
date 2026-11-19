@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     "imagekit",
     "adminsortable2",
     "django_prose_editor",
+    "solo",
     # Local
     "apps.core",
     "apps.catalog",

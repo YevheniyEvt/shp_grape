@@ -14,6 +14,7 @@ dependencies = [
     "django-imagekit>=6.1.1",
     "django-modeltranslation>=0.20.6",
     "django-prose-editor[sanitize]>=0.28.0",
+    "django-solo>=2.8.0",
     "djangorestframework>=3.18.3",
     "drf-spectacular>=0.30.0",
     "pillow>=13.0.0",

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: shp_grape\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-18 20:49+0200\n"
+"POT-Creation-Date: 2026-11-19 21:15+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,8 +23,7 @@ msgstr ""
 msgid "Add photos"
 msgstr ""
 
-msgid ""
-"Select several files at once; they are added after the existing photos."
+msgid "Select several files at once; they are added after the existing photos."
 msgstr ""
 
 msgid "preview"
@@ -256,7 +255,30 @@ msgstr ""
 msgid "Enter a link to a YouTube video."
 msgstr ""
 
+msgid "Background"
+msgstr ""
+
 msgid "Content"
+msgstr ""
+
+msgid "show background image"
+msgstr ""
+
+msgid "Untick to use a plain background on every page."
+msgstr ""
+
+msgid "background image"
+msgstr ""
+
+msgid ""
+"A wide photo (at least 1920 px) shown softly behind the pages. Leave empty "
+"to use the built-in grape illustration."
+msgstr ""
+
+msgid "site settings"
+msgstr ""
+
+msgid "Site settings"
 msgstr ""
 
 msgid "Core"
