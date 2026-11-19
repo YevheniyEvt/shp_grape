@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: shp_grape\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-19 21:15+0200\n"
+"POT-Creation-Date: 2026-11-19 21:37+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -298,6 +298,10 @@ msgid ""
 "the object is renamed."
 msgstr ""
 
+#, python-format
+msgid "Version %(version)s"
+msgstr ""
+
 msgid "Orders"
 msgstr ""
 
@@ -305,4 +309,7 @@ msgid "Ukrainian"
 msgstr ""
 
 msgid "English"
+msgstr ""
+
+msgid "Django administration"
 msgstr ""
