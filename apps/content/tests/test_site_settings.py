@@ -85,5 +85,6 @@ def test_admin_uploads_background_and_shows_preview(admin_client_logged):
     assert response.status_code == 302
 
     settings = SiteSettings.get_solo()
-    assert settings.background_image.name == "site/background/grapes.jpg"
+    # Storage may append a suffix when another test already saved a file with the same name.
+    assert settings.background_image.name.startswith("site/background/grapes")
     assert b".webp" in admin_client_logged.get(url).content
