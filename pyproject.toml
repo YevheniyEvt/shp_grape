@@ -1,6 +1,6 @@
 [project]
 name = "shp-grape"
-version = "0.2.0"
+version = "0.3.0"
 description = "Vineyard website: Django REST API + Next.js frontend."
 readme = "README.md"
 requires-python = ">=3.14"
