@@ -1,24 +1,26 @@
 import { FileTextIcon, GrapeIcon, MailIcon, PhoneIcon, ShoppingBasketIcon } from "lucide-react";
 import Link from "next/link";
 
+import { AlphabetBar } from "@/components/catalog/alphabet-bar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { getMainNav, phoneHref, siteContacts } from "@/config/site";
 import { getAlphabet } from "@/i18n/alphabet";
 import { localizePath } from "@/i18n/config";
 import { getLanguages, getTranslator } from "@/i18n/server";
+import { getAvailableLetters } from "@/lib/api/catalog";
 
 import { LanguageSwitcher } from "./language-switcher";
 import { MobileMenu } from "./mobile-menu";
 
 export async function Header() {
   const { t, locale } = await getTranslator();
-  const languages = await getLanguages();
+  const [languages, letters] = await Promise.all([getLanguages(), getAvailableLetters(locale)]);
   const nav = getMainNav({ t });
   const href = (path: string) => localizePath(path, locale);
 
   return (
-    <header className="sticky top-0 z-40 border-b bg-background/90 backdrop-blur supports-backdrop-filter:bg-background/75">
+    <header className="sticky top-0 z-40 border-b bg-background/90 backdrop-blur supports-backdrop-filter:bg-background/75 print:hidden">
       {/* Top bar: contacts and quick links (desktop only) */}
       <div className="hidden border-b bg-secondary/60 text-sm md:block">
         <div className="mx-auto flex max-w-7xl items-center gap-6 px-4 py-1.5">
@@ -87,20 +89,14 @@ export async function Header() {
         </div>
       </div>
 
-      {/* Alphabet: quick jump to catalog by first letter (stub until stage 4) */}
-      <nav aria-label={t("Varieties by letter")} className="hidden border-t md:block">
-        <div className="mx-auto flex max-w-7xl flex-wrap justify-center gap-x-1 px-4 py-1">
-          {getAlphabet(locale).map((letter) => (
-            <Link
-              key={letter}
-              href={`${href("/catalog")}?letter=${encodeURIComponent(letter)}`}
-              className="rounded px-1.5 py-0.5 text-xs font-medium text-muted-foreground hover:bg-muted hover:text-primary"
-            >
-              {letter}
-            </Link>
-          ))}
-        </div>
-      </nav>
+      {/* Alphabet: quick jump to the catalog by first letter; letters without varieties are muted. */}
+      <AlphabetBar
+        label={t("Varieties by letter")}
+        letters={getAlphabet(locale)}
+        available={letters}
+        hrefFor={(letter) => `${href("/catalog")}?letter=${encodeURIComponent(letter)}`}
+        className="hidden border-t px-4 py-1 md:block"
+      />
     </header>
   );
 }

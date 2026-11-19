@@ -8,19 +8,111 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+#: frontend/src/components/catalog/catalog-results.tsx
+msgid "%(count)s variety"
+msgid_plural "%(count)s varieties"
+msgstr[0] ""
+msgstr[1] ""
+
+#: frontend/src/components/variety/variety-details.tsx
+msgid "%(count)s view"
+msgid_plural "%(count)s views"
+msgstr[0] ""
+msgstr[1] ""
+
+#: frontend/src/components/catalog/variety-card.tsx frontend/src/components/variety/characteristics.tsx
+msgid "%(value)s g"
+msgstr ""
+
+#: frontend/src/components/catalog/variety-card.tsx frontend/src/components/variety/characteristics.tsx
+msgid "%(value)s kg"
+msgstr ""
+
+#: frontend/src/components/variety/characteristics.tsx
+msgid "%(value)s mm"
+msgstr ""
+
+#: frontend/src/components/variety/characteristics.tsx
+msgid "%(value)s points"
+msgstr ""
+
+#: frontend/src/components/catalog/variety-card.tsx
+msgid "%(value)s °C"
+msgstr ""
+
+#: frontend/src/components/catalog/variety-card.tsx frontend/src/components/variety/price-block.tsx
+msgid "Add to cart"
+msgstr ""
+
 #: frontend/src/components/layout/footer.tsx
 msgid "All rights reserved."
+msgstr ""
+
+#: frontend/src/components/variety/characteristics.tsx
+msgid "Also known as"
 msgstr ""
 
 #: frontend/src/app/[lang]/articles/page.tsx frontend/src/config/site.ts
 msgid "Articles"
 msgstr ""
 
+#: frontend/src/components/catalog/variety-card.tsx
+msgid "Berry"
+msgstr ""
+
+#: frontend/src/components/catalog/filters-panel.tsx frontend/src/components/variety/characteristics.tsx
+msgid "Berry colour"
+msgstr ""
+
+#: frontend/src/components/variety/characteristics.tsx
+msgid "Berry size"
+msgstr ""
+
+#: frontend/src/components/catalog/filters-panel.tsx
+msgid "Berry size, mm"
+msgstr ""
+
+#: frontend/src/components/variety/characteristics.tsx
+msgid "Berry weight"
+msgstr ""
+
+#: frontend/src/components/catalog/filters-panel.tsx
+msgid "Berry weight, g"
+msgstr ""
+
+#: frontend/src/components/variety/variety-details.tsx
+msgid "Breadcrumbs"
+msgstr ""
+
+#: frontend/src/components/variety/characteristics.tsx
+msgid "Breeder"
+msgstr ""
+
+#: frontend/src/components/catalog/variety-card.tsx
+msgid "Bunch"
+msgstr ""
+
+#: frontend/src/components/variety/characteristics.tsx
+msgid "Bunch weight"
+msgstr ""
+
+#: frontend/src/components/catalog/filters-panel.tsx
+msgid "Bunch weight, kg"
+msgstr ""
+
+#: frontend/src/components/catalog/sort-select.tsx
+msgid "By name"
+msgstr ""
+
+#: frontend/src/components/catalog/sort-select.tsx
+msgid "By ripening period"
+msgstr ""
+
 #: frontend/src/app/[lang]/cart/page.tsx frontend/src/components/layout/header.tsx
 msgid "Cart"
 msgstr ""
 
-#: frontend/src/config/site.ts
+#: frontend/src/components/variety/variety-details.tsx frontend/src/config/site.ts
 msgid "Catalog"
 msgstr ""
 
@@ -28,8 +120,72 @@ msgstr ""
 msgid "Change language"
 msgstr ""
 
+#: frontend/src/components/variety/variety-details.tsx
+msgid "Characteristics"
+msgstr ""
+
+#: frontend/src/components/catalog/catalog-search.tsx
+msgid "Clear search"
+msgstr ""
+
+#: frontend/src/components/variety/variety-gallery.tsx
+msgid "Close"
+msgstr ""
+
 #: frontend/src/app/[lang]/contacts/page.tsx frontend/src/components/layout/footer.tsx frontend/src/config/site.ts
 msgid "Contacts"
+msgstr ""
+
+#: frontend/src/components/variety/price-block.tsx
+msgid "Cutting"
+msgstr ""
+
+#: frontend/src/components/variety/price-block.tsx
+msgid "Decrease quantity"
+msgstr ""
+
+#: frontend/src/components/variety/variety-details.tsx
+msgid "Description"
+msgstr ""
+
+#: frontend/src/components/variety/characteristics.tsx
+msgid "Disease susceptibility"
+msgstr ""
+
+#: frontend/src/components/catalog/filters-panel.tsx
+msgid "Disease susceptibility, points"
+msgstr ""
+
+#: frontend/src/components/variety/characteristics.tsx
+msgid "down to %(value)s °C"
+msgstr ""
+
+#: frontend/src/components/variety/variety-gallery.tsx
+msgid "Exit full screen"
+msgstr ""
+
+#: frontend/src/components/catalog/catalog-results.tsx frontend/src/components/catalog/filters-panel.tsx
+msgid "Filters"
+msgstr ""
+
+#: frontend/src/components/catalog/variety-card.tsx
+msgid "from %(price)s"
+msgstr ""
+
+#: frontend/src/components/layout/footer.tsx
+msgid "From our vineyard"
+msgstr ""
+
+#: frontend/src/components/catalog/variety-card.tsx frontend/src/components/variety/characteristics.tsx
+msgid "Frost resistance"
+msgstr ""
+
+#: frontend/src/components/catalog/filters-panel.tsx
+msgid "Frost resistance, °C"
+msgstr ""
+
+#: frontend/src/components/variety/variety-gallery.tsx
+msgid "Full screen"
 msgstr ""
 
 #: frontend/src/app/[lang]/gallery/page.tsx frontend/src/config/site.ts
@@ -44,8 +200,32 @@ msgstr ""
 msgid "Grape cuttings and seedlings of table varieties from our own vineyard."
 msgstr ""
 
-#: frontend/src/config/site.ts
+#: frontend/src/app/[lang]/catalog/[slug]/page.tsx
+msgid "Grape variety %(name)s: photos, characteristics and prices."
+msgstr ""
+
+#: frontend/src/components/catalog/filters-panel.tsx frontend/src/components/variety/characteristics.tsx
+msgid "Growth vigour"
+msgstr ""
+
+#: frontend/src/components/variety/variety-details.tsx frontend/src/config/site.ts
 msgid "Home"
+msgstr ""
+
+#: frontend/src/components/catalog/variety-card.tsx
+msgid "In stock"
+msgstr ""
+
+#: frontend/src/components/variety/price-block.tsx
+msgid "in stock"
+msgstr ""
+
+#: frontend/src/components/catalog/filters-panel.tsx
+msgid "In stock only"
+msgstr ""
+
+#: frontend/src/components/variety/price-block.tsx
+msgid "Increase quantity"
 msgstr ""
 
 #: frontend/src/components/layout/header.tsx frontend/src/components/layout/mobile-menu.tsx
@@ -56,32 +236,136 @@ msgstr ""
 msgid "Menu"
 msgstr ""
 
+#: frontend/src/components/catalog/sort-select.tsx
+msgid "Most popular"
+msgstr ""
+
+#: frontend/src/components/catalog/filters-panel.tsx
+msgid "Narrow down the variety list"
+msgstr ""
+
+#: frontend/src/components/catalog/sort-select.tsx
+msgid "Newest first"
+msgstr ""
+
 #: frontend/src/app/[lang]/news/page.tsx frontend/src/config/site.ts
 msgid "News"
+msgstr ""
+
+#: frontend/src/components/catalog/pagination.tsx frontend/src/components/variety/variety-gallery.tsx
+msgid "Next"
+msgstr ""
+
+#: frontend/src/components/catalog/catalog-results.tsx
+msgid "Nothing found"
 msgstr ""
 
 #: frontend/src/components/layout/mobile-menu.tsx
 msgid "Open menu"
 msgstr ""
 
+#: frontend/src/components/variety/variety-gallery.tsx
+msgid "Open photo %(number)s of %(total)s"
+msgstr ""
+
+#: frontend/src/components/catalog/variety-card.tsx frontend/src/components/variety/price-block.tsx
+msgid "Ordering will be available soon"
+msgstr ""
+
+#: frontend/src/components/catalog/variety-card.tsx
+msgid "Out of stock"
+msgstr ""
+
+#: frontend/src/components/variety/price-block.tsx
+msgid "out of stock"
+msgstr ""
+
 #: frontend/src/app/[lang]/not-found.tsx
 msgid "Page not found"
+msgstr ""
+
+#: frontend/src/components/catalog/pagination.tsx
+msgid "Pages"
+msgstr ""
+
+#: frontend/src/components/variety/variety-gallery.tsx
+msgid "Photos of %(name)s"
 msgstr ""
 
 #: frontend/src/app/[lang]/page.tsx frontend/src/app/[lang]/preorder/page.tsx frontend/src/config/site.ts
 msgid "Pre-order"
 msgstr ""
 
+#: frontend/src/components/catalog/pagination.tsx frontend/src/components/variety/variety-gallery.tsx
+msgid "Previous"
+msgstr ""
+
 #: frontend/src/components/layout/header.tsx
 msgid "Price list"
+msgstr ""
+
+#: frontend/src/components/variety/print-button.tsx
+msgid "Print"
+msgstr ""
+
+#: frontend/src/components/variety/price-block.tsx
+msgid "Product type"
+msgstr ""
+
+#: frontend/src/components/catalog/filters-panel.tsx frontend/src/components/variety/characteristics.tsx
+msgid "Pulp"
+msgstr ""
+
+#: frontend/src/components/variety/price-block.tsx
+msgid "Quantity"
+msgstr ""
+
+#: frontend/src/components/catalog/variety-card.tsx frontend/src/components/variety/variety-details.tsx
+msgid "Recommended"
+msgstr ""
+
+#: frontend/src/components/catalog/catalog-results.tsx frontend/src/components/catalog/filters-panel.tsx
+msgid "Reset filters"
+msgstr ""
+
+#: frontend/src/components/catalog/filters-panel.tsx frontend/src/components/variety/characteristics.tsx
+msgid "Ripening period"
+msgstr ""
+
+#: frontend/src/components/variety/price-block.tsx
+msgid "Sapling"
+msgstr ""
+
+#: frontend/src/components/catalog/catalog-search.tsx
+msgid "Search by name"
+msgstr ""
+
+#: frontend/src/components/variety/variety-gallery.tsx
+msgid "Show photo %(number)s"
+msgstr ""
+
+#: frontend/src/components/variety/variety-details.tsx
+msgid "Similar varieties"
 msgstr ""
 
 #: frontend/src/components/layout/footer.tsx
 msgid "Site map"
 msgstr ""
 
+#: frontend/src/components/catalog/sort-select.tsx
+msgid "Sort"
+msgstr ""
+
 #: frontend/src/app/[lang]/page.tsx
 msgid "Table grape varieties for every garden"
+msgstr ""
+
+#: frontend/src/app/[lang]/catalog/page.tsx
+msgid "Table grape varieties with photos, characteristics and prices."
+msgstr ""
+
+#: frontend/src/components/catalog/filters-panel.tsx frontend/src/components/variety/characteristics.tsx
+msgid "Taste"
 msgstr ""
 
 #: frontend/src/app/[lang]/not-found.tsx
@@ -92,16 +376,28 @@ msgstr ""
 msgid "This section is under construction."
 msgstr ""
 
+#: frontend/src/components/variety/price-block.tsx
+msgid "This variety is not available now."
+msgstr ""
+
+#: frontend/src/components/catalog/catalog-results.tsx
+msgid "Try changing the search or the filters."
+msgstr ""
+
 #: frontend/src/app/[lang]/links/page.tsx frontend/src/config/site.ts
 msgid "Useful links"
 msgstr ""
 
-#: frontend/src/components/layout/header.tsx
+#: frontend/src/components/catalog/catalog-results.tsx frontend/src/components/layout/header.tsx
 msgid "Varieties by letter"
 msgstr ""
 
 #: frontend/src/app/[lang]/catalog/page.tsx frontend/src/app/[lang]/page.tsx
 msgid "Variety catalog"
+msgstr ""
+
+#: frontend/src/components/variety/variety-details.tsx
+msgid "Videos"
 msgstr ""
 
 #: frontend/src/app/[lang]/layout.tsx frontend/src/app/[lang]/page.tsx frontend/src/components/layout/footer.tsx frontend/src/components/layout/header.tsx
@@ -110,4 +406,12 @@ msgstr ""
 
 #: frontend/src/components/layout/header.tsx
 msgid "Write to us"
+msgstr ""
+
+#: frontend/src/components/variety/variety-gallery.tsx
+msgid "Zoom in"
+msgstr ""
+
+#: frontend/src/components/variety/variety-gallery.tsx
+msgid "Zoom out"
 msgstr ""

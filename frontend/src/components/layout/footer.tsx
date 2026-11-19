@@ -6,6 +6,8 @@ import { getMainNav, phoneHref, siteContacts } from "@/config/site";
 import { localizePath } from "@/i18n/config";
 import { getTranslator } from "@/i18n/server";
 
+import { loadRandomPhotos, RandomPhotos } from "./random-photos";
+
 /** Current year, cached so the footer stays part of the static shell. */
 async function getCurrentYear(): Promise<number> {
   "use cache";
@@ -17,10 +19,10 @@ export async function Footer() {
   const { t, locale } = await getTranslator();
   const nav = getMainNav({ t });
   const href = (path: string) => localizePath(path, locale);
-  const year = await getCurrentYear();
+  const [year, photos] = await Promise.all([getCurrentYear(), loadRandomPhotos(locale)]);
 
   return (
-    <footer className="mt-16 border-t bg-secondary/50">
+    <footer className="mt-16 border-t bg-secondary/50 print:hidden">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:grid-cols-2 lg:grid-cols-4">
         <div className="lg:col-span-2">
           <div className="flex items-center gap-2">
@@ -30,7 +32,7 @@ export async function Footer() {
           <p className="mt-3 max-w-md text-sm text-muted-foreground">
             {t("Grape cuttings and seedlings of table varieties from our own vineyard.")}
           </p>
-          {/* "Random photos" strip of variety thumbnails arrives in stage 4. */}
+          <RandomPhotos photos={photos} locale={locale} title={t("From our vineyard")} />
         </div>
 
         <nav aria-label={t("Site map")}>
