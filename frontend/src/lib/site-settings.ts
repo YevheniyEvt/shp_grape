@@ -6,7 +6,7 @@ import { cacheLife } from "next/cache";
 
 import type { components } from "@/types/api";
 
-import { apiFetch } from "./api";
+import { apiFetch } from "@/lib/api";
 
 export type SiteSettings = components["schemas"]["SiteSettings"];
 

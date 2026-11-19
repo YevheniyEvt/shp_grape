@@ -77,7 +77,15 @@ To run a single test without `just`, use `uv run pytest path/to/test_file.py::te
 - **UI:**
   - shadcn/ui (Radix, nova preset) components are in `src/components/ui/`, and layout pieces (header, footer, mobile menu, language switcher) in `src/components/layout/`.
   - Theme tokens (grape purple primary, leaf-green accent, warm background; Manrope/Lora fonts) are in `src/app/globals.css`.
-- **API client:** `src/lib/api.ts` (`apiFetch`) sends `Accept-Language`. Generated API types are in `src/types/api.ts`.
+- **API client:** `src/lib/api/client.ts` (`apiFetch`, re-exported from `@/lib/api`) sends `Accept-Language`. Generated API types are in `src/types/api.ts`.
+  - `src/lib/api/catalog.ts`: cached server-only reads (`"use cache"` + `cacheLife`). Never import it into a Client Component; browser calls live in `src/lib/api/views.ts`.
+- **Catalog (stage 4):**
+  - The URL is the state: `src/lib/catalog-query.ts` parses `searchParams` and builds canonical query strings (same names as the API filters). Client controls change the URL through `useCatalogNavigation`.
+  - Pages read `searchParams`/`params` inside `<Suspense>` so the title stays in the static shell (Cache Components). A `notFound()` inside the boundary keeps HTTP 200 and adds `noindex`.
+  - Components: `src/components/catalog/` (card, filters, search, sort, alphabet, pagination) and `src/components/variety/` (gallery with yet-another-react-lightbox, price block, characteristics, videos with react-lite-youtube-embed, view counter, print).
+  - Images use `next/image` with `unoptimized`: the backend already serves imagekit WebP renditions, and `width/height` from the API prevent layout shift.
+  - Server-rendered presentational components take `t`/`locale` as props, so Vitest can render them without a server.
+- **Tests:** `vitest.setup.ts` adds jest-dom, `cleanup` after each test and a `ResizeObserver` stub for Radix. Shared catalog fixtures are in `src/components/catalog/test-utils.ts`.
 
 ### Conventions
 - Translations:
