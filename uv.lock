@@ -409,6 +409,18 @@ sanitize = [
 ]
 
 [[package]]
+name = "django-solo"
+version = "2.8.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "django" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/8a/cd/a2e2103aabde67f4814a2768bc8cfd5a07c1b4c94b2daede45a166336456/django_solo-2.8.0.tar.gz", hash = "sha256:e739c8e04065608c4dae52f7564acce3abebba19dfcc09f5b54a91493a8162c0", size = 17139, upload-time = "2026-11-17T13:38:16.828Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/22/39/6b7476217a8caecfee12bc31cd6abe3e83fff16b3b4793d0310ee27cf55c/django_solo-2.8.0-py3-none-any.whl", hash = "sha256:79b5d05d6a9fd077254ac6b38163a42f82ecde8033962d74bc068fa4755ff1d7", size = 20395, upload-time = "2026-11-17T13:38:15.494Z" },
+]
+
+[[package]]
 name = "djangorestframework"
 version = "3.18.3"
 source = { registry = "https://pypi.org/simple" }
@@ -1175,6 +1187,7 @@ dependencies = [
     { name = "django-imagekit" },
     { name = "django-modeltranslation" },
     { name = "django-prose-editor", extra = ["sanitize"] },
+    { name = "django-solo" },
     { name = "djangorestframework" },
     { name = "drf-spectacular" },
     { name = "pillow" },
@@ -1208,6 +1221,7 @@ requires-dist = [
     { name = "django-imagekit", specifier = ">=6.1.1" },
     { name = "django-modeltranslation", specifier = ">=0.20.6" },
     { name = "django-prose-editor", extras = ["sanitize"], specifier = ">=0.28.0" },
+    { name = "django-solo", specifier = ">=2.8.0" },
     { name = "djangorestframework", specifier = ">=3.18.3" },
     { name = "drf-spectacular", specifier = ">=0.30.0" },
     { name = "pillow", specifier = ">=13.0.0" },

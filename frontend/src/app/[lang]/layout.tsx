@@ -3,9 +3,11 @@ import { Lora, Manrope } from "next/font/google";
 
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
+import { SiteBackground } from "@/components/layout/site-background";
 import { I18nProvider } from "@/i18n/client";
 import { locales } from "@/i18n/config";
 import { getCatalog, getLocale, getTranslator } from "@/i18n/server";
+import { getSiteSettings } from "@/lib/site-settings";
 
 import "../globals.css";
 
@@ -34,11 +36,12 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function RootLayout({ children }: LayoutProps<"/[lang]">) {
   const locale = await getLocale();
-  const catalog = await getCatalog(locale);
+  const [catalog, siteSettings] = await Promise.all([getCatalog(locale), getSiteSettings()]);
 
   return (
     <html lang={locale} className={`${manrope.variable} ${lora.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col">
+        <SiteBackground settings={siteSettings} />
         <I18nProvider locale={locale} catalog={catalog}>
           <Header />
           <main className="flex-1">{children}</main>

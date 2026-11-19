@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: shp_grape\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-18 20:49+0200\n"
+"POT-Creation-Date: 2026-11-19 21:15+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,8 +23,7 @@ msgstr "сорти"
 msgid "Add photos"
 msgstr "Додати фото"
 
-msgid ""
-"Select several files at once; they are added after the existing photos."
+msgid "Select several files at once; they are added after the existing photos."
 msgstr "Виберіть одразу кілька файлів — їх буде додано після наявних фото."
 
 msgid "preview"
@@ -256,8 +255,33 @@ msgstr "відео"
 msgid "Enter a link to a YouTube video."
 msgstr "Введіть посилання на відео YouTube."
 
+msgid "Background"
+msgstr "Фон"
+
 msgid "Content"
 msgstr "Контент"
+
+msgid "show background image"
+msgstr "показувати фонове зображення"
+
+msgid "Untick to use a plain background on every page."
+msgstr "Зніміть позначку, щоб на всіх сторінках був однотонний фон."
+
+msgid "background image"
+msgstr "фонове зображення"
+
+msgid ""
+"A wide photo (at least 1920 px) shown softly behind the pages. Leave empty to"
+" use the built-in grape illustration."
+msgstr ""
+"Широке фото (щонайменше 1920 px), яке м'яко просвічує за сторінками. Залиште "
+"порожнім, щоб використати вбудовану ілюстрацію винограду."
+
+msgid "site settings"
+msgstr "налаштування сайту"
+
+msgid "Site settings"
+msgstr "Налаштування сайту"
 
 msgid "Core"
 msgstr "Ядро"
@@ -272,8 +296,8 @@ msgid "slug"
 msgstr "slug"
 
 msgid ""
-"Part of the page address. Generated from the Ukrainian name and kept when "
-"the object is renamed."
+"Part of the page address. Generated from the Ukrainian name and kept when the"
+" object is renamed."
 msgstr ""
 "Частина адреси сторінки. Формується автоматично з української назви й не "
 "змінюється при перейменуванні."

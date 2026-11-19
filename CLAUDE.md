@@ -42,7 +42,7 @@ To run a single test without `just`, use `uv run pytest path/to/test_file.py::te
 
 ### Backend (Django REST API)
 - `shp_grape/settings.py` reads `.env` via django-environ. `settings_test.py` (used by pytest) switches to an MD5 hasher, in-memory file storage, the locmem cache and the locmem mailer. The cache is `DatabaseCache` (no Redis in the MVP). Email uses the Django 6.1 `MAILERS` setting.
-- Apps live in `apps/` (`core`, `catalog`, `content`, `orders`). `content` and `orders` are still empty skeletons.
+- Apps live in `apps/` (`core`, `catalog`, `content`, `orders`). `orders` is still an empty skeleton.
 - Each app keeps views and serializers thin, with logic in `services.py` / `selectors.py`. Tests live in `apps/<app>/tests/`, and the shared fixtures (`api_client`, `user`, `language`) are in the root `conftest.py`.
 - `apps/core` holds `TimeStampedModel`, `SlugNaturalKeyManager`, `slugs.py` (`AutoSlugMixin`), `richtext.py` (`RichTextField`, django-prose-editor with nh3 sanitizing), the migration that enables the `pg_trgm` and `unaccent` extensions, and these endpoints:
   - `/api/health/` returns the status, the database check and the version;
@@ -54,6 +54,7 @@ To run a single test without `just`, use `uv run pytest path/to/test_file.py::te
   - `varieties/` (filters, `search`, `ordering`, `page`/`page_size`) and `varieties/<slug>/`;
   - `POST varieties/<slug>/view/`, `filters/`, `letters/`, `photos/random/?limit=`.
 - Use `selectors.localized("name")` to sort or annotate by a translated field: modeltranslation stores missing translations as NULL, and it rewrites `Meta.ordering` into an explicit `order_by`.
+- `apps/content`: so far only `SiteSettings` (django-solo singleton, default row from a data migration) with the page background: `show_background` and `background_image` (WebP rendition `background`). `GET /api/content/settings/` returns them; the frontend layout renders `SiteBackground` (`src/components/layout/site-background.tsx`), which tiles `public/images/grape-pattern.svg` when no photo is uploaded. Stage 5 adds the remaining fields and models.
 
 ### Frontend (`frontend/`, Next.js 16 App Router)
 - **Next.js 16 differs from older versions.** Read `frontend/node_modules/next/dist/docs/` before using an unfamiliar API (see `frontend/AGENTS.md`):

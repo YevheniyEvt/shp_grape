@@ -106,6 +106,23 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/content/settings/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Public site settings (page background). */
+        get: operations["content_settings_retrieve"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/health/": {
         parameters: {
             query?: never;
@@ -217,10 +234,19 @@ export interface components {
             disease: components["schemas"]["NumberRange"];
             frost: components["schemas"]["NumberRange"];
         };
+        SiteSettings: {
+            /**
+             * Показувати фонове зображення
+             * @description Зніміть позначку, щоб на всіх сторінках був однотонний фон.
+             */
+            show_background?: boolean;
+            /** @description WebP rendition of the uploaded background, or null for the built-in one. */
+            readonly background_image: string | null;
+        };
         /** @description Full variety for its page, with all photos, videos and similar varieties. */
         VarietyDetail: {
             readonly id: number;
-            /** @description Частина адреси сторінки. Залиште порожнім — згенерується з назви автоматично. */
+            /** @description Частина адреси сторінки. Формується автоматично з української назви й не змінюється при перейменуванні. */
             slug?: string;
             /** Назва */
             name: string;
@@ -314,7 +340,7 @@ export interface components {
         /** @description Compact variety for catalog cards. */
         VarietyList: {
             readonly id: number;
-            /** @description Частина адреси сторінки. Залиште порожнім — згенерується з назви автоматично. */
+            /** @description Частина адреси сторінки. Формується автоматично з української назви й не змінюється при перейменуванні. */
             slug?: string;
             /** Назва */
             name: string;
@@ -560,6 +586,25 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["VarietyViewCounted"];
+                };
+            };
+        };
+    };
+    content_settings_retrieve: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SiteSettings"];
                 };
             };
         };
