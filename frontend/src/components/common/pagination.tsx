@@ -2,7 +2,6 @@ import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import Link from "next/link";
 
 import type { Translator } from "@/i18n/gettext";
-import { type CatalogQuery, catalogHref, withPage } from "@/lib/catalog-query";
 import { cn } from "@/lib/utils";
 
 export type PageItem = number | "gap";
@@ -29,19 +28,19 @@ const itemClass =
 
 /** Plain links (crawlable, work without JavaScript); the current page is not a link. */
 export function Pagination({
-  query,
+  page,
   totalPages,
-  basePath,
+  hrefFor,
   t,
 }: {
-  query: CatalogQuery;
+  page: number;
   totalPages: number;
-  basePath: string;
+  hrefFor: (page: number) => string;
   t: Translator["t"];
 }) {
   if (totalPages <= 1) return null;
-  const current = Math.min(query.page, totalPages);
-  const href = (page: number) => catalogHref(basePath, withPage(query, page));
+  const current = Math.min(page, totalPages);
+  const href = hrefFor;
 
   return (
     <nav aria-label={t("Pages")} className="flex flex-wrap items-center justify-center gap-1">

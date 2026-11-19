@@ -34,7 +34,9 @@ def test_background_path_keeps_only_file_name():
 def test_api_without_image_returns_null(api_client):
     response = api_client.get(URL)
     assert response.status_code == 200
-    assert response.json() == {"show_background": True, "background_image": None}
+    data = response.json()
+    assert data["show_background"] is True
+    assert data["background_image"] is None
 
 
 def test_api_returns_absolute_webp_rendition(api_client):

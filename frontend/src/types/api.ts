@@ -106,6 +106,176 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/content/articles/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Anonymous read access without session authentication (and therefore without CSRF). */
+        get: operations["content_articles_list"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/content/articles/{slug}/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Anonymous read access without session authentication (and therefore without CSRF). */
+        get: operations["content_articles_retrieve"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/content/gallery/albums/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Anonymous read access without session authentication (and therefore without CSRF). */
+        get: operations["content_gallery_albums_list"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/content/gallery/albums/{slug}/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Anonymous read access without session authentication (and therefore without CSRF). */
+        get: operations["content_gallery_albums_retrieve"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/content/gallery/photos/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description All photos (albums first, then varieties), newest first, for the infinite gallery. */
+        get: operations["content_gallery_photos_retrieve"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/content/home/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Welcome text, home photo, latest news, featured varieties and latest articles. */
+        get: operations["content_home_retrieve"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/content/links/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Anonymous read access without session authentication (and therefore without CSRF). */
+        get: operations["content_links_list"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/content/news/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Anonymous read access without session authentication (and therefore without CSRF). */
+        get: operations["content_news_list"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/content/news/{slug}/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Anonymous read access without session authentication (and therefore without CSRF). */
+        get: operations["content_news_retrieve"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/content/pages/{slug}/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Anonymous read access without session authentication (and therefore without CSRF). */
+        get: operations["content_pages_retrieve"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/content/settings/": {
         parameters: {
             query?: never;
@@ -113,7 +283,7 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        /** @description Public site settings (page background). */
+        /** @description Public site settings: name, contacts, links and the page background. */
         get: operations["content_settings_retrieve"];
         put?: never;
         post?: never;
@@ -161,9 +331,127 @@ export interface paths {
 export type webhooks = Record<string, never>;
 export interface components {
     schemas: {
+        AlbumDetail: {
+            readonly id: number;
+            /** @description Частина адреси сторінки. Формується автоматично з української назви й не змінюється при перейменуванні. */
+            slug?: string;
+            /** Заголовок */
+            title: string;
+            /** Опис */
+            description?: string;
+            /**
+             * Дата
+             * Format: date
+             */
+            date?: string;
+            readonly photo_count: number;
+            readonly cover: components["schemas"]["ContentPhoto"] | null;
+            readonly photos: components["schemas"]["ContentPhoto"][];
+        };
+        AlbumList: {
+            readonly id: number;
+            /** @description Частина адреси сторінки. Формується автоматично з української назви й не змінюється при перейменуванні. */
+            slug?: string;
+            /** Заголовок */
+            title: string;
+            /** Опис */
+            description?: string;
+            /**
+             * Дата
+             * Format: date
+             */
+            date?: string;
+            readonly photo_count: number;
+            readonly cover: components["schemas"]["ContentPhoto"] | null;
+        };
+        ArticleDetail: {
+            readonly id: number;
+            /** @description Частина адреси сторінки. Формується автоматично з української назви й не змінюється при перейменуванні. */
+            slug?: string;
+            /** Заголовок */
+            title: string;
+            /**
+             * Publication date
+             * Format: date
+             * @description A future date hides the entry until that day.
+             */
+            published_at?: string;
+            readonly cover: components["schemas"]["Cover"] | null;
+            /** @description A short summary for the list of articles. */
+            excerpt?: string;
+            author?: string;
+            /** Text */
+            body?: string;
+            readonly photos: components["schemas"]["ContentPhoto"][];
+            videos: components["schemas"]["ArticleVideo"][];
+        };
+        ArticleList: {
+            readonly id: number;
+            /** @description Частина адреси сторінки. Формується автоматично з української назви й не змінюється при перейменуванні. */
+            slug?: string;
+            /** Заголовок */
+            title: string;
+            /**
+             * Publication date
+             * Format: date
+             * @description A future date hides the entry until that day.
+             */
+            published_at?: string;
+            readonly cover: components["schemas"]["Cover"] | null;
+            /** @description A short summary for the list of articles. */
+            excerpt?: string;
+            author?: string;
+        };
+        ArticleVideo: {
+            readonly id: number;
+            /** Ідентифікатор відео YouTube */
+            readonly youtube_id: string;
+            /**
+             * Посилання на YouTube
+             * Format: uri
+             */
+            youtube_url: string;
+            /** Заголовок */
+            title?: string;
+        };
+        /** @description A photo with WebP renditions: `thumb` (400 px), `medium` (1000 px), `large` (1800 px). */
+        ContentPhoto: {
+            id: number;
+            caption: string;
+            readonly alt: string;
+            width: number | null;
+            height: number | null;
+            readonly thumb: string;
+            readonly medium: string;
+            readonly large: string;
+        };
+        Cover: {
+            /** Format: uri */
+            card: string;
+            /** Format: uri */
+            large: string;
+            width: number | null;
+            height: number | null;
+        };
         Dictionary: {
             slug: string;
             name: string;
+        };
+        /** @description A photo of the "All photos" feed with a link to its album or variety. */
+        FeedPhoto: {
+            readonly id: string;
+            readonly alt: string;
+            readonly width: number | null;
+            readonly height: number | null;
+            readonly thumb: string;
+            readonly medium: string;
+            readonly large: string;
+            readonly source: components["schemas"]["FeedSource"];
+        };
+        FeedSource: {
+            kind: components["schemas"]["KindEnum"];
+            slug: string;
+            title: string;
         };
         FilterOptions: {
             ripening: components["schemas"]["Dictionary"][];
@@ -178,16 +466,115 @@ export interface components {
             database: string;
             version: string;
         };
+        /** @description Everything the home page needs in one request. */
+        Home: {
+            welcome: string;
+            /** Format: uri */
+            hero_image: string | null;
+            latest_news: components["schemas"]["NewsList"] | null;
+            featured_varieties: components["schemas"]["VarietyList"][];
+            latest_articles: components["schemas"]["ArticleList"][];
+        };
+        /**
+         * @description * `album` - album
+         *     * `variety` - variety
+         * @enum {string}
+         */
+        KindEnum: "album" | "variety";
         Language: {
             code: string;
             name: string;
             is_default: boolean;
+        };
+        MapPoint: {
+            /** Format: double */
+            latitude: number;
+            /** Format: double */
+            longitude: number;
+        };
+        NewsDetail: {
+            readonly id: number;
+            /** @description Частина адреси сторінки. Формується автоматично з української назви й не змінюється при перейменуванні. */
+            slug?: string;
+            /** Заголовок */
+            title: string;
+            /**
+             * Publication date
+             * Format: date
+             * @description A future date hides the entry until that day.
+             */
+            published_at?: string;
+            readonly cover: components["schemas"]["Cover"] | null;
+            /** Text */
+            body?: string;
+        };
+        NewsList: {
+            readonly id: number;
+            /** @description Частина адреси сторінки. Формується автоматично з української назви й не змінюється при перейменуванні. */
+            slug?: string;
+            /** Заголовок */
+            title: string;
+            /**
+             * Publication date
+             * Format: date
+             * @description A future date hides the entry until that day.
+             */
+            published_at?: string;
+            readonly cover: components["schemas"]["Cover"] | null;
         };
         NumberRange: {
             /** Format: double */
             min: number | null;
             /** Format: double */
             max: number | null;
+        };
+        Page: {
+            /** @description Частина адреси сторінки. Формується автоматично з української назви й не змінюється при перейменуванні. */
+            slug?: string;
+            /** Заголовок */
+            title: string;
+            /** Text */
+            body?: string;
+            /**
+             * Оновлено
+             * Format: date-time
+             */
+            readonly updated_at: string;
+        };
+        PaginatedArticleListList: {
+            /** @example 123 */
+            count: number;
+            /**
+             * Format: uri
+             * @example http://api.example.org/accounts/?page=4
+             */
+            next?: string | null;
+            /**
+             * Format: uri
+             * @example http://api.example.org/accounts/?page=2
+             */
+            previous?: string | null;
+            results: components["schemas"]["ArticleList"][];
+        };
+        PaginatedFeedPhotoList: {
+            count: number;
+            next_page: number | null;
+            results: components["schemas"]["FeedPhoto"][];
+        };
+        PaginatedNewsListList: {
+            /** @example 123 */
+            count: number;
+            /**
+             * Format: uri
+             * @example http://api.example.org/accounts/?page=4
+             */
+            next?: string | null;
+            /**
+             * Format: uri
+             * @example http://api.example.org/accounts/?page=2
+             */
+            previous?: string | null;
+            results: components["schemas"]["NewsList"][];
         };
         PaginatedVarietyListList: {
             /** @example 123 */
@@ -234,7 +621,18 @@ export interface components {
             disease: components["schemas"]["NumberRange"];
             frost: components["schemas"]["NumberRange"];
         };
+        /** @description Contacts, links and the page background used by the header and footer of every page. */
         SiteSettings: {
+            site_name?: string;
+            tagline?: string;
+            /** Owner */
+            owner_name?: string;
+            phones: string[];
+            email?: string;
+            address?: string;
+            readonly map: components["schemas"]["MapPoint"] | null;
+            readonly price_list: string | null;
+            readonly social: components["schemas"]["SocialLinks"];
             /**
              * Показувати фонове зображення
              * @description Зніміть позначку, щоб на всіх сторінках був однотонний фон.
@@ -242,6 +640,25 @@ export interface components {
             show_background?: boolean;
             /** @description WebP rendition of the uploaded background, or null for the built-in one. */
             readonly background_image: string | null;
+        };
+        SocialLinks: {
+            facebook: string;
+            instagram: string;
+            youtube: string;
+            telegram: string;
+            forum: string;
+        };
+        UsefulLink: {
+            readonly id: number;
+            /** Заголовок */
+            title: string;
+            /**
+             * Link
+             * Format: uri
+             */
+            url: string;
+            /** Опис */
+            description?: string;
         };
         /** @description Full variety for its page, with all photos, videos and similar varieties. */
         VarietyDetail: {
@@ -586,6 +1003,217 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["VarietyViewCounted"];
+                };
+            };
+        };
+    };
+    content_articles_list: {
+        parameters: {
+            query?: {
+                /** @description A page number within the paginated result set. */
+                page?: number;
+                /** @description Number of results to return per page. */
+                page_size?: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["PaginatedArticleListList"];
+                };
+            };
+        };
+    };
+    content_articles_retrieve: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                slug: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ArticleDetail"];
+                };
+            };
+        };
+    };
+    content_gallery_albums_list: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AlbumList"][];
+                };
+            };
+        };
+    };
+    content_gallery_albums_retrieve: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                slug: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AlbumDetail"];
+                };
+            };
+        };
+    };
+    content_gallery_photos_retrieve: {
+        parameters: {
+            query?: {
+                /** @description Page number, from 1. */
+                page?: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["PaginatedFeedPhotoList"];
+                };
+            };
+        };
+    };
+    content_home_retrieve: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Home"];
+                };
+            };
+        };
+    };
+    content_links_list: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["UsefulLink"][];
+                };
+            };
+        };
+    };
+    content_news_list: {
+        parameters: {
+            query?: {
+                /** @description A page number within the paginated result set. */
+                page?: number;
+                /** @description Number of results to return per page. */
+                page_size?: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["PaginatedNewsListList"];
+                };
+            };
+        };
+    };
+    content_news_retrieve: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                slug: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["NewsDetail"];
+                };
+            };
+        };
+    };
+    content_pages_retrieve: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                slug: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Page"];
                 };
             };
         };

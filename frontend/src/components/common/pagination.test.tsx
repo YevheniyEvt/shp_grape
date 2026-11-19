@@ -1,10 +1,10 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
-import { parseCatalogQuery } from "@/lib/catalog-query";
+import { t } from "@/components/catalog/test-utils";
+import { catalogHref, parseCatalogQuery, withPage } from "@/lib/catalog-query";
 
 import { pageItems, Pagination } from "./pagination";
-import { t } from "./test-utils";
 
 describe("pageItems", () => {
   it.each([
@@ -21,15 +21,20 @@ describe("pageItems", () => {
 
 describe("Pagination", () => {
   it("renders nothing for a single page", () => {
-    const { container } = render(
-      <Pagination query={parseCatalogQuery({})} totalPages={1} basePath="/catalog" t={t} />,
-    );
+    const { container } = render(<Pagination page={1} totalPages={1} hrefFor={String} t={t} />);
     expect(container).toBeEmptyDOMElement();
   });
 
   it("links pages keeping the filters", () => {
     const query = parseCatalogQuery({ page: "2", ripening: "rannii" });
-    render(<Pagination query={query} totalPages={3} basePath="/en/catalog" t={t} />);
+    render(
+      <Pagination
+        page={query.page}
+        totalPages={3}
+        hrefFor={(page) => catalogHref("/en/catalog", withPage(query, page))}
+        t={t}
+      />,
+    );
 
     expect(screen.getByText("2")).toHaveAttribute("aria-current", "page");
     expect(screen.getByRole("link", { name: "1" })).toHaveAttribute(
@@ -44,9 +49,7 @@ describe("Pagination", () => {
   });
 
   it("clamps a page past the end", () => {
-    render(
-      <Pagination query={parseCatalogQuery({ page: "9" })} totalPages={2} basePath="/c" t={t} />,
-    );
+    render(<Pagination page={9} totalPages={2} hrefFor={(page) => `/c?page=${page}`} t={t} />);
     expect(screen.getByText("2")).toHaveAttribute("aria-current", "page");
     expect(screen.queryByRole("link", { name: /Next/ })).not.toBeInTheDocument();
   });

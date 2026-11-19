@@ -3,6 +3,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { isInStock, StockBadge, VarietyCard } from "@/components/catalog/variety-card";
+import { RichText } from "@/components/common/rich-text";
+import { YouTubeVideos } from "@/components/media/youtube-videos";
 import { Badge } from "@/components/ui/badge";
 import { localizePath } from "@/i18n/config";
 import { getTranslator } from "@/i18n/server";
@@ -12,7 +14,6 @@ import { buildCharacteristics, CharacteristicsTable } from "./characteristics";
 import { PriceBlock } from "./price-block";
 import { PrintButton } from "./print-button";
 import { VarietyGallery } from "./variety-gallery";
-import { VarietyVideos } from "./variety-videos";
 import { ViewCounter } from "./view-counter";
 
 /** Everything on the variety page that depends on the slug. */
@@ -93,7 +94,10 @@ export async function VarietyDetails({ params }: { params: Promise<{ slug: strin
             ]}
           />
 
-          <section aria-labelledby="characteristics">
+          <section
+            aria-labelledby="characteristics"
+            className="rounded-xl bg-card/95 p-5 shadow-sm ring-1 ring-foreground/10"
+          >
             <h2 id="characteristics" className="mb-2 text-xl font-semibold">
               {t("Characteristics")}
             </h2>
@@ -103,12 +107,14 @@ export async function VarietyDetails({ params }: { params: Promise<{ slug: strin
       </div>
 
       {variety.description && (
-        <section aria-labelledby="description" className="max-w-3xl">
+        <section
+          aria-labelledby="description"
+          className="max-w-3xl rounded-xl bg-card/95 p-5 shadow-sm ring-1 ring-foreground/10"
+        >
           <h2 id="description" className="mb-3 text-2xl font-semibold">
             {t("Description")}
           </h2>
-          {/* The HTML is sanitized by the backend (nh3) with the editor's allow-list. */}
-          <div className="rich-text" dangerouslySetInnerHTML={{ __html: variety.description }} />
+          <RichText html={variety.description} />
         </section>
       )}
 
@@ -117,7 +123,7 @@ export async function VarietyDetails({ params }: { params: Promise<{ slug: strin
           <h2 id="videos" className="mb-3 text-2xl font-semibold">
             {t("Videos")}
           </h2>
-          <VarietyVideos videos={variety.videos} fallbackTitle={variety.name} />
+          <YouTubeVideos videos={variety.videos} fallbackTitle={variety.name} />
         </section>
       )}
 

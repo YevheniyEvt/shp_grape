@@ -3,17 +3,17 @@
 import LiteYouTubeEmbed from "react-lite-youtube-embed";
 import "react-lite-youtube-embed/dist/LiteYouTubeEmbed.css";
 
-import type { Video } from "@/lib/api/catalog";
+export type YouTubeVideo = { id: number; youtube_id: string; title?: string };
 
 /**
  * YouTube videos as light previews: the real player (and YouTube's cookies) loads only
  * after a click, which keeps the page fast.
  */
-export function VarietyVideos({
+export function YouTubeVideos({
   videos,
   fallbackTitle,
 }: {
-  videos: Video[];
+  videos: YouTubeVideo[];
   fallbackTitle: string;
 }) {
   return (

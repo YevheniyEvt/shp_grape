@@ -1,6 +1,14 @@
 import { describe, expect, it } from "vitest";
 
-import { formatNumber, formatPrice, formatRange, lowestPrice, plainText } from "./format";
+import {
+  formatDate,
+  formatNumber,
+  formatPrice,
+  formatRange,
+  lowestPrice,
+  pageNumber,
+  plainText,
+} from "./format";
 
 // Intl inserts non-breaking spaces; compare with plain ones.
 const plain = (value: string | null) => value?.replace(/\s/g, " ");
@@ -36,5 +44,20 @@ describe("plainText", () => {
     expect(plainText("<p>Very <b>early</b></p><p>variety</p>", 100)).toBe("Very early variety");
     expect(plainText("<p>abcdef ghij</p>", 8)).toBe("abcdef…");
     expect(plainText(null, 10)).toBe("");
+  });
+});
+
+describe("formatDate / pageNumber", () => {
+  it("formats ISO dates for the locale", () => {
+    expect(formatDate("2026-11-19", "uk")).toBe("19 листопада 2026 р.");
+    expect(formatDate("2026-01-02", "en")).toBe("January 2, 2026");
+  });
+
+  it("reads the page number", () => {
+    expect(pageNumber("3")).toBe(3);
+    expect(pageNumber(["2", "5"])).toBe(2);
+    expect(pageNumber("0")).toBe(1);
+    expect(pageNumber("x")).toBe(1);
+    expect(pageNumber(undefined)).toBe(1);
   });
 });

@@ -48,3 +48,17 @@ export function plainText(html: string | null | undefined, limit: number): strin
   if (text.length <= limit) return text;
   return `${text.slice(0, limit - 1).trimEnd()}…`;
 }
+
+/** `19 листопада 2026 р.` / `November 19, 2026` from an ISO date (`2026-11-19`). */
+export function formatDate(isoDate: string, locale: Locale): string {
+  const [year, month, day] = isoDate.split("-").map(Number);
+  // Noon UTC keeps the calendar day the same in every time zone.
+  const date = new Date(Date.UTC(year, month - 1, day, 12));
+  return new Intl.DateTimeFormat(locale, { dateStyle: "long", timeZone: "UTC" }).format(date);
+}
+
+/** Page number from a `?page=` value: a positive integer, 1 otherwise. */
+export function pageNumber(value: string | string[] | undefined): number {
+  const page = Number(Array.isArray(value) ? value[0] : value);
+  return Number.isInteger(page) && page > 1 ? page : 1;
+}

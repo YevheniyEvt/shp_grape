@@ -7,7 +7,8 @@ import { SiteBackground } from "@/components/layout/site-background";
 import { I18nProvider } from "@/i18n/client";
 import { locales } from "@/i18n/config";
 import { getCatalog, getLocale, getTranslator } from "@/i18n/server";
-import { getSiteSettings } from "@/lib/site-settings";
+import { siteName } from "@/config/site";
+import { getSiteSettings } from "@/lib/api/content";
 
 import "../globals.css";
 
@@ -26,17 +27,17 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata(): Promise<Metadata> {
-  const { t } = await getTranslator();
-  const siteName = t("Vineyard");
+  const { t, locale } = await getTranslator();
+  const name = siteName((await getSiteSettings(locale)).site_name, { t });
   return {
-    title: { default: siteName, template: `%s · ${siteName}` },
+    title: { default: name, template: `%s · ${name}` },
     description: t("Grape cuttings and seedlings of table varieties from our own vineyard."),
   };
 }
 
 export default async function RootLayout({ children }: LayoutProps<"/[lang]">) {
   const locale = await getLocale();
-  const [catalog, siteSettings] = await Promise.all([getCatalog(locale), getSiteSettings()]);
+  const [catalog, siteSettings] = await Promise.all([getCatalog(locale), getSiteSettings(locale)]);
 
   return (
     <html lang={locale} className={`${manrope.variable} ${lora.variable} h-full antialiased`}>
