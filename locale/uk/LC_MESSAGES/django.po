@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: shp_grape\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-19 21:15+0200\n"
+"POT-Creation-Date: 2026-11-19 21:37+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -302,6 +302,10 @@ msgstr ""
 "Частина адреси сторінки. Формується автоматично з української назви й не "
 "змінюється при перейменуванні."
 
+#, python-format
+msgid "Version %(version)s"
+msgstr "Версія %(version)s"
+
 msgid "Orders"
 msgstr "Замовлення"
 
@@ -310,3 +314,6 @@ msgstr "Українська"
 
 msgid "English"
 msgstr "Англійська"
+
+msgid "Django administration"
+msgstr ""
