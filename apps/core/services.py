@@ -3,6 +3,7 @@
 from dataclasses import dataclass
 
 from django.conf import settings
+from django.contrib.auth import get_user_model
 from django.db import DatabaseError, connection
 
 from apps.core.version import get_project_version
@@ -48,3 +49,17 @@ def get_languages() -> list[dict[str, str | bool]]:
 def is_supported_language(code: str) -> bool:
     """Return True if `code` is one of the configured site languages."""
     return code in {lang_code for lang_code, _name in settings.LANGUAGES}
+
+
+def ensure_superuser(username: str, email: str, password: str) -> bool:
+    """
+    Create a superuser unless a user with this username exists.
+
+    Returns True when a user was created. Used by `seed_demo` with the `DJANGO_SUPERUSER_*`
+    variables, so a fresh demo database can be opened in the admin right away.
+    """
+    user_model = get_user_model()
+    if user_model._default_manager.filter(**{user_model.USERNAME_FIELD: username}).exists():
+        return False
+    user_model._default_manager.create_superuser(username=username, email=email, password=password)
+    return True
