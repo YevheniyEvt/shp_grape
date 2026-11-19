@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: shp_grape\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-19 21:37+0200\n"
+"POT-Creation-Date: 2026-11-19 22:37+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15,7 +15,10 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n % 10 == 1 && n % 100 != 11 ? 0 : n % 1 == 0 && n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || (n % 100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
+"Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n % 10 == 1 && n % 100 != "
+"11 ? 0 : n % 1 == 0 && n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % "
+"100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || "
+"(n % 100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
 
 msgid "varieties"
 msgstr "сорти"
@@ -255,11 +258,83 @@ msgstr "відео"
 msgid "Enter a link to a YouTube video."
 msgstr "Введіть посилання на відео YouTube."
 
+msgid "Site"
+msgstr "Сайт"
+
+msgid "Contacts"
+msgstr "Контакти"
+
+msgid "Links"
+msgstr "Посилання"
+
 msgid "Background"
 msgstr "Фон"
 
+msgid "cover"
+msgstr "обкладинка"
+
+msgid "Text"
+msgstr "Текст"
+
 msgid "Content"
 msgstr "Контент"
+
+msgid "site name"
+msgstr "назва сайту"
+
+msgid "tagline"
+msgstr "слоган"
+
+msgid "welcome text"
+msgstr "текст привітання"
+
+msgid "home page photo"
+msgstr "фото головної сторінки"
+
+msgid "A wide photo for the top of the home page."
+msgstr "Широке фото для верхньої частини головної сторінки."
+
+msgid "owner"
+msgstr "власник"
+
+msgid "phones"
+msgstr "телефони"
+
+msgid "One phone number per line."
+msgstr "Один номер у рядку."
+
+msgid "email"
+msgstr "email"
+
+msgid "address"
+msgstr "адреса"
+
+msgid "map latitude"
+msgstr "широта на карті"
+
+msgid "map longitude"
+msgstr "довгота на карті"
+
+msgid "price list"
+msgstr "прайс-лист"
+
+msgid "A file visitors can download (PDF, Word or Excel)."
+msgstr "Файл, який відвідувачі можуть завантажити (PDF, Word або Excel)."
+
+msgid "Facebook"
+msgstr "Facebook"
+
+msgid "Instagram"
+msgstr "Instagram"
+
+msgid "YouTube channel"
+msgstr "YouTube-канал"
+
+msgid "Telegram"
+msgstr "Telegram"
+
+msgid "forum"
+msgstr "форум"
 
 msgid "show background image"
 msgstr "показувати фонове зображення"
@@ -271,8 +346,8 @@ msgid "background image"
 msgstr "фонове зображення"
 
 msgid ""
-"A wide photo (at least 1920 px) shown softly behind the pages. Leave empty to"
-" use the built-in grape illustration."
+"A wide photo (at least 1920 px) shown softly behind the pages. Leave empty "
+"to use the built-in grape illustration."
 msgstr ""
 "Широке фото (щонайменше 1920 px), яке м'яко просвічує за сторінками. Залиште "
 "порожнім, щоб використати вбудовану ілюстрацію винограду."
@@ -282,6 +357,63 @@ msgstr "налаштування сайту"
 
 msgid "Site settings"
 msgstr "Налаштування сайту"
+
+msgid "publication date"
+msgstr "дата публікації"
+
+msgid "A future date hides the entry until that day."
+msgstr "Майбутня дата приховує запис до цього дня."
+
+msgid "text"
+msgstr "текст"
+
+msgid "news item"
+msgstr "новина"
+
+msgid "news"
+msgstr "новини"
+
+msgid "excerpt"
+msgstr "анонс"
+
+msgid "A short summary for the list of articles."
+msgstr "Короткий опис для списку статей."
+
+msgid "author"
+msgstr "автор"
+
+msgid "article"
+msgstr "стаття"
+
+msgid "articles"
+msgstr "статті"
+
+msgid "caption"
+msgstr "підпис"
+
+msgid "link"
+msgstr "посилання"
+
+msgid "useful link"
+msgstr "корисне посилання"
+
+msgid "useful links"
+msgstr "корисні посилання"
+
+msgid "page"
+msgstr "сторінка"
+
+msgid "pages"
+msgstr "сторінки"
+
+msgid "date"
+msgstr "дата"
+
+msgid "album"
+msgstr "альбом"
+
+msgid "albums"
+msgstr "альбоми"
 
 msgid "Core"
 msgstr "Ядро"
@@ -296,8 +428,8 @@ msgid "slug"
 msgstr "slug"
 
 msgid ""
-"Part of the page address. Generated from the Ukrainian name and kept when the"
-" object is renamed."
+"Part of the page address. Generated from the Ukrainian name and kept when "
+"the object is renamed."
 msgstr ""
 "Частина адреси сторінки. Формується автоматично з української назви й не "
 "змінюється при перейменуванні."
@@ -316,4 +448,4 @@ msgid "English"
 msgstr "Англійська"
 
 msgid "Django administration"
-msgstr ""
+msgstr "Адміністрування Django"

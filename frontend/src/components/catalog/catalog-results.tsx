@@ -1,6 +1,7 @@
-import { SearchXIcon } from "lucide-react";
+import { SearchXIcon, XIcon } from "lucide-react";
 import Link from "next/link";
 
+import { Pagination } from "@/components/common/pagination";
 import { Button } from "@/components/ui/button";
 import { getAlphabet } from "@/i18n/alphabet";
 import { localizePath } from "@/i18n/config";
@@ -15,12 +16,12 @@ import {
   resetFilters,
   toSearchParams,
   updateQuery,
+  withPage,
 } from "@/lib/catalog-query";
 
 import { AlphabetBar } from "./alphabet-bar";
 import { CatalogSearch } from "./catalog-search";
 import { FiltersPanel, MobileFilters } from "./filters-panel";
-import { Pagination } from "./pagination";
 import { SortSelect } from "./sort-select";
 import { VarietyCard } from "./variety-card";
 
@@ -43,7 +44,9 @@ export async function CatalogResults({ searchParams }: { searchParams: Promise<R
 
   return (
     <div className="grid gap-6">
+      {/* On wider screens the header already shows the alphabet. */}
       <AlphabetBar
+        className="md:hidden"
         label={t("Varieties by letter")}
         letters={getAlphabet(locale)}
         available={letters}
@@ -56,9 +59,19 @@ export async function CatalogResults({ searchParams }: { searchParams: Promise<R
         }
       />
 
-      <div className="flex flex-wrap items-center gap-3">
+      <div className="flex flex-wrap items-center gap-3 rounded-xl bg-card/95 p-3 shadow-sm ring-1 ring-foreground/10">
         <CatalogSearch query={query} basePath={basePath} />
         <MobileFilters query={query} options={options} basePath={basePath} />
+        {query.letter && (
+          <Link
+            href={catalogHref(basePath, updateQuery(query, { letter: undefined }))}
+            aria-label={t("Remove the letter filter")}
+            className="inline-flex items-center gap-1 rounded-full bg-primary px-3 py-1 text-sm font-medium text-primary-foreground hover:bg-primary/90"
+          >
+            {t("Letter: %(letter)s", { letter: query.letter })}
+            <XIcon className="size-3.5" aria-hidden="true" />
+          </Link>
+        )}
         <p className="text-sm text-muted-foreground" aria-live="polite">
           {nt("%(count)s variety", "%(count)s varieties", page.count, { count: page.count })}
         </p>
@@ -68,7 +81,10 @@ export async function CatalogResults({ searchParams }: { searchParams: Promise<R
       </div>
 
       <div className="flex items-start gap-8">
-        <aside aria-label={t("Filters")} className="hidden w-64 shrink-0 lg:block">
+        <aside
+          aria-label={t("Filters")}
+          className="hidden w-64 shrink-0 rounded-xl bg-card/95 p-5 shadow-sm ring-1 ring-foreground/10 lg:block"
+        >
           <FiltersPanel query={query} options={options} basePath={basePath} />
         </aside>
 
@@ -106,7 +122,12 @@ export async function CatalogResults({ searchParams }: { searchParams: Promise<R
             </div>
           )}
 
-          <Pagination query={query} totalPages={totalPages} basePath={basePath} t={t} />
+          <Pagination
+            page={query.page}
+            totalPages={totalPages}
+            hrefFor={(page) => catalogHref(basePath, withPage(query, page))}
+            t={t}
+          />
         </div>
       </div>
     </div>

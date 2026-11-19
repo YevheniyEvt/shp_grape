@@ -1,6 +1,6 @@
 import type { CSSProperties } from "react";
 
-import type { SiteSettings } from "@/lib/site-settings";
+import type { SiteSettings } from "@/lib/api/content";
 
 export const DEFAULT_BACKGROUND = "/images/grape-pattern.svg";
 
@@ -10,7 +10,11 @@ export const DEFAULT_BACKGROUND = "/images/grape-pattern.svg";
  * An uploaded photo covers the viewport under a translucent wash of the theme background,
  * so text stays readable; without a photo the built-in grape pattern is tiled.
  */
-export function SiteBackground({ settings }: { settings: SiteSettings }) {
+export function SiteBackground({
+  settings,
+}: {
+  settings: Pick<SiteSettings, "show_background" | "background_image">;
+}) {
   if (!settings.show_background) return null;
 
   const photo = settings.background_image;

@@ -1,4 +1,4 @@
-"""Fill the database with demo data: varieties with photos and videos, and an admin user."""
+"""Fill the database with demo data: varieties, content (news, articles, gallery), an admin."""
 
 import os
 from pathlib import Path
@@ -6,6 +6,7 @@ from pathlib import Path
 from django.core.management.base import BaseCommand, CommandParser
 
 from apps.catalog import demo as catalog_demo
+from apps.content import demo as content_demo
 from apps.core.services import ensure_superuser
 
 
@@ -33,6 +34,7 @@ class Command(BaseCommand):
         if reset:
             deleted = catalog_demo.delete_demo_varieties()
             self.stdout.write(f"Deleted demo varieties: {deleted}")
+            self.stdout.write(f"Deleted demo content objects: {content_demo.delete_demo_content()}")
 
         report = catalog_demo.seed_varieties(photos_dir)
         self.stdout.write(
@@ -41,6 +43,8 @@ class Command(BaseCommand):
                 f"already present: {len(report.skipped)}"
             )
         )
+        content = content_demo.seed_content()
+        self.stdout.write(self.style.SUCCESS(f"Content objects created: {len(content.created)}"))
         self._ensure_superuser()
 
     def _ensure_superuser(self) -> None:

@@ -8,6 +8,14 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n % 10 == 1 && n % 100 != 11 ? 0 : n % 1 == 0 && n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || (n % 100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
 
+#: frontend/src/app/[lang]/gallery/page.tsx
+msgid "%(count)s photo"
+msgid_plural "%(count)s photos"
+msgstr[0] "%(count)s фото"
+msgstr[1] "%(count)s фото"
+msgstr[2] "%(count)s фото"
+msgstr[3] "%(count)s фото"
+
 #: frontend/src/components/catalog/catalog-results.tsx
 msgid "%(count)s variety"
 msgid_plural "%(count)s varieties"
@@ -44,9 +52,37 @@ msgstr "%(value)s бала"
 msgid "%(value)s °C"
 msgstr "%(value)s °C"
 
+#: frontend/src/app/[lang]/page.tsx
+msgid "About the vineyard"
+msgstr "Про виноградник"
+
+#: frontend/src/app/[lang]/about/page.tsx frontend/src/components/layout/footer.tsx
+msgid "About us"
+msgstr "Про нас"
+
 #: frontend/src/components/catalog/variety-card.tsx frontend/src/components/variety/price-block.tsx
 msgid "Add to cart"
 msgstr "У кошик"
+
+#: frontend/src/app/[lang]/contacts/page.tsx
+msgid "Address"
+msgstr "Адреса"
+
+#: frontend/src/components/content/gallery-tabs.tsx
+msgid "Albums"
+msgstr "Альбоми"
+
+#: frontend/src/app/[lang]/gallery/[slug]/page.tsx
+msgid "All albums"
+msgstr "Усі альбоми"
+
+#: frontend/src/app/[lang]/page.tsx
+msgid "All articles"
+msgstr "Усі статті"
+
+#: frontend/src/app/[lang]/gallery/all/page.tsx frontend/src/components/content/gallery-tabs.tsx
+msgid "All photos"
+msgstr "Усі фото"
 
 #: frontend/src/components/layout/footer.tsx
 msgid "All rights reserved."
@@ -56,9 +92,13 @@ msgstr "Усі права захищені."
 msgid "Also known as"
 msgstr "Інші назви"
 
-#: frontend/src/app/[lang]/articles/page.tsx frontend/src/config/site.ts
+#: frontend/src/app/[lang]/articles/page.tsx frontend/src/components/content/publications.tsx frontend/src/config/site.ts
 msgid "Articles"
 msgstr "Статті"
+
+#: frontend/src/app/[lang]/articles/page.tsx
+msgid "Articles about growing table grapes."
+msgstr "Статті про вирощування столового винограду."
 
 #: frontend/src/components/catalog/variety-card.tsx
 msgid "Berry"
@@ -84,7 +124,7 @@ msgstr "Маса ягоди"
 msgid "Berry weight, g"
 msgstr "Маса ягоди, г"
 
-#: frontend/src/components/variety/variety-details.tsx
+#: frontend/src/components/content/publications.tsx frontend/src/components/variety/variety-details.tsx
 msgid "Breadcrumbs"
 msgstr "Навігаційний ланцюжок"
 
@@ -128,11 +168,15 @@ msgstr "Змінити мову"
 msgid "Characteristics"
 msgstr "Характеристики"
 
+#: frontend/src/app/[lang]/page.tsx
+msgid "Choose varieties"
+msgstr "Оберіть сорти"
+
 #: frontend/src/components/catalog/catalog-search.tsx
 msgid "Clear search"
 msgstr "Очистити пошук"
 
-#: frontend/src/components/variety/variety-gallery.tsx
+#: frontend/src/components/media/photo-album.tsx frontend/src/components/variety/variety-gallery.tsx
 msgid "Close"
 msgstr "Закрити"
 
@@ -152,6 +196,10 @@ msgstr "Зменшити кількість"
 msgid "Description"
 msgstr "Опис"
 
+#: frontend/src/app/[lang]/page.tsx
+msgid "Did not find the variety you need?"
+msgstr "Не знайшли потрібний сорт?"
+
 #: frontend/src/components/variety/characteristics.tsx
 msgid "Disease susceptibility"
 msgstr "Ураження хворобами"
@@ -164,13 +212,21 @@ msgstr "Ураження хворобами, бали"
 msgid "down to %(value)s °C"
 msgstr "до %(value)s °C"
 
-#: frontend/src/components/variety/variety-gallery.tsx
+#: frontend/src/app/[lang]/contacts/page.tsx frontend/src/components/content/contact-form.tsx
+msgid "Email"
+msgstr "Email"
+
+#: frontend/src/components/media/photo-album.tsx frontend/src/components/variety/variety-gallery.tsx
 msgid "Exit full screen"
 msgstr "Вийти з повноекранного режиму"
 
 #: frontend/src/components/catalog/catalog-results.tsx frontend/src/components/catalog/filters-panel.tsx
 msgid "Filters"
 msgstr "Фільтри"
+
+#: frontend/src/config/site.ts
+msgid "Forum"
+msgstr "Форум"
 
 #: frontend/src/components/catalog/variety-card.tsx
 msgid "from %(price)s"
@@ -188,11 +244,11 @@ msgstr "Морозостійкість"
 msgid "Frost resistance, °C"
 msgstr "Морозостійкість, °C"
 
-#: frontend/src/components/variety/variety-gallery.tsx
+#: frontend/src/components/media/photo-album.tsx frontend/src/components/variety/variety-gallery.tsx
 msgid "Full screen"
 msgstr "На весь екран"
 
-#: frontend/src/app/[lang]/gallery/page.tsx frontend/src/config/site.ts
+#: frontend/src/app/[lang]/gallery/all/page.tsx frontend/src/app/[lang]/gallery/page.tsx frontend/src/components/content/gallery-tabs.tsx frontend/src/config/site.ts
 msgid "Gallery"
 msgstr "Галерея"
 
@@ -212,9 +268,21 @@ msgstr "Сорт винограду %(name)s: фото, характеристи
 msgid "Growth vigour"
 msgstr "Сила росту"
 
-#: frontend/src/components/variety/variety-details.tsx frontend/src/config/site.ts
+#: frontend/src/components/content/publications.tsx frontend/src/components/variety/variety-details.tsx frontend/src/config/site.ts
 msgid "Home"
 msgstr "Головна"
+
+#: frontend/src/app/[lang]/contacts/page.tsx
+msgid "How to contact us and find the vineyard."
+msgstr "Як зв'язатися з нами й знайти виноградник."
+
+#: frontend/src/app/[lang]/contacts/page.tsx
+msgid "How to find us"
+msgstr "Як нас знайти"
+
+#: frontend/src/app/[lang]/page.tsx
+msgid "How to order"
+msgstr "Як замовити"
 
 #: frontend/src/components/catalog/variety-card.tsx
 msgid "In stock"
@@ -232,13 +300,45 @@ msgstr "Лише в наявності"
 msgid "Increase quantity"
 msgstr "Збільшити кількість"
 
+#: frontend/src/app/[lang]/page.tsx
+msgid "Latest articles"
+msgstr "Останні статті"
+
+#: frontend/src/app/[lang]/page.tsx
+msgid "Latest news"
+msgstr "Остання новина"
+
+#: frontend/src/app/[lang]/page.tsx
+msgid "Leave a pre-order and we will let you know when it is available."
+msgstr "Залиште передзамовлення, і ми повідомимо, коли він з'явиться."
+
+#: frontend/src/components/catalog/catalog-results.tsx
+msgid "Letter: %(letter)s"
+msgstr "Літера: %(letter)s"
+
+#: frontend/src/components/content/photo-feed.tsx
+msgid "Loading…"
+msgstr "Завантаження…"
+
 #: frontend/src/components/layout/header.tsx frontend/src/components/layout/mobile-menu.tsx
 msgid "Main menu"
 msgstr "Головне меню"
 
+#: frontend/src/app/[lang]/contacts/page.tsx
+msgid "Map"
+msgstr "Карта"
+
 #: frontend/src/components/layout/mobile-menu.tsx
 msgid "Menu"
 msgstr "Меню"
+
+#: frontend/src/components/content/contact-form.tsx
+msgid "Message"
+msgstr "Повідомлення"
+
+#: frontend/src/app/[lang]/page.tsx
+msgid "More about us"
+msgstr "Більше про нас"
 
 #: frontend/src/components/catalog/sort-select.tsx
 msgid "Most popular"
@@ -252,17 +352,25 @@ msgstr "Звузити список сортів"
 msgid "Newest first"
 msgstr "Спершу нові"
 
-#: frontend/src/app/[lang]/news/page.tsx frontend/src/config/site.ts
+#: frontend/src/app/[lang]/news/page.tsx frontend/src/components/content/publications.tsx frontend/src/config/site.ts
 msgid "News"
 msgstr "Новини"
 
-#: frontend/src/components/catalog/pagination.tsx frontend/src/components/variety/variety-gallery.tsx
+#: frontend/src/app/[lang]/news/page.tsx
+msgid "News of our vineyard."
+msgstr "Новини нашого виноградника."
+
+#: frontend/src/components/common/pagination.tsx frontend/src/components/media/photo-album.tsx frontend/src/components/variety/variety-gallery.tsx
 msgid "Next"
 msgstr "Далі"
 
 #: frontend/src/components/catalog/catalog-results.tsx
 msgid "Nothing found"
 msgstr "Нічого не знайдено"
+
+#: frontend/src/app/[lang]/gallery/all/page.tsx frontend/src/app/[lang]/gallery/page.tsx frontend/src/app/[lang]/links/page.tsx frontend/src/components/content/publications.tsx
+msgid "Nothing has been published yet."
+msgstr "Тут поки нічого не опубліковано."
 
 #: frontend/src/components/layout/mobile-menu.tsx
 msgid "Open menu"
@@ -284,23 +392,43 @@ msgstr "Немає в наявності"
 msgid "out of stock"
 msgstr "немає в наявності"
 
+#: frontend/src/app/[lang]/contacts/page.tsx
+msgid "Owner"
+msgstr "Власник"
+
 #: frontend/src/app/[lang]/not-found.tsx
 msgid "Page not found"
 msgstr "Сторінку не знайдено"
 
-#: frontend/src/components/catalog/pagination.tsx
+#: frontend/src/components/common/pagination.tsx
 msgid "Pages"
 msgstr "Сторінки"
+
+#: frontend/src/app/[lang]/contacts/page.tsx
+msgid "Phones"
+msgstr "Телефони"
+
+#: frontend/src/components/content/publications.tsx
+msgid "Photos"
+msgstr "Фото"
 
 #: frontend/src/components/variety/variety-gallery.tsx
 msgid "Photos of %(name)s"
 msgstr "Фото сорту %(name)s"
 
+#: frontend/src/app/[lang]/gallery/all/page.tsx frontend/src/app/[lang]/gallery/page.tsx
+msgid "Photos of our vineyard and grape varieties."
+msgstr "Фото нашого виноградника й сортів винограду."
+
+#: frontend/src/app/[lang]/page.tsx
+msgid "Place an order"
+msgstr "Оформіть замовлення"
+
 #: frontend/src/app/[lang]/page.tsx frontend/src/app/[lang]/preorder/page.tsx frontend/src/config/site.ts
 msgid "Pre-order"
 msgstr "Передзамовлення"
 
-#: frontend/src/components/catalog/pagination.tsx frontend/src/components/variety/variety-gallery.tsx
+#: frontend/src/components/common/pagination.tsx frontend/src/components/media/photo-album.tsx frontend/src/components/variety/variety-gallery.tsx
 msgid "Previous"
 msgstr "Назад"
 
@@ -324,9 +452,21 @@ msgstr "М'якоть"
 msgid "Quantity"
 msgstr "Кількість"
 
+#: frontend/src/app/[lang]/page.tsx
+msgid "Receive the parcel"
+msgstr "Отримайте посилку"
+
 #: frontend/src/components/catalog/variety-card.tsx frontend/src/components/variety/variety-details.tsx
 msgid "Recommended"
 msgstr "Рекомендуємо"
+
+#: frontend/src/app/[lang]/page.tsx
+msgid "Recommended varieties"
+msgstr "Рекомендовані сорти"
+
+#: frontend/src/components/catalog/catalog-results.tsx
+msgid "Remove the letter filter"
+msgstr "Прибрати фільтр за літерою"
 
 #: frontend/src/components/catalog/catalog-results.tsx frontend/src/components/catalog/filters-panel.tsx
 msgid "Reset filters"
@@ -344,6 +484,18 @@ msgstr "Саджанець"
 msgid "Search by name"
 msgstr "Пошук за назвою"
 
+#: frontend/src/components/content/contact-form.tsx
+msgid "Send"
+msgstr "Надіслати"
+
+#: frontend/src/app/[lang]/page.tsx
+msgid "Send a pre-order or call us: we will confirm availability and the price."
+msgstr "Надішліть передзамовлення або зателефонуйте: ми підтвердимо наявність і ціну."
+
+#: frontend/src/components/content/contact-form.tsx
+msgid "Sending messages will be available soon. Please call or email us for now."
+msgstr "Надсилання повідомлень незабаром запрацює. Поки що телефонуйте або пишіть на email."
+
 #: frontend/src/components/variety/variety-gallery.tsx
 msgid "Show photo %(number)s"
 msgstr "Показати фото %(number)s"
@@ -359,6 +511,10 @@ msgstr "Карта сайту"
 #: frontend/src/components/catalog/sort-select.tsx
 msgid "Sort"
 msgstr "Сортування"
+
+#: frontend/src/components/content/contact-form.tsx
+msgid "Subject"
+msgstr "Тема"
 
 #: frontend/src/app/[lang]/page.tsx
 msgid "Table grape varieties for every garden"
@@ -388,9 +544,17 @@ msgstr "Цього сорту зараз немає в наявності."
 msgid "Try changing the search or the filters."
 msgstr "Спробуйте змінити пошук або фільтри."
 
+#: frontend/src/app/[lang]/page.tsx
+msgid "Use the catalog filters to find varieties for your region and taste."
+msgstr "Скористайтеся фільтрами каталогу, щоб знайти сорти для свого регіону й смаку."
+
 #: frontend/src/app/[lang]/links/page.tsx frontend/src/config/site.ts
 msgid "Useful links"
 msgstr "Корисні посилання"
+
+#: frontend/src/app/[lang]/links/page.tsx
+msgid "Useful materials about growing grapes."
+msgstr "Корисні матеріали про вирощування винограду."
 
 #: frontend/src/components/catalog/catalog-results.tsx frontend/src/components/layout/header.tsx
 msgid "Varieties by letter"
@@ -400,22 +564,38 @@ msgstr "Сорти за літерою"
 msgid "Variety catalog"
 msgstr "Каталог сортів"
 
-#: frontend/src/components/variety/variety-details.tsx
+#: frontend/src/components/content/publications.tsx frontend/src/components/variety/variety-details.tsx
 msgid "Videos"
 msgstr "Відео"
 
-#: frontend/src/app/[lang]/layout.tsx frontend/src/app/[lang]/page.tsx frontend/src/components/layout/footer.tsx frontend/src/components/layout/header.tsx
+#: frontend/src/config/site.ts
 msgid "Vineyard"
 msgstr "Виноградник"
 
-#: frontend/src/components/layout/header.tsx
+#: frontend/src/app/[lang]/page.tsx
+msgid "We pack cuttings and saplings carefully and ship them in the planting season."
+msgstr "Ми дбайливо пакуємо живці й саджанці та відправляємо їх у сезон посадки."
+
+#: frontend/src/app/[lang]/page.tsx
+msgid "Whole catalog"
+msgstr "Увесь каталог"
+
+#: frontend/src/app/[lang]/contacts/page.tsx frontend/src/components/layout/header.tsx
 msgid "Write to us"
 msgstr "Написати нам"
 
-#: frontend/src/components/variety/variety-gallery.tsx
+#: frontend/src/components/content/photo-feed.tsx
+msgid "You have seen all the photos."
+msgstr "Ви переглянули всі фото."
+
+#: frontend/src/components/content/contact-form.tsx
+msgid "Your name"
+msgstr "Ваше ім'я"
+
+#: frontend/src/components/media/photo-album.tsx frontend/src/components/variety/variety-gallery.tsx
 msgid "Zoom in"
 msgstr "Збільшити"
 
-#: frontend/src/components/variety/variety-gallery.tsx
+#: frontend/src/components/media/photo-album.tsx frontend/src/components/variety/variety-gallery.tsx
 msgid "Zoom out"
 msgstr "Зменшити"

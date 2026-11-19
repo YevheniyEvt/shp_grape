@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: shp_grape\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-19 21:37+0200\n"
+"POT-Creation-Date: 2026-11-19 22:36+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -255,10 +255,82 @@ msgstr ""
 msgid "Enter a link to a YouTube video."
 msgstr ""
 
+msgid "Site"
+msgstr ""
+
+msgid "Contacts"
+msgstr ""
+
+msgid "Links"
+msgstr ""
+
 msgid "Background"
 msgstr ""
 
+msgid "cover"
+msgstr ""
+
+msgid "Text"
+msgstr ""
+
 msgid "Content"
+msgstr ""
+
+msgid "site name"
+msgstr ""
+
+msgid "tagline"
+msgstr ""
+
+msgid "welcome text"
+msgstr ""
+
+msgid "home page photo"
+msgstr ""
+
+msgid "A wide photo for the top of the home page."
+msgstr ""
+
+msgid "owner"
+msgstr ""
+
+msgid "phones"
+msgstr ""
+
+msgid "One phone number per line."
+msgstr ""
+
+msgid "email"
+msgstr ""
+
+msgid "address"
+msgstr ""
+
+msgid "map latitude"
+msgstr ""
+
+msgid "map longitude"
+msgstr ""
+
+msgid "price list"
+msgstr ""
+
+msgid "A file visitors can download (PDF, Word or Excel)."
+msgstr ""
+
+msgid "Facebook"
+msgstr ""
+
+msgid "Instagram"
+msgstr ""
+
+msgid "YouTube channel"
+msgstr ""
+
+msgid "Telegram"
+msgstr ""
+
+msgid "forum"
 msgstr ""
 
 msgid "show background image"
@@ -279,6 +351,63 @@ msgid "site settings"
 msgstr ""
 
 msgid "Site settings"
+msgstr ""
+
+msgid "publication date"
+msgstr ""
+
+msgid "A future date hides the entry until that day."
+msgstr ""
+
+msgid "text"
+msgstr ""
+
+msgid "news item"
+msgstr ""
+
+msgid "news"
+msgstr ""
+
+msgid "excerpt"
+msgstr ""
+
+msgid "A short summary for the list of articles."
+msgstr ""
+
+msgid "author"
+msgstr ""
+
+msgid "article"
+msgstr ""
+
+msgid "articles"
+msgstr ""
+
+msgid "caption"
+msgstr ""
+
+msgid "link"
+msgstr ""
+
+msgid "useful link"
+msgstr ""
+
+msgid "useful links"
+msgstr ""
+
+msgid "page"
+msgstr ""
+
+msgid "pages"
+msgstr ""
+
+msgid "date"
+msgstr ""
+
+msgid "album"
+msgstr ""
+
+msgid "albums"
 msgstr ""
 
 msgid "Core"

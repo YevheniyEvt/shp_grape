@@ -13,14 +13,24 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { phoneHref, siteContacts, type NavItem } from "@/config/site";
+import { phoneHref, type NavItem } from "@/config/site";
 import { useT } from "@/i18n/client";
 import type { SiteLanguage } from "@/i18n/server";
 
 import { LanguageSwitcher } from "./language-switcher";
 
 /** Burger menu for small screens: navigation, language switcher and contacts. */
-export function MobileMenu({ nav, languages }: { nav: NavItem[]; languages: SiteLanguage[] }) {
+export function MobileMenu({
+  nav,
+  languages,
+  phones,
+  email,
+}: {
+  nav: NavItem[];
+  languages: SiteLanguage[];
+  phones: string[];
+  email?: string;
+}) {
   const { t, href } = useT();
 
   return (
@@ -48,16 +58,18 @@ export function MobileMenu({ nav, languages }: { nav: NavItem[]; languages: Site
         </nav>
         <Separator className="my-2" />
         <div className="flex flex-col gap-3 px-6 text-sm">
-          {siteContacts.phones.map((phone) => (
+          {phones.map((phone) => (
             <a key={phone} href={phoneHref(phone)} className="flex items-center gap-2">
               <PhoneIcon className="size-4 text-primary" aria-hidden="true" />
               {phone}
             </a>
           ))}
-          <a href={`mailto:${siteContacts.email}`} className="flex items-center gap-2">
-            <MailIcon className="size-4 text-primary" aria-hidden="true" />
-            {siteContacts.email}
-          </a>
+          {email && (
+            <a href={`mailto:${email}`} className="flex items-center gap-2">
+              <MailIcon className="size-4 text-primary" aria-hidden="true" />
+              {email}
+            </a>
+          )}
           <div className="-ml-3">
             <LanguageSwitcher languages={languages} />
           </div>
