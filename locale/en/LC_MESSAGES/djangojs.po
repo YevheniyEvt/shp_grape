@@ -8,6 +8,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+#: frontend/src/components/cart/cart-view.tsx
+msgid "%(count)s item is no longer sold and was removed from the cart."
+msgid_plural "%(count)s items are no longer sold and were removed from the cart."
+msgstr[0] ""
+msgstr[1] ""
+
 #: frontend/src/app/[lang]/gallery/page.tsx
 msgid "%(count)s photo"
 msgid_plural "%(count)s photos"
@@ -46,6 +52,10 @@ msgstr ""
 msgid "%(value)s °C"
 msgstr ""
 
+#: frontend/src/app/[lang]/preorder/page.tsx
+msgid "A variety is sold out or not in the catalog yet? Tell us what you need, and we will reserve it from the next harvest and contact you."
+msgstr ""
+
 #: frontend/src/app/[lang]/page.tsx
 msgid "About the vineyard"
 msgstr ""
@@ -54,8 +64,12 @@ msgstr ""
 msgid "About us"
 msgstr ""
 
-#: frontend/src/components/catalog/variety-card.tsx frontend/src/components/variety/price-block.tsx
+#: frontend/src/components/cart/add-to-cart-button.tsx frontend/src/components/catalog/variety-card.tsx
 msgid "Add to cart"
+msgstr ""
+
+#: frontend/src/components/cart/add-to-cart-button.tsx
+msgid "Added to cart"
 msgstr ""
 
 #: frontend/src/app/[lang]/contacts/page.tsx
@@ -94,6 +108,10 @@ msgstr ""
 msgid "Articles about growing table grapes."
 msgstr ""
 
+#: frontend/src/app/[lang]/order/success/[number]/page.tsx
+msgid "Back to the catalog"
+msgstr ""
+
 #: frontend/src/components/catalog/variety-card.tsx
 msgid "Berry"
 msgstr ""
@@ -116,6 +134,10 @@ msgstr ""
 
 #: frontend/src/components/catalog/filters-panel.tsx
 msgid "Berry weight, g"
+msgstr ""
+
+#: frontend/src/components/cart/checkout-form.tsx
+msgid "Branch or parcel locker number."
 msgstr ""
 
 #: frontend/src/components/content/publications.tsx frontend/src/components/variety/variety-details.tsx
@@ -162,27 +184,47 @@ msgstr ""
 msgid "Characteristics"
 msgstr ""
 
+#: frontend/src/app/[lang]/checkout/page.tsx frontend/src/components/cart/cart-view.tsx
+msgid "Checkout"
+msgstr ""
+
 #: frontend/src/app/[lang]/page.tsx
 msgid "Choose varieties"
+msgstr ""
+
+#: frontend/src/components/cart/checkout-form.tsx
+msgid "City"
 msgstr ""
 
 #: frontend/src/components/catalog/catalog-search.tsx
 msgid "Clear search"
 msgstr ""
 
+#: frontend/src/components/cart/cart-view.tsx
+msgid "Clear the cart"
+msgstr ""
+
 #: frontend/src/components/media/photo-album.tsx frontend/src/components/variety/variety-gallery.tsx
 msgid "Close"
+msgstr ""
+
+#: frontend/src/components/cart/checkout-form.tsx
+msgid "Comment"
 msgstr ""
 
 #: frontend/src/app/[lang]/contacts/page.tsx frontend/src/components/layout/footer.tsx frontend/src/config/site.ts
 msgid "Contacts"
 msgstr ""
 
-#: frontend/src/components/variety/price-block.tsx
+#: frontend/src/components/cart/add-to-cart-button.tsx frontend/src/components/cart/cart-view.tsx frontend/src/components/variety/price-block.tsx
 msgid "Cutting"
 msgstr ""
 
-#: frontend/src/components/variety/price-block.tsx
+#: frontend/src/components/cart/checkout-form.tsx
+msgid "cutting"
+msgstr ""
+
+#: frontend/src/components/cart/quantity-input.tsx
 msgid "Decrease quantity"
 msgstr ""
 
@@ -206,8 +248,16 @@ msgstr ""
 msgid "down to %(value)s °C"
 msgstr ""
 
-#: frontend/src/app/[lang]/contacts/page.tsx frontend/src/components/content/contact-form.tsx
+#: frontend/src/app/[lang]/contacts/page.tsx frontend/src/components/cart/checkout-form.tsx frontend/src/components/content/contact-form.tsx frontend/src/components/forms/preorder-form.tsx
 msgid "Email"
+msgstr ""
+
+#: frontend/src/lib/form-schemas.ts
+msgid "Enter a valid email address."
+msgstr ""
+
+#: frontend/src/lib/form-schemas.ts
+msgid "Enter the full phone number."
 msgstr ""
 
 #: frontend/src/components/media/photo-album.tsx frontend/src/components/variety/variety-gallery.tsx
@@ -238,6 +288,10 @@ msgstr ""
 msgid "Frost resistance, °C"
 msgstr ""
 
+#: frontend/src/components/cart/checkout-form.tsx frontend/src/components/forms/preorder-form.tsx
+msgid "Full name"
+msgstr ""
+
 #: frontend/src/components/media/photo-album.tsx frontend/src/components/variety/variety-gallery.tsx
 msgid "Full screen"
 msgstr ""
@@ -246,8 +300,16 @@ msgstr ""
 msgid "Gallery"
 msgstr ""
 
+#: frontend/src/components/cart/add-to-cart-button.tsx frontend/src/components/cart/checkout-form.tsx
+msgid "Go to cart"
+msgstr ""
+
 #: frontend/src/app/[lang]/not-found.tsx
 msgid "Go to home page"
+msgstr ""
+
+#: frontend/src/components/cart/cart-view.tsx frontend/src/components/cart/checkout-form.tsx
+msgid "Go to the catalog"
 msgstr ""
 
 #: frontend/src/app/[lang]/layout.tsx frontend/src/app/[lang]/page.tsx frontend/src/components/layout/footer.tsx
@@ -264,6 +326,10 @@ msgstr ""
 
 #: frontend/src/components/content/publications.tsx frontend/src/components/variety/variety-details.tsx frontend/src/config/site.ts
 msgid "Home"
+msgstr ""
+
+#: frontend/src/components/cart/checkout-form.tsx
+msgid "How should we contact you?"
 msgstr ""
 
 #: frontend/src/app/[lang]/contacts/page.tsx
@@ -290,7 +356,7 @@ msgstr ""
 msgid "In stock only"
 msgstr ""
 
-#: frontend/src/components/variety/price-block.tsx
+#: frontend/src/components/cart/quantity-input.tsx
 msgid "Increase quantity"
 msgstr ""
 
@@ -358,12 +424,20 @@ msgstr ""
 msgid "Next"
 msgstr ""
 
+#: frontend/src/components/forms/form-parts.tsx
+msgid "No connection to the server. Check the internet and try again."
+msgstr ""
+
 #: frontend/src/components/catalog/catalog-results.tsx
 msgid "Nothing found"
 msgstr ""
 
 #: frontend/src/app/[lang]/gallery/all/page.tsx frontend/src/app/[lang]/gallery/page.tsx frontend/src/app/[lang]/links/page.tsx frontend/src/components/content/publications.tsx
 msgid "Nothing has been published yet."
+msgstr ""
+
+#: frontend/src/components/cart/checkout-form.tsx
+msgid "Nova Poshta office"
 msgstr ""
 
 #: frontend/src/components/layout/mobile-menu.tsx
@@ -374,11 +448,11 @@ msgstr ""
 msgid "Open photo %(number)s of %(total)s"
 msgstr ""
 
-#: frontend/src/components/catalog/variety-card.tsx frontend/src/components/variety/price-block.tsx
-msgid "Ordering will be available soon"
+#: frontend/src/app/[lang]/preorder/page.tsx
+msgid "Order cuttings and saplings of varieties that are not available yet."
 msgstr ""
 
-#: frontend/src/components/catalog/variety-card.tsx
+#: frontend/src/components/cart/cart-view.tsx frontend/src/components/catalog/variety-card.tsx
 msgid "Out of stock"
 msgstr ""
 
@@ -396,6 +470,14 @@ msgstr ""
 
 #: frontend/src/components/common/pagination.tsx
 msgid "Pages"
+msgstr ""
+
+#: frontend/src/components/cart/checkout-form.tsx frontend/src/components/forms/preorder-form.tsx
+msgid "Phone"
+msgstr ""
+
+#: frontend/src/components/cart/checkout-form.tsx
+msgid "Phone call"
 msgstr ""
 
 #: frontend/src/app/[lang]/contacts/page.tsx
@@ -418,6 +500,14 @@ msgstr ""
 msgid "Place an order"
 msgstr ""
 
+#: frontend/src/components/cart/checkout-form.tsx
+msgid "Place the order"
+msgstr ""
+
+#: frontend/src/components/forms/form-parts.tsx
+msgid "Please correct the highlighted fields."
+msgstr ""
+
 #: frontend/src/app/[lang]/page.tsx frontend/src/app/[lang]/preorder/page.tsx frontend/src/config/site.ts
 msgid "Pre-order"
 msgstr ""
@@ -428,6 +518,10 @@ msgstr ""
 
 #: frontend/src/components/layout/header.tsx
 msgid "Price list"
+msgstr ""
+
+#: frontend/src/components/cart/cart-view.tsx
+msgid "Prices of some items have changed. The cart shows the current prices."
 msgstr ""
 
 #: frontend/src/components/variety/print-button.tsx
@@ -442,8 +536,12 @@ msgstr ""
 msgid "Pulp"
 msgstr ""
 
-#: frontend/src/components/variety/price-block.tsx
+#: frontend/src/components/cart/quantity-input.tsx
 msgid "Quantity"
+msgstr ""
+
+#: frontend/src/components/cart/cart-view.tsx
+msgid "Quantity of %(name)s"
 msgstr ""
 
 #: frontend/src/app/[lang]/page.tsx
@@ -458,6 +556,10 @@ msgstr ""
 msgid "Recommended varieties"
 msgstr ""
 
+#: frontend/src/components/cart/cart-view.tsx
+msgid "Remove %(name)s"
+msgstr ""
+
 #: frontend/src/components/catalog/catalog-results.tsx
 msgid "Remove the letter filter"
 msgstr ""
@@ -470,8 +572,12 @@ msgstr ""
 msgid "Ripening period"
 msgstr ""
 
-#: frontend/src/components/variety/price-block.tsx
+#: frontend/src/components/cart/add-to-cart-button.tsx frontend/src/components/cart/cart-view.tsx frontend/src/components/variety/price-block.tsx
 msgid "Sapling"
+msgstr ""
+
+#: frontend/src/components/cart/checkout-form.tsx
+msgid "sapling"
 msgstr ""
 
 #: frontend/src/components/catalog/catalog-search.tsx
@@ -486,8 +592,12 @@ msgstr ""
 msgid "Send a pre-order or call us: we will confirm availability and the price."
 msgstr ""
 
-#: frontend/src/components/content/contact-form.tsx
-msgid "Sending messages will be available soon. Please call or email us for now."
+#: frontend/src/components/forms/preorder-form.tsx
+msgid "Send the pre-order"
+msgstr ""
+
+#: frontend/src/components/cart/checkout-form.tsx frontend/src/components/content/contact-form.tsx frontend/src/components/forms/preorder-form.tsx
+msgid "Sending…"
 msgstr ""
 
 #: frontend/src/components/variety/variety-gallery.tsx
@@ -500,6 +610,14 @@ msgstr ""
 
 #: frontend/src/components/layout/footer.tsx
 msgid "Site map"
+msgstr ""
+
+#: frontend/src/components/cart/cart-view.tsx
+msgid "Some items are out of stock now. Remove them to place the order."
+msgstr ""
+
+#: frontend/src/components/forms/form-parts.tsx
+msgid "Something went wrong on our side. Please try again later or call us."
 msgstr ""
 
 #: frontend/src/components/catalog/sort-select.tsx
@@ -522,8 +640,32 @@ msgstr ""
 msgid "Taste"
 msgstr ""
 
+#: frontend/src/app/[lang]/order/success/[number]/page.tsx
+msgid "Thank you for your order"
+msgstr ""
+
+#: frontend/src/app/[lang]/order/success/[number]/page.tsx
+msgid "Thank you for your order!"
+msgstr ""
+
+#: frontend/src/components/content/contact-form.tsx
+msgid "Thank you! Your message is sent."
+msgstr ""
+
+#: frontend/src/components/forms/preorder-form.tsx
+msgid "Thank you! Your pre-order is sent."
+msgstr ""
+
+#: frontend/src/components/cart/checkout-form.tsx
+msgid "The order is placed. Opening the confirmation…"
+msgstr ""
+
 #: frontend/src/app/[lang]/not-found.tsx
 msgid "The page you are looking for does not exist or has been moved."
+msgstr ""
+
+#: frontend/src/lib/form-schemas.ts
+msgid "This field is required."
 msgstr ""
 
 #: frontend/src/components/common/page-stub.tsx
@@ -532,6 +674,18 @@ msgstr ""
 
 #: frontend/src/components/variety/price-block.tsx
 msgid "This variety is not available now."
+msgstr ""
+
+#: frontend/src/lib/form-schemas.ts
+msgid "Too long."
+msgstr ""
+
+#: frontend/src/components/forms/form-parts.tsx
+msgid "Too many requests. Please try again in an hour or call us."
+msgstr ""
+
+#: frontend/src/components/cart/cart-view.tsx frontend/src/components/cart/checkout-form.tsx
+msgid "Total"
 msgstr ""
 
 #: frontend/src/components/catalog/catalog-results.tsx
@@ -554,6 +708,10 @@ msgstr ""
 msgid "Varieties by letter"
 msgstr ""
 
+#: frontend/src/components/forms/preorder-form.tsx
+msgid "Varieties, cuttings or saplings, quantities."
+msgstr ""
+
 #: frontend/src/app/[lang]/catalog/page.tsx frontend/src/app/[lang]/page.tsx
 msgid "Variety catalog"
 msgstr ""
@@ -570,6 +728,30 @@ msgstr ""
 msgid "We pack cuttings and saplings carefully and ship them in the planting season."
 msgstr ""
 
+#: frontend/src/app/[lang]/order/success/[number]/page.tsx
+msgid "We will contact you soon to confirm the order and arrange the delivery. If you left an email, the confirmation is already there."
+msgstr ""
+
+#: frontend/src/components/cart/checkout-form.tsx
+msgid "We will contact you to confirm the order, delivery and payment."
+msgstr ""
+
+#: frontend/src/components/forms/preorder-form.tsx
+msgid "We will contact you when the varieties are available."
+msgstr ""
+
+#: frontend/src/components/content/contact-form.tsx
+msgid "We will reply to your email soon."
+msgstr ""
+
+#: frontend/src/components/cart/checkout-form.tsx
+msgid "We will send the order confirmation there."
+msgstr ""
+
+#: frontend/src/components/forms/preorder-form.tsx
+msgid "What would you like to order?"
+msgstr ""
+
 #: frontend/src/app/[lang]/page.tsx
 msgid "Whole catalog"
 msgstr ""
@@ -582,8 +764,20 @@ msgstr ""
 msgid "You have seen all the photos."
 msgstr ""
 
+#: frontend/src/components/cart/cart-view.tsx frontend/src/components/cart/checkout-form.tsx
+msgid "Your cart is empty."
+msgstr ""
+
 #: frontend/src/components/content/contact-form.tsx
 msgid "Your name"
+msgstr ""
+
+#: frontend/src/components/cart/checkout-form.tsx
+msgid "Your order"
+msgstr ""
+
+#: frontend/src/app/[lang]/order/success/[number]/page.tsx
+msgid "Your order number is"
 msgstr ""
 
 #: frontend/src/components/media/photo-album.tsx frontend/src/components/variety/variety-gallery.tsx

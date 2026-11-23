@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import { Lora, Manrope } from "next/font/google";
 
+import { CartHydration } from "@/components/cart/cart-hydration";
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
 import { SiteBackground } from "@/components/layout/site-background";
+import { Toaster } from "@/components/ui/sonner";
 import { I18nProvider } from "@/i18n/client";
 import { locales } from "@/i18n/config";
 import { getCatalog, getLocale, getTranslator } from "@/i18n/server";
@@ -47,6 +49,8 @@ export default async function RootLayout({ children }: LayoutProps<"/[lang]">) {
           <Header />
           <main className="flex-1">{children}</main>
           <Footer />
+          <CartHydration />
+          <Toaster position="top-center" richColors closeButton />
         </I18nProvider>
       </body>
     </html>

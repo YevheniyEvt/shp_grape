@@ -1,0 +1,7 @@
+{% load i18n %}{% translate "Name" %}: {{ order.full_name }}
+{% translate "Phone" %}: {{ order.phone }}{% if order.email %}
+{% translate "Email" %}: {{ order.email }}{% endif %}{% if order.city %}
+{% translate "City" %}: {{ order.city }}{% endif %}{% if order.delivery_office %}
+{% translate "Nova Poshta office" %}: {{ order.delivery_office }}{% endif %}
+{% translate "Preferred contact" %}: {{ order.get_contact_method_display }}{% if order.comment %}
+{% translate "Comment" %}: {{ order.comment }}{% endif %}

@@ -155,12 +155,16 @@ CACHES = {
 
 
 # Email
+# Notifications go to the email from the site settings; the console backend prints them in dev.
 
 MAILERS = {
     "default": {
         "BACKEND": env("EMAIL_BACKEND", default="django.core.mail.backends.console.EmailBackend"),
     },
 }
+DEFAULT_FROM_EMAIL = env("DEFAULT_FROM_EMAIL", default="Vineyard <noreply@localhost>")
+# Public address of the Django site, used for admin links in notification emails.
+BACKEND_URL = env("BACKEND_URL", default="http://127.0.0.1:8000")
 
 
 # Django REST Framework
@@ -171,6 +175,12 @@ REST_FRAMEWORK = {
     "PAGE_SIZE": 24,
     "COERCE_DECIMAL_TO_STRING": False,
     "DEFAULT_FILTER_BACKENDS": ["django_filters.rest_framework.DjangoFilterBackend"],
+    # Per-IP limits of the anonymous forms (ScopedRateThrottle, counters in the cache).
+    "DEFAULT_THROTTLE_RATES": {
+        "cart": "120/hour",
+        "orders": "10/hour",
+        "forms": "10/hour",
+    },
 }
 
 SPECTACULAR_SETTINGS = {

@@ -1,0 +1,2 @@
+{% load i18n %}{% for item in items %}- {{ item.variety_name }}, {{ item.get_kind_display }}: {{ item.quantity }} × {{ item.unit_price|floatformat:"-2" }} ₴ = {{ item.line_total|floatformat:"-2" }} ₴
+{% endfor %}{% translate "Total" %}: {{ order.total|floatformat:"-2" }} ₴

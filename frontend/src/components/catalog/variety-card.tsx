@@ -1,11 +1,13 @@
 import { ShoppingBasketIcon, StarIcon } from "lucide-react";
 import Link from "next/link";
 
+import { AddToCartButton } from "@/components/cart/add-to-cart-button";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import type { Locale } from "@/i18n/config";
 import type { Translator } from "@/i18n/gettext";
 import type { VarietyListItem } from "@/lib/api/catalog";
+import type { ProductKind } from "@/lib/cart/cart";
 import { formatNumber, formatPrice, formatRange, lowestPrice } from "@/lib/format";
 
 import { VarietyImage } from "./variety-image";
@@ -29,6 +31,22 @@ export function StockBadge({ inStock, t }: { inStock: boolean; t: Translator["t"
 
 type Fact = { label: string; value: string };
 
+/** What the card button adds: cuttings when they can be ordered, otherwise saplings. */
+export function cardOffer(
+  variety: Pick<
+    VarietyListItem,
+    "cutting_price" | "cutting_available" | "sapling_price" | "sapling_available"
+  >,
+): { kind: ProductKind; price: number } | null {
+  if (variety.cutting_available && typeof variety.cutting_price === "number") {
+    return { kind: "cutting", price: variety.cutting_price };
+  }
+  if (variety.sapling_available && typeof variety.sapling_price === "number") {
+    return { kind: "sapling", price: variety.sapling_price };
+  }
+  return null;
+}
+
 /** Catalog card: photo, name, badges, key characteristics and the lowest price. */
 export function VarietyCard({
   variety,
@@ -46,6 +64,7 @@ export function VarietyCard({
   const bunch = formatRange(variety.bunch_weight_min, variety.bunch_weight_max, locale);
   const berry = formatRange(variety.berry_weight_min, variety.berry_weight_max, locale);
   const price = lowestPrice([variety.cutting_price, variety.sapling_price]);
+  const offer = cardOffer(variety);
   const facts: Fact[] = [];
   if (bunch) facts.push({ label: t("Bunch"), value: t("%(value)s kg", { value: bunch }) });
   if (berry) facts.push({ label: t("Berry"), value: t("%(value)s g", { value: berry }) });
@@ -101,17 +120,26 @@ export function VarietyCard({
           <span className="font-semibold text-primary">
             {price !== null && t("from %(price)s", { price: formatPrice(price, locale) })}
           </span>
-          {/* Cart arrives in stage 6; the button sits above the stretched link. */}
-          <Button
-            size="sm"
-            variant="outline"
-            className="relative z-10"
-            disabled
-            title={t("Ordering will be available soon")}
-          >
-            <ShoppingBasketIcon aria-hidden="true" />
-            {t("Add to cart")}
-          </Button>
+          {/* The button sits above the stretched link of the card. */}
+          {offer ? (
+            <AddToCartButton
+              size="sm"
+              variant="outline"
+              className="relative z-10"
+              product={{
+                slug: variety.slug ?? "",
+                name: variety.name ?? "",
+                image: variety.main_photo?.thumb ?? null,
+              }}
+              kind={offer.kind}
+              price={offer.price}
+            />
+          ) : (
+            <Button size="sm" variant="outline" disabled>
+              <ShoppingBasketIcon aria-hidden="true" />
+              {t("Add to cart")}
+            </Button>
+          )}
         </div>
       </div>
     </article>

@@ -1,25 +1,18 @@
 "use client";
 
-import { MinusIcon, PlusIcon, ShoppingBasketIcon } from "lucide-react";
 import { useState } from "react";
 
-import { Button } from "@/components/ui/button";
+import { AddToCartButton, type CartProduct } from "@/components/cart/add-to-cart-button";
+import { QuantityInput } from "@/components/cart/quantity-input";
 import { useT } from "@/i18n/client";
+import type { ProductKind } from "@/lib/cart/cart";
 import { formatPrice } from "@/lib/format";
 import { cn } from "@/lib/utils";
 
-export type ProductKind = "cutting" | "sapling";
 export type Offer = { kind: ProductKind; price: number | null; available: boolean };
 
-export const MAX_QUANTITY = 99;
-
-export function clampQuantity(value: number): number {
-  if (!Number.isFinite(value)) return 1;
-  return Math.min(MAX_QUANTITY, Math.max(1, Math.round(value)));
-}
-
-/** Prices and availability; choose cuttings or saplings and a quantity (the cart is stage 6). */
-export function PriceBlock({ offers }: { offers: Offer[] }) {
+/** Prices and availability; choose cuttings or saplings and a quantity, then add to the cart. */
+export function PriceBlock({ product, offers }: { product: CartProduct; offers: Offer[] }) {
   const { t, locale } = useT();
   const labels: Record<ProductKind, string> = { cutting: t("Cutting"), sapling: t("Sapling") };
   const purchasable = offers.filter((offer) => offer.available && offer.price !== null);
@@ -63,45 +56,19 @@ export function PriceBlock({ offers }: { offers: Offer[] }) {
         })}
       </div>
 
-      {selected && (
+      {selected && selected.price !== null && (
         <div className="flex flex-wrap items-center gap-3 print:hidden">
-          <div className="flex items-center rounded-lg border">
-            <Button
-              variant="ghost"
-              size="icon"
-              aria-label={t("Decrease quantity")}
-              onClick={() => setQuantity((value) => clampQuantity(value - 1))}
-              disabled={quantity <= 1}
-            >
-              <MinusIcon aria-hidden="true" />
-            </Button>
-            <input
-              type="number"
-              inputMode="numeric"
-              min={1}
-              max={MAX_QUANTITY}
-              value={quantity}
-              onChange={(event) => setQuantity(clampQuantity(Number(event.target.value)))}
-              aria-label={t("Quantity")}
-              className="w-12 [appearance:textfield] bg-transparent text-center font-medium tabular-nums outline-none [&::-webkit-inner-spin-button]:appearance-none"
-            />
-            <Button
-              variant="ghost"
-              size="icon"
-              aria-label={t("Increase quantity")}
-              onClick={() => setQuantity((value) => clampQuantity(value + 1))}
-              disabled={quantity >= MAX_QUANTITY}
-            >
-              <PlusIcon aria-hidden="true" />
-            </Button>
-          </div>
+          <QuantityInput value={quantity} onChange={setQuantity} />
           <span className="text-lg font-semibold" data-testid="total">
-            {formatPrice((selected.price ?? 0) * quantity, locale)}
+            {formatPrice(selected.price * quantity, locale)}
           </span>
-          <Button className="ml-auto" disabled title={t("Ordering will be available soon")}>
-            <ShoppingBasketIcon aria-hidden="true" />
-            {t("Add to cart")}
-          </Button>
+          <AddToCartButton
+            className="ml-auto"
+            product={product}
+            kind={selected.kind}
+            price={selected.price}
+            quantity={quantity}
+          />
         </div>
       )}
       {!purchasable.length && (

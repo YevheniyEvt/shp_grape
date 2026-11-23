@@ -1,0 +1,7 @@
+{% extends "orders/email/_base.html" %}{% load i18n %}
+{% block content %}
+<h1 style="font-size:20px;margin:0 0 8px;">{% blocktranslate with name=order.full_name %}Hello, {{ name }}!{% endblocktranslate %}</h1>
+<p style="font-size:14px;">{% blocktranslate with number=order.number %}Thank you for your order {{ number }}. We will contact you soon to confirm it and arrange the delivery.{% endblocktranslate %}</p>
+{% include "orders/email/_items.html" %}
+{% include "orders/email/_customer.html" %}
+{% endblock %}

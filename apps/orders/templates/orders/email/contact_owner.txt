@@ -1,0 +1,8 @@
+{% load i18n %}{% autoescape off %}{% translate "Message from the website" %}{% if message.subject %}: {{ message.subject }}{% endif %}
+
+{{ message.message }}
+
+{% translate "From" %}: {{ message.name }} <{{ message.email }}>
+
+{% translate "Open in the admin" %}: {{ admin_url }}
+{% endautoescape %}

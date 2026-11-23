@@ -4,11 +4,16 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 
 import { makePhoto, makeVarietyDetail, t } from "@/components/catalog/test-utils";
 import { I18nProvider } from "@/i18n/client";
+import { clampQuantity } from "@/lib/cart/cart";
 
 import { buildCharacteristics, CharacteristicsTable } from "./characteristics";
-import { clampQuantity, PriceBlock } from "./price-block";
+import { PriceBlock } from "./price-block";
 import { VarietyGallery } from "./variety-gallery";
 import { viewedKey, ViewCounter } from "./view-counter";
+
+const product = { slug: "rubin", name: "Рубін", image: null };
+
+vi.mock("next/navigation", () => ({ useRouter: () => ({ push: vi.fn() }) }));
 
 const registerView = vi.fn();
 vi.mock("@/lib/api/views", () => ({ registerView: (slug: string) => registerView(slug) }));
@@ -87,6 +92,7 @@ describe("PriceBlock", () => {
     render(
       wrap(
         <PriceBlock
+          product={product}
           offers={[
             { kind: "cutting", price: 30, available: false },
             { kind: "sapling", price: 120, available: true },
@@ -113,6 +119,7 @@ describe("PriceBlock", () => {
     render(
       wrap(
         <PriceBlock
+          product={product}
           offers={[
             { kind: "cutting", price: 30, available: false },
             { kind: "sapling", price: null, available: true },

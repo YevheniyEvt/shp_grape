@@ -1,0 +1,7 @@
+{% extends "orders/email/_base.html" %}{% load i18n %}
+{% block content %}
+<h1 style="font-size:20px;margin:0 0 8px;">{% blocktranslate with number=order.number %}New order {{ number }}{% endblocktranslate %}</h1>
+{% include "orders/email/_items.html" %}
+{% include "orders/email/_customer.html" %}
+<p style="margin:20px 0 0;"><a href="{{ admin_url }}" style="color:#6b2d7b;">{% translate "Open in the admin" %}</a></p>
+{% endblock %}

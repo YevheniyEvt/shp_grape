@@ -1,4 +1,4 @@
-"""Fill the database with demo data: varieties, content (news, articles, gallery), an admin."""
+"""Fill the database with demo data: varieties, content, orders and an admin."""
 
 import os
 from pathlib import Path
@@ -8,6 +8,7 @@ from django.core.management.base import BaseCommand, CommandParser
 from apps.catalog import demo as catalog_demo
 from apps.content import demo as content_demo
 from apps.core.services import ensure_superuser
+from apps.orders import demo as orders_demo
 
 
 class Command(BaseCommand):
@@ -35,6 +36,9 @@ class Command(BaseCommand):
             deleted = catalog_demo.delete_demo_varieties()
             self.stdout.write(f"Deleted demo varieties: {deleted}")
             self.stdout.write(f"Deleted demo content objects: {content_demo.delete_demo_content()}")
+            self.stdout.write(
+                f"Deleted demo orders and requests: {orders_demo.delete_demo_orders()}"
+            )
 
         report = catalog_demo.seed_varieties(photos_dir)
         self.stdout.write(
@@ -45,6 +49,8 @@ class Command(BaseCommand):
         )
         content = content_demo.seed_content()
         self.stdout.write(self.style.SUCCESS(f"Content objects created: {len(content.created)}"))
+        orders = orders_demo.seed_orders()
+        self.stdout.write(self.style.SUCCESS(f"Orders and requests created: {len(orders)}"))
         self._ensure_superuser()
 
     def _ensure_superuser(self) -> None:

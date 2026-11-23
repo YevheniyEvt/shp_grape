@@ -1,54 +1,107 @@
 "use client";
 
-import { SendIcon } from "lucide-react";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Loader2Icon, SendIcon } from "lucide-react";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
 
+import {
+  FormAlert,
+  FormField,
+  fieldProps,
+  Honeypot,
+  SuccessMessage,
+  useSubmitErrorMessage,
+} from "@/components/forms/form-parts";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
 import { useT } from "@/i18n/client";
+import { sendContactMessage } from "@/lib/api/orders";
+import { contactSchema, type ContactValues } from "@/lib/form-schemas";
 
-/** Feedback form. Only the interface for now: sending arrives with orders in stage 6. */
+const EMPTY: ContactValues = { name: "", email: "", subject: "", message: "", website: "" };
+
+/** Feedback form on the contacts page; the message goes to the owner's email. */
 export function ContactForm() {
-  const { t } = useT();
+  const { t, locale } = useT();
+  const errorMessage = useSubmitErrorMessage();
+  const [sent, setSent] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+  const {
+    register,
+    handleSubmit,
+    setError,
+    formState: { errors, isSubmitting },
+  } = useForm<ContactValues>({ resolver: zodResolver(contactSchema(t)), defaultValues: EMPTY });
+
+  if (sent) {
+    return (
+      <SuccessMessage
+        title={t("Thank you! Your message is sent.")}
+        text={t("We will reply to your email soon.")}
+      />
+    );
+  }
+
+  const onSubmit = async (values: ContactValues) => {
+    setSubmitError(null);
+    const error = await sendContactMessage(values, locale);
+    if (!error) {
+      setSent(true);
+      return;
+    }
+    if (error.kind === "validation") {
+      for (const [field, message] of Object.entries(error.fields)) {
+        if (field in EMPTY) setError(field as keyof ContactValues, { message });
+      }
+    }
+    setSubmitError(errorMessage(error));
+  };
 
   return (
-    <form
-      className="grid gap-4"
-      aria-describedby="contact-form-note"
-      onSubmit={(event) => event.preventDefault()}
-    >
+    <form noValidate onSubmit={handleSubmit(onSubmit)} className="relative grid gap-4">
       <div className="grid gap-4 sm:grid-cols-2">
-        <div className="grid gap-1.5">
-          <Label htmlFor="contact-name">{t("Your name")}</Label>
-          <Input id="contact-name" name="name" autoComplete="name" required />
-        </div>
-        <div className="grid gap-1.5">
-          <Label htmlFor="contact-email">{t("Email")}</Label>
-          <Input id="contact-email" name="email" type="email" autoComplete="email" required />
-        </div>
+        <FormField id="contact-name" label={t("Your name")} required error={errors.name?.message}>
+          <Input
+            {...fieldProps("contact-name", errors.name?.message)}
+            autoComplete="name"
+            {...register("name")}
+          />
+        </FormField>
+        <FormField id="contact-email" label={t("Email")} required error={errors.email?.message}>
+          <Input
+            {...fieldProps("contact-email", errors.email?.message)}
+            type="email"
+            autoComplete="email"
+            {...register("email")}
+          />
+        </FormField>
       </div>
-      <div className="grid gap-1.5">
-        <Label htmlFor="contact-subject">{t("Subject")}</Label>
-        <Input id="contact-subject" name="subject" />
-      </div>
-      <div className="grid gap-1.5">
-        <Label htmlFor="contact-message">{t("Message")}</Label>
-        <textarea
-          id="contact-message"
-          name="message"
-          rows={5}
-          required
-          className="rounded-lg border border-input bg-card px-3 py-2 text-sm shadow-xs outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50"
+      <FormField id="contact-subject" label={t("Subject")} error={errors.subject?.message}>
+        <Input
+          {...fieldProps("contact-subject", errors.subject?.message)}
+          {...register("subject")}
         />
-      </div>
-      <div className="flex flex-wrap items-center gap-3">
-        <Button type="submit" disabled>
-          <SendIcon aria-hidden="true" />
-          {t("Send")}
+      </FormField>
+      <FormField id="contact-message" label={t("Message")} required error={errors.message?.message}>
+        <Textarea
+          {...fieldProps("contact-message", errors.message?.message)}
+          rows={5}
+          {...register("message")}
+        />
+      </FormField>
+      <Honeypot registration={register("website")} />
+      {submitError && <FormAlert>{submitError}</FormAlert>}
+      <div>
+        <Button type="submit" disabled={isSubmitting}>
+          {isSubmitting ? (
+            <Loader2Icon className="animate-spin" aria-hidden="true" />
+          ) : (
+            <SendIcon aria-hidden="true" />
+          )}
+          {isSubmitting ? t("Sending…") : t("Send")}
         </Button>
-        <p id="contact-form-note" className="text-sm text-muted-foreground">
-          {t("Sending messages will be available soon. Please call or email us for now.")}
-        </p>
       </div>
     </form>
   );

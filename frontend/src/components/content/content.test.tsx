@@ -1,25 +1,14 @@
 import { render, screen } from "@testing-library/react";
-import type { ReactNode } from "react";
 import { describe, expect, it } from "vitest";
 
 import { t } from "@/components/catalog/test-utils";
 import { RichText } from "@/components/common/rich-text";
 import { fitSize, toAlbumPhoto } from "@/components/media/photo-album";
 import { socialLinks } from "@/config/site";
-import { I18nProvider } from "@/i18n/client";
 
-import { ContactForm } from "./contact-form";
 import { GalleryTabs } from "./gallery-tabs";
 import { feedImage } from "./photo-feed";
 import { PublicationCard } from "./publication-card";
-
-function wrap(children: ReactNode) {
-  return (
-    <I18nProvider locale="uk" catalog={{ catalog: {}, plural: null }}>
-      {children}
-    </I18nProvider>
-  );
-}
 
 const image = {
   id: 7,
@@ -137,15 +126,5 @@ describe("RichText", () => {
     expect(container.querySelector("p")).toHaveTextContent("Текст");
     rerender(<RichText html="" />);
     expect(container).toBeEmptyDOMElement();
-  });
-});
-
-describe("ContactForm", () => {
-  it("has labelled fields and a disabled send button until stage 6", () => {
-    render(wrap(<ContactForm />));
-    expect(screen.getByLabelText("Your name")).toBeRequired();
-    expect(screen.getByLabelText("Email")).toHaveAttribute("type", "email");
-    expect(screen.getByLabelText("Message")).toBeRequired();
-    expect(screen.getByRole("button", { name: "Send" })).toBeDisabled();
   });
 });
