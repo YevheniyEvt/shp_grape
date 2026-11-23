@@ -1,0 +1,10 @@
+{% load i18n %}{% autoescape off %}{% translate "New pre-order" %}
+
+{{ preorder.description }}
+
+{% translate "Name" %}: {{ preorder.full_name }}
+{% translate "Phone" %}: {{ preorder.phone }}{% if preorder.email %}
+{% translate "Email" %}: {{ preorder.email }}{% endif %}
+
+{% translate "Open in the admin" %}: {{ admin_url }}
+{% endautoescape %}

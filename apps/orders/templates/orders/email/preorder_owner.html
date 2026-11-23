@@ -1,0 +1,11 @@
+{% extends "orders/email/_base.html" %}{% load i18n %}
+{% block content %}
+<h1 style="font-size:20px;margin:0 0 8px;">{% translate "New pre-order" %}</h1>
+<p style="font-size:14px;">{{ preorder.description|linebreaksbr }}</p>
+<table style="font-size:14px;border-collapse:collapse;">
+  <tr><td style="padding:2px 12px 2px 0;color:#6b6170;vertical-align:top;">{% translate "Name" %}</td><td>{{ preorder.full_name }}</td></tr>
+  <tr><td style="padding:2px 12px 2px 0;color:#6b6170;vertical-align:top;">{% translate "Phone" %}</td><td><a href="tel:{{ preorder.phone }}">{{ preorder.phone }}</a></td></tr>
+  {% if preorder.email %}<tr><td style="padding:2px 12px 2px 0;color:#6b6170;vertical-align:top;">{% translate "Email" %}</td><td>{{ preorder.email }}</td></tr>{% endif %}
+</table>
+<p style="margin:20px 0 0;"><a href="{{ admin_url }}" style="color:#6b2d7b;">{% translate "Open in the admin" %}</a></p>
+{% endblock %}

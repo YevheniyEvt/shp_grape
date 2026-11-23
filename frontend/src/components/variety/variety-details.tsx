@@ -80,6 +80,11 @@ export async function VarietyDetails({ params }: { params: Promise<{ slug: strin
           </header>
 
           <PriceBlock
+            product={{
+              slug: variety.slug ?? "",
+              name: variety.name ?? "",
+              image: variety.main_photo?.thumb ?? null,
+            }}
             offers={[
               {
                 kind: "cutting",

@@ -1,0 +1,28 @@
+{% load i18n %}<table style="width:100%;border-collapse:collapse;margin:16px 0;font-size:14px;">
+  <thead>
+    <tr style="text-align:left;border-bottom:2px solid #e5dde8;">
+      <th style="padding:6px 4px;">{% translate "Variety" %}</th>
+      <th style="padding:6px 4px;">{% translate "Type" %}</th>
+      <th style="padding:6px 4px;text-align:right;">{% translate "Qty" %}</th>
+      <th style="padding:6px 4px;text-align:right;">{% translate "Price" %}</th>
+      <th style="padding:6px 4px;text-align:right;">{% translate "Sum" %}</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for item in items %}
+    <tr style="border-bottom:1px solid #eeeeee;">
+      <td style="padding:6px 4px;">{{ item.variety_name }}</td>
+      <td style="padding:6px 4px;">{{ item.get_kind_display }}</td>
+      <td style="padding:6px 4px;text-align:right;">{{ item.quantity }}</td>
+      <td style="padding:6px 4px;text-align:right;">{{ item.unit_price|floatformat:"-2" }}&nbsp;₴</td>
+      <td style="padding:6px 4px;text-align:right;">{{ item.line_total|floatformat:"-2" }}&nbsp;₴</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="4" style="padding:8px 4px;text-align:right;font-weight:bold;">{% translate "Total" %}</td>
+      <td style="padding:8px 4px;text-align:right;font-weight:bold;">{{ order.total|floatformat:"-2" }}&nbsp;₴</td>
+    </tr>
+  </tfoot>
+</table>

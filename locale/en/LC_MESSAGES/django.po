@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: shp_grape\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-19 22:36+0200\n"
+"POT-Creation-Date: 2026-11-23 20:21+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -431,7 +431,246 @@ msgstr ""
 msgid "Version %(version)s"
 msgstr ""
 
+#, python-format
+msgid "%(count)d entry marked as «%(status)s»."
+msgid_plural "%(count)d entries marked as «%(status)s»."
+msgstr[0] ""
+msgstr[1] ""
+
+#, python-brace-format
+msgid "Mark as «{status}»"
+msgstr ""
+
+msgid "sum, UAH"
+msgstr ""
+
+msgid "Customer"
+msgstr ""
+
+msgid "Delivery"
+msgstr ""
+
+msgid "Dates"
+msgstr ""
+
+msgid "items"
+msgstr ""
+
+msgid "what is wanted"
+msgstr ""
+
+msgid "Mark as processed"
+msgstr ""
+
+#, python-format
+msgid "%(count)d message processed."
+msgid_plural "%(count)d messages processed."
+msgstr[0] ""
+msgstr[1] ""
+
 msgid "Orders"
+msgstr ""
+
+#, python-format
+msgid "Order %(number)s"
+msgstr ""
+
+#, python-format
+msgid "New order %(number)s"
+msgstr ""
+
+#, python-format
+msgid "New pre-order from %(name)s"
+msgstr ""
+
+#, python-format
+msgid "Message from the website: %(subject)s"
+msgstr ""
+
+msgid "cutting"
+msgstr ""
+
+msgid "sapling"
+msgstr ""
+
+msgid "phone call"
+msgstr ""
+
+msgid "Viber"
+msgstr ""
+
+msgid "full name"
+msgstr ""
+
+msgid "phone"
+msgstr ""
+
+msgid "language"
+msgstr ""
+
+msgid ""
+"Language of the site when the request was sent; the customer's emails use it."
+msgstr ""
+
+msgid "new"
+msgstr ""
+
+msgid "confirmed"
+msgstr ""
+
+msgid "shipped"
+msgstr ""
+
+msgid "done"
+msgstr ""
+
+msgid "cancelled"
+msgstr ""
+
+msgid "number"
+msgstr ""
+
+msgid "city"
+msgstr ""
+
+msgid "Nova Poshta office"
+msgstr ""
+
+msgid "Branch or parcel locker number, as the customer wrote it."
+msgstr ""
+
+msgid "preferred contact"
+msgstr ""
+
+msgid "customer comment"
+msgstr ""
+
+msgid "status"
+msgstr ""
+
+msgid "total, UAH"
+msgstr ""
+
+msgid "admin note"
+msgstr ""
+
+msgid "Visible only in the admin."
+msgstr ""
+
+msgid "orders"
+msgstr ""
+
+msgid "variety name"
+msgstr ""
+
+msgid "type"
+msgstr ""
+
+msgid "quantity"
+msgstr ""
+
+msgid "unit price, UAH"
+msgstr ""
+
+msgid "order item"
+msgstr ""
+
+msgid "order items"
+msgstr ""
+
+msgid "in progress"
+msgstr ""
+
+msgid "Varieties, types and quantities in free form."
+msgstr ""
+
+msgid "pre-order"
+msgstr ""
+
+msgid "pre-orders"
+msgstr ""
+
+#, python-format
+msgid "Pre-order from %(name)s"
+msgstr ""
+
+msgid "subject"
+msgstr ""
+
+msgid "message"
+msgstr ""
+
+msgid "processed"
+msgstr ""
+
+msgid "contact message"
+msgstr ""
+
+msgid "contact messages"
+msgstr ""
+
+msgid "Enter a valid phone number, e.g. +380 50 123 45 67."
+msgstr ""
+
+msgid "Name"
+msgstr ""
+
+msgid "Phone"
+msgstr ""
+
+msgid "Email"
+msgstr ""
+
+msgid "City"
+msgstr ""
+
+msgid "Preferred contact"
+msgstr ""
+
+msgid "Comment"
+msgstr ""
+
+msgid "Variety"
+msgstr ""
+
+msgid "Type"
+msgstr ""
+
+msgid "Qty"
+msgstr ""
+
+msgid "Price"
+msgstr ""
+
+msgid "Sum"
+msgstr ""
+
+msgid "Total"
+msgstr ""
+
+msgid "Message from the website"
+msgstr ""
+
+msgid "From"
+msgstr ""
+
+msgid "Open in the admin"
+msgstr ""
+
+#, python-format
+msgid "Hello, %(name)s!"
+msgstr ""
+
+#, python-format
+msgid ""
+"Thank you for your order %(number)s. We will contact you soon to confirm it "
+"and arrange the delivery."
+msgstr ""
+
+msgid "New pre-order"
+msgstr ""
+
+msgid "Some items in your cart have changed. Please check the cart."
 msgstr ""
 
 msgid "Ukrainian"

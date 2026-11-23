@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: shp_grape\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-19 22:37+0200\n"
+"POT-Creation-Date: 2026-11-23 20:21+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15,10 +15,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n % 10 == 1 && n % 100 != "
-"11 ? 0 : n % 1 == 0 && n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % "
-"100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || "
-"(n % 100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
+"Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n % 10 == 1 && n % 100 != 11 ? 0 : n % 1 == 0 && n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || (n % 100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
 
 msgid "varieties"
 msgstr "сорти"
@@ -26,7 +23,8 @@ msgstr "сорти"
 msgid "Add photos"
 msgstr "Додати фото"
 
-msgid "Select several files at once; they are added after the existing photos."
+msgid ""
+"Select several files at once; they are added after the existing photos."
 msgstr "Виберіть одразу кілька файлів — їх буде додано після наявних фото."
 
 msgid "preview"
@@ -349,8 +347,8 @@ msgid ""
 "A wide photo (at least 1920 px) shown softly behind the pages. Leave empty "
 "to use the built-in grape illustration."
 msgstr ""
-"Широке фото (щонайменше 1920 px), яке м'яко просвічує за сторінками. Залиште "
-"порожнім, щоб використати вбудовану ілюстрацію винограду."
+"Широке фото (щонайменше 1920 px), яке м'яко просвічує за сторінками. Залиште"
+" порожнім, щоб використати вбудовану ілюстрацію винограду."
 
 msgid "site settings"
 msgstr "налаштування сайту"
@@ -438,8 +436,254 @@ msgstr ""
 msgid "Version %(version)s"
 msgstr "Версія %(version)s"
 
+#, python-format
+msgid "%(count)d entry marked as «%(status)s»."
+msgid_plural "%(count)d entries marked as «%(status)s»."
+msgstr[0] "%(count)d запис позначено як «%(status)s»."
+msgstr[1] "%(count)d записи позначено як «%(status)s»."
+msgstr[2] "%(count)d записів позначено як «%(status)s»."
+msgstr[3] "%(count)d запису позначено як «%(status)s»."
+
+#, python-brace-format
+msgid "Mark as «{status}»"
+msgstr "Позначити як «{status}»"
+
+msgid "sum, UAH"
+msgstr "сума, грн"
+
+msgid "Customer"
+msgstr "Клієнт"
+
+msgid "Delivery"
+msgstr "Доставка"
+
+msgid "Dates"
+msgstr "Дати"
+
+msgid "items"
+msgstr "позицій"
+
+msgid "what is wanted"
+msgstr "що потрібно"
+
+msgid "Mark as processed"
+msgstr "Позначити як оброблені"
+
+#, python-format
+msgid "%(count)d message processed."
+msgid_plural "%(count)d messages processed."
+msgstr[0] "%(count)d повідомлення оброблено."
+msgstr[1] "%(count)d повідомлення оброблено."
+msgstr[2] "%(count)d повідомлень оброблено."
+msgstr[3] "%(count)d повідомлення оброблено."
+
 msgid "Orders"
 msgstr "Замовлення"
+
+#, python-format
+msgid "Order %(number)s"
+msgstr "Замовлення %(number)s"
+
+#, python-format
+msgid "New order %(number)s"
+msgstr "Нове замовлення %(number)s"
+
+#, python-format
+msgid "New pre-order from %(name)s"
+msgstr "Нове передзамовлення від %(name)s"
+
+#, python-format
+msgid "Message from the website: %(subject)s"
+msgstr "Повідомлення з сайту: %(subject)s"
+
+msgid "cutting"
+msgstr "живець"
+
+msgid "sapling"
+msgstr "саджанець"
+
+msgid "phone call"
+msgstr "дзвінок"
+
+msgid "Viber"
+msgstr "Viber"
+
+msgid "full name"
+msgstr "ПІБ"
+
+msgid "phone"
+msgstr "телефон"
+
+msgid "language"
+msgstr "мова"
+
+msgid ""
+"Language of the site when the request was sent; the customer's emails use "
+"it."
+msgstr "Мова сайту під час надсилання; листи клієнту надсилаються цією мовою."
+
+msgid "new"
+msgstr "нове"
+
+msgid "confirmed"
+msgstr "підтверджено"
+
+msgid "shipped"
+msgstr "відправлено"
+
+msgid "done"
+msgstr "виконано"
+
+msgid "cancelled"
+msgstr "скасовано"
+
+msgid "number"
+msgstr "номер"
+
+msgid "city"
+msgstr "місто"
+
+msgid "Nova Poshta office"
+msgstr "Відділення Нової пошти"
+
+msgid "Branch or parcel locker number, as the customer wrote it."
+msgstr "Номер відділення або поштомату, як написав клієнт."
+
+msgid "preferred contact"
+msgstr "зручний спосіб зв'язку"
+
+msgid "customer comment"
+msgstr "коментар клієнта"
+
+msgid "status"
+msgstr "статус"
+
+msgid "total, UAH"
+msgstr "сума, грн"
+
+msgid "admin note"
+msgstr "примітка адміністратора"
+
+msgid "Visible only in the admin."
+msgstr "Видно лише в адмінці."
+
+msgid "orders"
+msgstr "замовлення"
+
+msgid "variety name"
+msgstr "назва сорту"
+
+msgid "type"
+msgstr "тип"
+
+msgid "quantity"
+msgstr "кількість"
+
+msgid "unit price, UAH"
+msgstr "ціна за одиницю, грн"
+
+msgid "order item"
+msgstr "позиція замовлення"
+
+msgid "order items"
+msgstr "позиції замовлення"
+
+msgid "in progress"
+msgstr "в роботі"
+
+msgid "Varieties, types and quantities in free form."
+msgstr "Сорти, тип і кількість у довільній формі."
+
+msgid "pre-order"
+msgstr "передзамовлення"
+
+msgid "pre-orders"
+msgstr "передзамовлення"
+
+#, python-format
+msgid "Pre-order from %(name)s"
+msgstr "Передзамовлення від %(name)s"
+
+msgid "subject"
+msgstr "тема"
+
+msgid "message"
+msgstr "повідомлення"
+
+msgid "processed"
+msgstr "оброблено"
+
+msgid "contact message"
+msgstr "повідомлення з сайту"
+
+msgid "contact messages"
+msgstr "повідомлення з сайту"
+
+msgid "Enter a valid phone number, e.g. +380 50 123 45 67."
+msgstr "Введіть коректний номер телефону, наприклад +380 50 123 45 67."
+
+msgid "Name"
+msgstr "Ім'я"
+
+msgid "Phone"
+msgstr "Телефон"
+
+msgid "Email"
+msgstr "Email"
+
+msgid "City"
+msgstr "Місто"
+
+msgid "Preferred contact"
+msgstr "Зручний спосіб зв'язку"
+
+msgid "Comment"
+msgstr "Коментар"
+
+msgid "Variety"
+msgstr "Сорт"
+
+msgid "Type"
+msgstr "Тип"
+
+msgid "Qty"
+msgstr "К-сть"
+
+msgid "Price"
+msgstr "Ціна"
+
+msgid "Sum"
+msgstr "Сума"
+
+msgid "Total"
+msgstr "Разом"
+
+msgid "Message from the website"
+msgstr "Повідомлення з сайту"
+
+msgid "From"
+msgstr "Від"
+
+msgid "Open in the admin"
+msgstr "Відкрити в адмінці"
+
+#, python-format
+msgid "Hello, %(name)s!"
+msgstr "Вітаємо, %(name)s!"
+
+#, python-format
+msgid ""
+"Thank you for your order %(number)s. We will contact you soon to confirm it "
+"and arrange the delivery."
+msgstr ""
+"Дякуємо за замовлення %(number)s! Ми скоро зв'яжемося з вами, щоб "
+"підтвердити його й домовитися про доставку."
+
+msgid "New pre-order"
+msgstr "Нове передзамовлення"
+
+msgid "Some items in your cart have changed. Please check the cart."
+msgstr "Деякі позиції в кошику змінилися. Перевірте, будь ласка, кошик."
 
 msgid "Ukrainian"
 msgstr "Українська"

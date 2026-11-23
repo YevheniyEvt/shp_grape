@@ -1,0 +1,8 @@
+{% load i18n %}{% autoescape off %}{% blocktranslate with name=order.full_name %}Hello, {{ name }}!{% endblocktranslate %}
+
+{% blocktranslate with number=order.number %}Thank you for your order {{ number }}. We will contact you soon to confirm it and arrange the delivery.{% endblocktranslate %}
+
+{% include "orders/email/_items.txt" %}
+{% include "orders/email/_customer.txt" %}
+{{ site_name }}
+{% endautoescape %}

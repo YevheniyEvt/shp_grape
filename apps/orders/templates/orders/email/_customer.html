@@ -1,0 +1,9 @@
+{% load i18n %}<table style="font-size:14px;border-collapse:collapse;">
+  <tr><td style="padding:2px 12px 2px 0;color:#6b6170;vertical-align:top;">{% translate "Name" %}</td><td>{{ order.full_name }}</td></tr>
+  <tr><td style="padding:2px 12px 2px 0;color:#6b6170;vertical-align:top;">{% translate "Phone" %}</td><td><a href="tel:{{ order.phone }}">{{ order.phone }}</a></td></tr>
+  {% if order.email %}<tr><td style="padding:2px 12px 2px 0;color:#6b6170;vertical-align:top;">{% translate "Email" %}</td><td>{{ order.email }}</td></tr>{% endif %}
+  {% if order.city %}<tr><td style="padding:2px 12px 2px 0;color:#6b6170;vertical-align:top;">{% translate "City" %}</td><td>{{ order.city }}</td></tr>{% endif %}
+  {% if order.delivery_office %}<tr><td style="padding:2px 12px 2px 0;color:#6b6170;vertical-align:top;">{% translate "Nova Poshta office" %}</td><td>{{ order.delivery_office }}</td></tr>{% endif %}
+  <tr><td style="padding:2px 12px 2px 0;color:#6b6170;vertical-align:top;">{% translate "Preferred contact" %}</td><td>{{ order.get_contact_method_display }}</td></tr>
+  {% if order.comment %}<tr><td style="padding:2px 12px 2px 0;color:#6b6170;vertical-align:top;">{% translate "Comment" %}</td><td>{{ order.comment|linebreaksbr }}</td></tr>{% endif %}
+</table>

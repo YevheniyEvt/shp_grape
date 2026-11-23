@@ -2,7 +2,7 @@ import { FileTextIcon, GrapeIcon, MailIcon, PhoneIcon, ShoppingBasketIcon } from
 import Link from "next/link";
 
 import { AlphabetBar } from "@/components/catalog/alphabet-bar";
-import { Badge } from "@/components/ui/badge";
+import { CartCount } from "@/components/cart/cart-count";
 import { Button } from "@/components/ui/button";
 import { getMainNav, phoneHref, siteName } from "@/config/site";
 import { getAlphabet } from "@/i18n/alphabet";
@@ -96,7 +96,7 @@ export async function Header() {
           <Button variant="ghost" size="icon" asChild className="relative">
             <Link href={href("/cart")} aria-label={t("Cart")}>
               <ShoppingBasketIcon aria-hidden="true" />
-              <Badge className="absolute -top-1 -right-1 h-5 min-w-5 px-1 text-[10px]">0</Badge>
+              <CartCount />
             </Link>
           </Button>
           <MobileMenu

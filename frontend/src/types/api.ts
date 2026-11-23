@@ -4,6 +4,23 @@
  */
 
 export interface paths {
+    "/api/cart/validate/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** @description Current names, prices, availability and photos of cart items. */
+        post: operations["cart_validate_create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/catalog/filters/": {
         parameters: {
             query?: never;
@@ -100,6 +117,23 @@ export interface paths {
         put?: never;
         /** @description Register a page view of a variety (counted once per visitor within a few hours). */
         post: operations["catalog_varieties_view_create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/contact/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** @description Send a message to the owner from the contacts page. */
+        post: operations["contact_create"];
         delete?: never;
         options?: never;
         head?: never;
@@ -327,6 +361,45 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/orders/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * @description Place an order. Prices and availability are checked on the server.
+         *
+         *     Returns 409 with the checked items when any of them is unknown, out of stock or has a
+         *     different price than the client sent.
+         */
+        post: operations["orders_create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/preorders/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** @description Send a pre-order (free-form request for the next season). */
+        post: operations["preorders_create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
 }
 export type webhooks = Record<string, never>;
 export interface components {
@@ -371,16 +444,20 @@ export interface components {
             /** Заголовок */
             title: string;
             /**
-             * Publication date
+             * Дата публікації
              * Format: date
-             * @description A future date hides the entry until that day.
+             * @description Майбутня дата приховує запис до цього дня.
              */
             published_at?: string;
             readonly cover: components["schemas"]["Cover"] | null;
-            /** @description A short summary for the list of articles. */
+            /**
+             * Анонс
+             * @description Короткий опис для списку статей.
+             */
             excerpt?: string;
+            /** Автор */
             author?: string;
-            /** Text */
+            /** Текст */
             body?: string;
             readonly photos: components["schemas"]["ContentPhoto"][];
             videos: components["schemas"]["ArticleVideo"][];
@@ -392,14 +469,18 @@ export interface components {
             /** Заголовок */
             title: string;
             /**
-             * Publication date
+             * Дата публікації
              * Format: date
-             * @description A future date hides the entry until that day.
+             * @description Майбутня дата приховує запис до цього дня.
              */
             published_at?: string;
             readonly cover: components["schemas"]["Cover"] | null;
-            /** @description A short summary for the list of articles. */
+            /**
+             * Анонс
+             * @description Короткий опис для списку статей.
+             */
             excerpt?: string;
+            /** Автор */
             author?: string;
         };
         ArticleVideo: {
@@ -414,6 +495,68 @@ export interface components {
             /** Заголовок */
             title?: string;
         };
+        CartItem: {
+            /** @description Variety slug. */
+            variety: string;
+            kind: components["schemas"]["CartItemKindEnum"];
+            quantity: number;
+            /**
+             * Format: double
+             * @description Unit price the customer saw; a different current price is reported.
+             */
+            price?: number | null;
+        };
+        /**
+         * @description * `cutting` - живець
+         *     * `sapling` - саджанець
+         * @enum {string}
+         */
+        CartItemKindEnum: "cutting" | "sapling";
+        /** @description A cart item with the current data of its variety. */
+        CartLine: {
+            variety: string;
+            kind: string;
+            quantity: number;
+            readonly name: string | null;
+            /** Format: double */
+            price: number | null;
+            available: boolean;
+            problem: (components["schemas"]["ProblemEnum"] | components["schemas"]["NullEnum"]) | null;
+            readonly photo: components["schemas"]["Photo"] | null;
+        };
+        CartValidateRequest: {
+            items: components["schemas"]["CartItem"][];
+        };
+        CartValidateResponse: {
+            items: components["schemas"]["CartLine"][];
+            /** Format: double */
+            total: number;
+            has_problems: boolean;
+        };
+        /**
+         * @description A field hidden from people with CSS: bots fill every input, so a value means spam.
+         *
+         *     The frontend renders it as `website`, off-screen and without tab focus.
+         */
+        ContactMessageCreate: {
+            /** Назва */
+            name: string;
+            /** Format: email */
+            email: string;
+            /** Тема */
+            subject?: string;
+            /** Повідомлення */
+            message: string;
+            website?: string;
+        };
+        /**
+         * @description * `phone` - дзвінок
+         *     * `viber` - Viber
+         *     * `telegram` - Telegram
+         *     * `email` - email
+         * @enum {string}
+         */
+        ContactMethodEnum: "phone" | "viber" | "telegram" | "email";
         /** @description A photo with WebP renditions: `thumb` (400 px), `medium` (1000 px), `large` (1800 px). */
         ContentPhoto: {
             id: number;
@@ -449,10 +592,16 @@ export interface components {
             readonly source: components["schemas"]["FeedSource"];
         };
         FeedSource: {
-            kind: components["schemas"]["KindEnum"];
+            kind: components["schemas"]["FeedSourceKindEnum"];
             slug: string;
             title: string;
         };
+        /**
+         * @description * `album` - album
+         *     * `variety` - variety
+         * @enum {string}
+         */
+        FeedSourceKindEnum: "album" | "variety";
         FilterOptions: {
             ripening: components["schemas"]["Dictionary"][];
             berry_color: components["schemas"]["Dictionary"][];
@@ -475,12 +624,6 @@ export interface components {
             featured_varieties: components["schemas"]["VarietyList"][];
             latest_articles: components["schemas"]["ArticleList"][];
         };
-        /**
-         * @description * `album` - album
-         *     * `variety` - variety
-         * @enum {string}
-         */
-        KindEnum: "album" | "variety";
         Language: {
             code: string;
             name: string;
@@ -499,13 +642,13 @@ export interface components {
             /** Заголовок */
             title: string;
             /**
-             * Publication date
+             * Дата публікації
              * Format: date
-             * @description A future date hides the entry until that day.
+             * @description Майбутня дата приховує запис до цього дня.
              */
             published_at?: string;
             readonly cover: components["schemas"]["Cover"] | null;
-            /** Text */
+            /** Текст */
             body?: string;
         };
         NewsList: {
@@ -515,25 +658,65 @@ export interface components {
             /** Заголовок */
             title: string;
             /**
-             * Publication date
+             * Дата публікації
              * Format: date
-             * @description A future date hides the entry until that day.
+             * @description Майбутня дата приховує запис до цього дня.
              */
             published_at?: string;
             readonly cover: components["schemas"]["Cover"] | null;
         };
+        /** @enum {unknown} */
+        NullEnum: null;
         NumberRange: {
             /** Format: double */
             min: number | null;
             /** Format: double */
             max: number | null;
         };
+        /**
+         * @description A field hidden from people with CSS: bots fill every input, so a value means spam.
+         *
+         *     The frontend renders it as `website`, off-screen and without tab focus.
+         */
+        OrderCreate: {
+            /** ПІБ */
+            full_name: string;
+            phone: string;
+            email?: string;
+            /** Місто */
+            city?: string;
+            /**
+             * Відділення Нової пошти
+             * @description Номер відділення або поштомату, як написав клієнт.
+             */
+            delivery_office?: string;
+            /** Зручний спосіб зв'язку */
+            contact_method?: components["schemas"]["ContactMethodEnum"];
+            /** Коментар клієнта */
+            comment?: string;
+            items: components["schemas"]["CartItem"][];
+            website?: string;
+        };
+        OrderCreated: {
+            /** Номер */
+            readonly number: string;
+            /**
+             * Сума, грн
+             * Format: double
+             */
+            readonly total: number;
+        };
+        /** @description Returned with HTTP 409 when items changed: the cart shows the new data. */
+        OrderRejected: {
+            detail: string;
+            items: components["schemas"]["CartLine"][];
+        };
         Page: {
             /** @description Частина адреси сторінки. Формується автоматично з української назви й не змінюється при перейменуванні. */
             slug?: string;
             /** Заголовок */
             title: string;
-            /** Text */
+            /** Текст */
             body?: string;
             /**
              * Оновлено
@@ -603,6 +786,30 @@ export interface components {
             readonly medium: string;
             readonly large: string;
         };
+        /**
+         * @description A field hidden from people with CSS: bots fill every input, so a value means spam.
+         *
+         *     The frontend renders it as `website`, off-screen and without tab focus.
+         */
+        PreOrderCreate: {
+            /** ПІБ */
+            full_name: string;
+            phone: string;
+            email?: string;
+            /**
+             * Що потрібно
+             * @description Сорти, тип і кількість у довільній формі.
+             */
+            description: string;
+            website?: string;
+        };
+        /**
+         * @description * `not_found` - not_found
+         *     * `unavailable` - unavailable
+         *     * `price_changed` - price_changed
+         * @enum {string}
+         */
+        ProblemEnum: "not_found" | "unavailable" | "price_changed";
         /** @description A thumbnail linking to its variety (footer gallery). */
         RandomPhoto: {
             readonly id: number;
@@ -623,12 +830,15 @@ export interface components {
         };
         /** @description Contacts, links and the page background used by the header and footer of every page. */
         SiteSettings: {
+            /** Назва сайту */
             site_name?: string;
+            /** Слоган */
             tagline?: string;
-            /** Owner */
+            /** Власник */
             owner_name?: string;
             phones: string[];
             email?: string;
+            /** Адреса */
             address?: string;
             readonly map: components["schemas"]["MapPoint"] | null;
             readonly price_list: string | null;
@@ -653,7 +863,7 @@ export interface components {
             /** Заголовок */
             title: string;
             /**
-             * Link
+             * Посилання
              * Format: uri
              */
             url: string;
@@ -839,6 +1049,31 @@ export interface components {
 }
 export type $defs = Record<string, never>;
 export interface operations {
+    cart_validate_create: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CartValidateRequest"];
+                "application/x-www-form-urlencoded": components["schemas"]["CartValidateRequest"];
+                "multipart/form-data": components["schemas"]["CartValidateRequest"];
+            };
+        };
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CartValidateResponse"];
+                };
+            };
+        };
+    };
     catalog_filters_retrieve: {
         parameters: {
             query?: never;
@@ -1004,6 +1239,30 @@ export interface operations {
                 content: {
                     "application/json": components["schemas"]["VarietyViewCounted"];
                 };
+            };
+        };
+    };
+    contact_create: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ContactMessageCreate"];
+                "application/x-www-form-urlencoded": components["schemas"]["ContactMessageCreate"];
+                "multipart/form-data": components["schemas"]["ContactMessageCreate"];
+            };
+        };
+        responses: {
+            /** @description No response body */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
             };
         };
     };
@@ -1272,6 +1531,63 @@ export interface operations {
                 content: {
                     "application/json": components["schemas"]["Language"][];
                 };
+            };
+        };
+    };
+    orders_create: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["OrderCreate"];
+                "application/x-www-form-urlencoded": components["schemas"]["OrderCreate"];
+                "multipart/form-data": components["schemas"]["OrderCreate"];
+            };
+        };
+        responses: {
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["OrderCreated"];
+                };
+            };
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["OrderRejected"];
+                };
+            };
+        };
+    };
+    preorders_create: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["PreOrderCreate"];
+                "application/x-www-form-urlencoded": components["schemas"]["PreOrderCreate"];
+                "multipart/form-data": components["schemas"]["PreOrderCreate"];
+            };
+        };
+        responses: {
+            /** @description No response body */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
             };
         };
     };

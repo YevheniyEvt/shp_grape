@@ -1,0 +1,6 @@
+{% load i18n %}{% autoescape off %}{% blocktranslate with number=order.number %}New order {{ number }}{% endblocktranslate %}
+
+{% include "orders/email/_items.txt" %}
+{% include "orders/email/_customer.txt" %}
+{% translate "Open in the admin" %}: {{ admin_url }}
+{% endautoescape %}

@@ -1,0 +1,7 @@
+{% extends "orders/email/_base.html" %}{% load i18n %}
+{% block content %}
+<h1 style="font-size:20px;margin:0 0 8px;">{% translate "Message from the website" %}{% if message.subject %}: {{ message.subject }}{% endif %}</h1>
+<p style="font-size:14px;">{{ message.message|linebreaksbr }}</p>
+<p style="font-size:14px;color:#6b6170;">{% translate "From" %}: {{ message.name }} &lt;{{ message.email }}&gt;</p>
+<p style="margin:20px 0 0;"><a href="{{ admin_url }}" style="color:#6b2d7b;">{% translate "Open in the admin" %}</a></p>
+{% endblock %}

@@ -8,6 +8,14 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n % 10 == 1 && n % 100 != 11 ? 0 : n % 1 == 0 && n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || (n % 100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
 
+#: frontend/src/components/cart/cart-view.tsx
+msgid "%(count)s item is no longer sold and was removed from the cart."
+msgid_plural "%(count)s items are no longer sold and were removed from the cart."
+msgstr[0] "%(count)s позиція більше не продається, її видалено з кошика."
+msgstr[1] "%(count)s позиції більше не продаються, їх видалено з кошика."
+msgstr[2] "%(count)s позицій більше не продаються, їх видалено з кошика."
+msgstr[3] "%(count)s позиції більше не продаються, їх видалено з кошика."
+
 #: frontend/src/app/[lang]/gallery/page.tsx
 msgid "%(count)s photo"
 msgid_plural "%(count)s photos"
@@ -52,6 +60,10 @@ msgstr "%(value)s бала"
 msgid "%(value)s °C"
 msgstr "%(value)s °C"
 
+#: frontend/src/app/[lang]/preorder/page.tsx
+msgid "A variety is sold out or not in the catalog yet? Tell us what you need, and we will reserve it from the next harvest and contact you."
+msgstr "Сорт розпродано або його ще немає в каталозі? Напишіть, що вам потрібно, — ми залишимо для вас з наступного врожаю й зв'яжемося з вами."
+
 #: frontend/src/app/[lang]/page.tsx
 msgid "About the vineyard"
 msgstr "Про виноградник"
@@ -60,9 +72,13 @@ msgstr "Про виноградник"
 msgid "About us"
 msgstr "Про нас"
 
-#: frontend/src/components/catalog/variety-card.tsx frontend/src/components/variety/price-block.tsx
+#: frontend/src/components/cart/add-to-cart-button.tsx frontend/src/components/catalog/variety-card.tsx
 msgid "Add to cart"
 msgstr "У кошик"
+
+#: frontend/src/components/cart/add-to-cart-button.tsx
+msgid "Added to cart"
+msgstr "Додано до кошика"
 
 #: frontend/src/app/[lang]/contacts/page.tsx
 msgid "Address"
@@ -100,6 +116,10 @@ msgstr "Статті"
 msgid "Articles about growing table grapes."
 msgstr "Статті про вирощування столового винограду."
 
+#: frontend/src/app/[lang]/order/success/[number]/page.tsx
+msgid "Back to the catalog"
+msgstr "Повернутися до каталогу"
+
 #: frontend/src/components/catalog/variety-card.tsx
 msgid "Berry"
 msgstr "Ягода"
@@ -123,6 +143,10 @@ msgstr "Маса ягоди"
 #: frontend/src/components/catalog/filters-panel.tsx
 msgid "Berry weight, g"
 msgstr "Маса ягоди, г"
+
+#: frontend/src/components/cart/checkout-form.tsx
+msgid "Branch or parcel locker number."
+msgstr "Номер відділення або поштомату."
 
 #: frontend/src/components/content/publications.tsx frontend/src/components/variety/variety-details.tsx
 msgid "Breadcrumbs"
@@ -168,27 +192,47 @@ msgstr "Змінити мову"
 msgid "Characteristics"
 msgstr "Характеристики"
 
+#: frontend/src/app/[lang]/checkout/page.tsx frontend/src/components/cart/cart-view.tsx
+msgid "Checkout"
+msgstr "Оформити замовлення"
+
 #: frontend/src/app/[lang]/page.tsx
 msgid "Choose varieties"
 msgstr "Оберіть сорти"
+
+#: frontend/src/components/cart/checkout-form.tsx
+msgid "City"
+msgstr "Місто"
 
 #: frontend/src/components/catalog/catalog-search.tsx
 msgid "Clear search"
 msgstr "Очистити пошук"
 
+#: frontend/src/components/cart/cart-view.tsx
+msgid "Clear the cart"
+msgstr "Очистити кошик"
+
 #: frontend/src/components/media/photo-album.tsx frontend/src/components/variety/variety-gallery.tsx
 msgid "Close"
 msgstr "Закрити"
+
+#: frontend/src/components/cart/checkout-form.tsx
+msgid "Comment"
+msgstr "Коментар"
 
 #: frontend/src/app/[lang]/contacts/page.tsx frontend/src/components/layout/footer.tsx frontend/src/config/site.ts
 msgid "Contacts"
 msgstr "Контакти"
 
-#: frontend/src/components/variety/price-block.tsx
+#: frontend/src/components/cart/add-to-cart-button.tsx frontend/src/components/cart/cart-view.tsx frontend/src/components/variety/price-block.tsx
 msgid "Cutting"
 msgstr "Живець"
 
-#: frontend/src/components/variety/price-block.tsx
+#: frontend/src/components/cart/checkout-form.tsx
+msgid "cutting"
+msgstr "живець"
+
+#: frontend/src/components/cart/quantity-input.tsx
 msgid "Decrease quantity"
 msgstr "Зменшити кількість"
 
@@ -212,9 +256,17 @@ msgstr "Ураження хворобами, бали"
 msgid "down to %(value)s °C"
 msgstr "до %(value)s °C"
 
-#: frontend/src/app/[lang]/contacts/page.tsx frontend/src/components/content/contact-form.tsx
+#: frontend/src/app/[lang]/contacts/page.tsx frontend/src/components/cart/checkout-form.tsx frontend/src/components/content/contact-form.tsx frontend/src/components/forms/preorder-form.tsx
 msgid "Email"
 msgstr "Email"
+
+#: frontend/src/lib/form-schemas.ts
+msgid "Enter a valid email address."
+msgstr "Введіть коректну адресу email."
+
+#: frontend/src/lib/form-schemas.ts
+msgid "Enter the full phone number."
+msgstr "Введіть повний номер телефону."
 
 #: frontend/src/components/media/photo-album.tsx frontend/src/components/variety/variety-gallery.tsx
 msgid "Exit full screen"
@@ -244,6 +296,10 @@ msgstr "Морозостійкість"
 msgid "Frost resistance, °C"
 msgstr "Морозостійкість, °C"
 
+#: frontend/src/components/cart/checkout-form.tsx frontend/src/components/forms/preorder-form.tsx
+msgid "Full name"
+msgstr "Прізвище, ім'я, по батькові"
+
 #: frontend/src/components/media/photo-album.tsx frontend/src/components/variety/variety-gallery.tsx
 msgid "Full screen"
 msgstr "На весь екран"
@@ -252,9 +308,17 @@ msgstr "На весь екран"
 msgid "Gallery"
 msgstr "Галерея"
 
+#: frontend/src/components/cart/add-to-cart-button.tsx frontend/src/components/cart/checkout-form.tsx
+msgid "Go to cart"
+msgstr "Перейти до кошика"
+
 #: frontend/src/app/[lang]/not-found.tsx
 msgid "Go to home page"
 msgstr "На головну"
+
+#: frontend/src/components/cart/cart-view.tsx frontend/src/components/cart/checkout-form.tsx
+msgid "Go to the catalog"
+msgstr "Перейти до каталогу"
 
 #: frontend/src/app/[lang]/layout.tsx frontend/src/app/[lang]/page.tsx frontend/src/components/layout/footer.tsx
 msgid "Grape cuttings and seedlings of table varieties from our own vineyard."
@@ -271,6 +335,10 @@ msgstr "Сила росту"
 #: frontend/src/components/content/publications.tsx frontend/src/components/variety/variety-details.tsx frontend/src/config/site.ts
 msgid "Home"
 msgstr "Головна"
+
+#: frontend/src/components/cart/checkout-form.tsx
+msgid "How should we contact you?"
+msgstr "Як з вами зв'язатися?"
 
 #: frontend/src/app/[lang]/contacts/page.tsx
 msgid "How to contact us and find the vineyard."
@@ -296,7 +364,7 @@ msgstr "в наявності"
 msgid "In stock only"
 msgstr "Лише в наявності"
 
-#: frontend/src/components/variety/price-block.tsx
+#: frontend/src/components/cart/quantity-input.tsx
 msgid "Increase quantity"
 msgstr "Збільшити кількість"
 
@@ -364,6 +432,10 @@ msgstr "Новини нашого виноградника."
 msgid "Next"
 msgstr "Далі"
 
+#: frontend/src/components/forms/form-parts.tsx
+msgid "No connection to the server. Check the internet and try again."
+msgstr "Немає зв'язку із сервером. Перевірте інтернет і спробуйте ще раз."
+
 #: frontend/src/components/catalog/catalog-results.tsx
 msgid "Nothing found"
 msgstr "Нічого не знайдено"
@@ -371,6 +443,10 @@ msgstr "Нічого не знайдено"
 #: frontend/src/app/[lang]/gallery/all/page.tsx frontend/src/app/[lang]/gallery/page.tsx frontend/src/app/[lang]/links/page.tsx frontend/src/components/content/publications.tsx
 msgid "Nothing has been published yet."
 msgstr "Тут поки нічого не опубліковано."
+
+#: frontend/src/components/cart/checkout-form.tsx
+msgid "Nova Poshta office"
+msgstr "Відділення Нової пошти"
 
 #: frontend/src/components/layout/mobile-menu.tsx
 msgid "Open menu"
@@ -380,11 +456,11 @@ msgstr "Відкрити меню"
 msgid "Open photo %(number)s of %(total)s"
 msgstr "Відкрити фото %(number)s з %(total)s"
 
-#: frontend/src/components/catalog/variety-card.tsx frontend/src/components/variety/price-block.tsx
-msgid "Ordering will be available soon"
-msgstr "Замовлення незабаром буде доступне"
+#: frontend/src/app/[lang]/preorder/page.tsx
+msgid "Order cuttings and saplings of varieties that are not available yet."
+msgstr "Замовте живці й саджанці сортів, яких зараз немає в наявності."
 
-#: frontend/src/components/catalog/variety-card.tsx
+#: frontend/src/components/cart/cart-view.tsx frontend/src/components/catalog/variety-card.tsx
 msgid "Out of stock"
 msgstr "Немає в наявності"
 
@@ -403,6 +479,14 @@ msgstr "Сторінку не знайдено"
 #: frontend/src/components/common/pagination.tsx
 msgid "Pages"
 msgstr "Сторінки"
+
+#: frontend/src/components/cart/checkout-form.tsx frontend/src/components/forms/preorder-form.tsx
+msgid "Phone"
+msgstr "Телефон"
+
+#: frontend/src/components/cart/checkout-form.tsx
+msgid "Phone call"
+msgstr "Дзвінок"
 
 #: frontend/src/app/[lang]/contacts/page.tsx
 msgid "Phones"
@@ -424,6 +508,14 @@ msgstr "Фото нашого виноградника й сортів вино�
 msgid "Place an order"
 msgstr "Оформіть замовлення"
 
+#: frontend/src/components/cart/checkout-form.tsx
+msgid "Place the order"
+msgstr "Підтвердити замовлення"
+
+#: frontend/src/components/forms/form-parts.tsx
+msgid "Please correct the highlighted fields."
+msgstr "Виправте, будь ласка, позначені поля."
+
 #: frontend/src/app/[lang]/page.tsx frontend/src/app/[lang]/preorder/page.tsx frontend/src/config/site.ts
 msgid "Pre-order"
 msgstr "Передзамовлення"
@@ -435,6 +527,10 @@ msgstr "Назад"
 #: frontend/src/components/layout/header.tsx
 msgid "Price list"
 msgstr "Прайс-лист"
+
+#: frontend/src/components/cart/cart-view.tsx
+msgid "Prices of some items have changed. The cart shows the current prices."
+msgstr "Ціни на деякі позиції змінилися. У кошику вказано актуальні ціни."
 
 #: frontend/src/components/variety/print-button.tsx
 msgid "Print"
@@ -448,9 +544,13 @@ msgstr "Тип садивного матеріалу"
 msgid "Pulp"
 msgstr "М'якоть"
 
-#: frontend/src/components/variety/price-block.tsx
+#: frontend/src/components/cart/quantity-input.tsx
 msgid "Quantity"
 msgstr "Кількість"
+
+#: frontend/src/components/cart/cart-view.tsx
+msgid "Quantity of %(name)s"
+msgstr "Кількість: %(name)s"
 
 #: frontend/src/app/[lang]/page.tsx
 msgid "Receive the parcel"
@@ -464,6 +564,10 @@ msgstr "Рекомендуємо"
 msgid "Recommended varieties"
 msgstr "Рекомендовані сорти"
 
+#: frontend/src/components/cart/cart-view.tsx
+msgid "Remove %(name)s"
+msgstr "Видалити %(name)s"
+
 #: frontend/src/components/catalog/catalog-results.tsx
 msgid "Remove the letter filter"
 msgstr "Прибрати фільтр за літерою"
@@ -476,9 +580,13 @@ msgstr "Скинути фільтри"
 msgid "Ripening period"
 msgstr "Термін дозрівання"
 
-#: frontend/src/components/variety/price-block.tsx
+#: frontend/src/components/cart/add-to-cart-button.tsx frontend/src/components/cart/cart-view.tsx frontend/src/components/variety/price-block.tsx
 msgid "Sapling"
 msgstr "Саджанець"
+
+#: frontend/src/components/cart/checkout-form.tsx
+msgid "sapling"
+msgstr "саджанець"
 
 #: frontend/src/components/catalog/catalog-search.tsx
 msgid "Search by name"
@@ -492,9 +600,13 @@ msgstr "Надіслати"
 msgid "Send a pre-order or call us: we will confirm availability and the price."
 msgstr "Надішліть передзамовлення або зателефонуйте: ми підтвердимо наявність і ціну."
 
-#: frontend/src/components/content/contact-form.tsx
-msgid "Sending messages will be available soon. Please call or email us for now."
-msgstr "Надсилання повідомлень незабаром запрацює. Поки що телефонуйте або пишіть на email."
+#: frontend/src/components/forms/preorder-form.tsx
+msgid "Send the pre-order"
+msgstr "Надіслати передзамовлення"
+
+#: frontend/src/components/cart/checkout-form.tsx frontend/src/components/content/contact-form.tsx frontend/src/components/forms/preorder-form.tsx
+msgid "Sending…"
+msgstr "Надсилаємо…"
 
 #: frontend/src/components/variety/variety-gallery.tsx
 msgid "Show photo %(number)s"
@@ -507,6 +619,14 @@ msgstr "Схожі сорти"
 #: frontend/src/components/layout/footer.tsx
 msgid "Site map"
 msgstr "Карта сайту"
+
+#: frontend/src/components/cart/cart-view.tsx
+msgid "Some items are out of stock now. Remove them to place the order."
+msgstr "Деяких позицій зараз немає в наявності. Видаліть їх, щоб оформити замовлення."
+
+#: frontend/src/components/forms/form-parts.tsx
+msgid "Something went wrong on our side. Please try again later or call us."
+msgstr "Щось пішло не так з нашого боку. Спробуйте пізніше або зателефонуйте нам."
 
 #: frontend/src/components/catalog/sort-select.tsx
 msgid "Sort"
@@ -528,9 +648,33 @@ msgstr "Столові сорти винограду з фото, характе
 msgid "Taste"
 msgstr "Смак"
 
+#: frontend/src/app/[lang]/order/success/[number]/page.tsx
+msgid "Thank you for your order"
+msgstr "Дякуємо за замовлення"
+
+#: frontend/src/app/[lang]/order/success/[number]/page.tsx
+msgid "Thank you for your order!"
+msgstr "Дякуємо за замовлення!"
+
+#: frontend/src/components/content/contact-form.tsx
+msgid "Thank you! Your message is sent."
+msgstr "Дякуємо! Ваше повідомлення надіслано."
+
+#: frontend/src/components/forms/preorder-form.tsx
+msgid "Thank you! Your pre-order is sent."
+msgstr "Дякуємо! Ваше передзамовлення надіслано."
+
+#: frontend/src/components/cart/checkout-form.tsx
+msgid "The order is placed. Opening the confirmation…"
+msgstr "Замовлення оформлено. Відкриваємо підтвердження…"
+
 #: frontend/src/app/[lang]/not-found.tsx
 msgid "The page you are looking for does not exist or has been moved."
 msgstr "Сторінка, яку ви шукаєте, не існує або була переміщена."
+
+#: frontend/src/lib/form-schemas.ts
+msgid "This field is required."
+msgstr "Обов'язкове поле."
 
 #: frontend/src/components/common/page-stub.tsx
 msgid "This section is under construction."
@@ -539,6 +683,18 @@ msgstr "Розділ у розробці."
 #: frontend/src/components/variety/price-block.tsx
 msgid "This variety is not available now."
 msgstr "Цього сорту зараз немає в наявності."
+
+#: frontend/src/lib/form-schemas.ts
+msgid "Too long."
+msgstr "Задовгий текст."
+
+#: frontend/src/components/forms/form-parts.tsx
+msgid "Too many requests. Please try again in an hour or call us."
+msgstr "Забагато запитів. Спробуйте через годину або зателефонуйте нам."
+
+#: frontend/src/components/cart/cart-view.tsx frontend/src/components/cart/checkout-form.tsx
+msgid "Total"
+msgstr "Разом"
 
 #: frontend/src/components/catalog/catalog-results.tsx
 msgid "Try changing the search or the filters."
@@ -560,6 +716,10 @@ msgstr "Корисні матеріали про вирощування вино
 msgid "Varieties by letter"
 msgstr "Сорти за літерою"
 
+#: frontend/src/components/forms/preorder-form.tsx
+msgid "Varieties, cuttings or saplings, quantities."
+msgstr "Сорти, живці чи саджанці, кількість."
+
 #: frontend/src/app/[lang]/catalog/page.tsx frontend/src/app/[lang]/page.tsx
 msgid "Variety catalog"
 msgstr "Каталог сортів"
@@ -576,6 +736,30 @@ msgstr "Виноградник"
 msgid "We pack cuttings and saplings carefully and ship them in the planting season."
 msgstr "Ми дбайливо пакуємо живці й саджанці та відправляємо їх у сезон посадки."
 
+#: frontend/src/app/[lang]/order/success/[number]/page.tsx
+msgid "We will contact you soon to confirm the order and arrange the delivery. If you left an email, the confirmation is already there."
+msgstr "Ми скоро зв'яжемося з вами, щоб підтвердити замовлення й домовитися про доставку. Якщо ви вказали email, підтвердження вже там."
+
+#: frontend/src/components/cart/checkout-form.tsx
+msgid "We will contact you to confirm the order, delivery and payment."
+msgstr "Ми зв'яжемося з вами, щоб підтвердити замовлення, доставку й оплату."
+
+#: frontend/src/components/forms/preorder-form.tsx
+msgid "We will contact you when the varieties are available."
+msgstr "Ми зв'яжемося з вами, щойно сорти з'являться."
+
+#: frontend/src/components/content/contact-form.tsx
+msgid "We will reply to your email soon."
+msgstr "Ми скоро відповімо на ваш email."
+
+#: frontend/src/components/cart/checkout-form.tsx
+msgid "We will send the order confirmation there."
+msgstr "Надішлемо туди підтвердження замовлення."
+
+#: frontend/src/components/forms/preorder-form.tsx
+msgid "What would you like to order?"
+msgstr "Що бажаєте замовити?"
+
 #: frontend/src/app/[lang]/page.tsx
 msgid "Whole catalog"
 msgstr "Увесь каталог"
@@ -588,9 +772,21 @@ msgstr "Написати нам"
 msgid "You have seen all the photos."
 msgstr "Ви переглянули всі фото."
 
+#: frontend/src/components/cart/cart-view.tsx frontend/src/components/cart/checkout-form.tsx
+msgid "Your cart is empty."
+msgstr "Ваш кошик порожній."
+
 #: frontend/src/components/content/contact-form.tsx
 msgid "Your name"
 msgstr "Ваше ім'я"
+
+#: frontend/src/components/cart/checkout-form.tsx
+msgid "Your order"
+msgstr "Ваше замовлення"
+
+#: frontend/src/app/[lang]/order/success/[number]/page.tsx
+msgid "Your order number is"
+msgstr "Номер вашого замовлення:"
 
 #: frontend/src/components/media/photo-album.tsx frontend/src/components/variety/variety-gallery.tsx
 msgid "Zoom in"
@@ -599,3 +795,9 @@ msgstr "Збільшити"
 #: frontend/src/components/media/photo-album.tsx frontend/src/components/variety/variety-gallery.tsx
 msgid "Zoom out"
 msgstr "Зменшити"
+
+#~ msgid "Ordering will be available soon"
+#~ msgstr "Замовлення незабаром буде доступне"
+
+#~ msgid "Sending messages will be available soon. Please call or email us for now."
+#~ msgstr "Надсилання повідомлень незабаром запрацює. Поки що телефонуйте або пишіть на email."

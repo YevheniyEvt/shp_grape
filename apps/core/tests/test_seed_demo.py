@@ -31,6 +31,8 @@ def test_command_seeds_and_is_idempotent(tmp_path):
     assert "Varieties created: 5" in first
     assert "already present: 5" in second
     assert Variety.objects.count() == len(demo.DEMO_VARIETIES)
+    assert "Orders and requests created: 4" in first
+    assert "Orders and requests created: 0" in second
     assert "Superuser skipped" in first
 
 
@@ -41,6 +43,7 @@ def test_reset_recreates_demo_varieties(tmp_path):
     output = run("--reset", photos_dir=tmp_path)
 
     assert "Deleted demo varieties: 5" in output
+    assert "Deleted demo orders and requests: 8" in output
     assert "Varieties created: 5" in output
     assert Variety.objects.get(slug="bilyi-tuman").cutting_available is True
 
